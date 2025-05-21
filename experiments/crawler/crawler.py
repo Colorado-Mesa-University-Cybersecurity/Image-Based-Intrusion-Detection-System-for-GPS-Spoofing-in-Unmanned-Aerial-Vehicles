@@ -14,9 +14,10 @@ VIRUSTOTAL_API_KEY = os.getenv("VIRUSTOTAL_API_KEY")
 GSB_API_KEY = os.getenv("GOOGLE_SAFE_BROWSING_API_KEY")
 
 URLS_TO_CHECK = [
-    "https://www.example.com",
-    "https://www.google.com",
-    "https://www.github.com"
+    "https://www.example.com",  # Safe URL
+    "https://www.google.com",   # Safe URL
+    "https://www.github.com",   # Safe URL
+    "http://ww6.17ebook.com/",  # This URL is known to be malicious
 ]
 
 GSB_API_ENDPOINT = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
