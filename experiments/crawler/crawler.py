@@ -10,6 +10,7 @@ import geoip2.database
 import whois
 import tldextract
 from urllib.parse import urlparse
+from datetime import datetime
 
 # Configuration
 URL_FILE = "urls.txt"
@@ -25,6 +26,7 @@ GSB_API_KEY = os.getenv("GOOGLE_SAFE_BROWSING_API_KEY")
 
 GSB_API_ENDPOINT = "https://safebrowsing.googleapis.com/v4/threatMatches:find"
 
+DATE_FORMAT = "%Y-%m-%d"  # Standardize to one date format
 
 def check_url_with_google_safe_browsing(url):
     headers = {"Content-Type": "application/json"}
@@ -114,6 +116,25 @@ def get_server_info(url):
         }
 
 
+def format_date(dt):
+    if not dt:
+        return "Unknown"
+    if isinstance(dt, list):
+        # Sometimes whois returns a list of dates
+        dt = dt[0] if dt else None
+    if isinstance(dt, datetime):
+        return dt.strftime(DATE_FORMAT)
+    if isinstance(dt, str):
+        # Try parsing the string to datetime
+        for fmt in ("%Y-%m-%d", "%Y/%m/%d", "%d-%b-%Y", "%Y.%m.%d", "%Y-%m-%d %H:%M:%S", "%Y-%m-%dT%H:%M:%S"):
+            try:
+                return datetime.strptime(dt, fmt).strftime(DATE_FORMAT)
+            except Exception:
+                continue
+        return dt
+    return str(dt)
+
+
 def get_domain_info(url):
     try:
         extracted = tldextract.extract(url)
@@ -137,13 +158,16 @@ def get_domain_info(url):
             except Exception as e:
                 print(f"Error getting country for {ip}: {e}")
 
+        creation_date = format_date(getattr(w, 'creation_date', None))
+        expiration_date = format_date(getattr(w, 'expiration_date', None))
+
         return {
             'domain': domain,
             'ip': ip,
             'country': country,
             'registrar': getattr(w, 'registrar', 'Unknown'),
-            'creation_date': getattr(w, 'creation_date', 'Unknown'),
-            'expiration_date': getattr(w, 'expiration_date', 'Unknown')
+            'creation_date': creation_date,
+            'expiration_date': expiration_date
         }
     except Exception as e:
         print(f"Error getting domain info for {url}: {e}")
@@ -161,7 +185,7 @@ async def analyze_url(url, vt_client):
     # Initialize results dictionary
     result = {
         'url': url,
-        'url_length': len(url),  # Added URL length here
+        'url_length': len(url),
         'vt_malicious': 0,
         'vt_suspicious': 0,
         'gsb_malicious': False,
