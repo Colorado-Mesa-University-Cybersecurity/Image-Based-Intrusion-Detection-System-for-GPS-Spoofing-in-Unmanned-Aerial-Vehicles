@@ -108,8 +108,6 @@ def write_to_csv(malicious_urls, benign_urls, filename=OUTPUT_CSV):
 
     with open(filename, 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["# Input file", URL_FILE])
-        writer.writerow([])  # Empty row for separation
         writer.writerow(["Malicious", "Benign"])
 
         # Find the maximum length of either list
