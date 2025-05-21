@@ -6,6 +6,10 @@ import vt
 import requests
 import json
 
+# Configuration
+URL_FILE = "urls.txt"  # filename for input URLs
+OUTPUT_CSV = "URL_Dataset.csv"  # Output CSV filename
+
 dotenv_path = find_dotenv()
 load_dotenv(dotenv_path)
 
@@ -43,6 +47,21 @@ def check_url_with_google_safe_browsing(url):
         return None
 
 
+def load_urls_from_file(filename):
+    urls = []
+    try:
+        with open(filename, 'r') as file:
+            for line in file:
+                url = line.strip()
+                if url and not url.startswith('#'):  # Skip empty lines and comments
+                    urls.append(url)
+        print(f"Loaded {len(urls)} URLs from {filename}")
+        return urls
+    except Exception as e:
+        print(f"Error loading URLs from file: {e}")
+        return []
+
+
 async def categorize_urls(urls):
     malicious_urls = []
     benign_urls = []
@@ -64,6 +83,7 @@ async def categorize_urls(urls):
                 print(f"URL: {url}, VT Malicious: {vt_malicious_count}, Suspicious: {vt_suspicious_count}")
             except Exception as e:
                 print(f"Error checking {url} with VirusTotal: {e}")
+                continue  # Skip to the next URL if there's an error
 
             # Check with Google Safe Browsing
             gsb_result = check_url_with_google_safe_browsing(url)
@@ -73,21 +93,23 @@ async def categorize_urls(urls):
             else:
                 print(f"URL: {url}, GSB: Safe")
 
-            # Categorize based on updated rules
+            # Categorize based on rules
             if gsb_is_malicious or vt_malicious_count >= 5:
                 malicious_urls.append(url)
             elif vt_malicious_count == 0 and vt_suspicious_count == 0:
                 benign_urls.append(url)
             else:
-                # URLs that don't fit either category - you might want to handle these separately
                 print(f"URL: {url} doesn't fit strictly into malicious or benign categories")
 
     return malicious_urls, benign_urls
 
 
-def write_to_csv(malicious_urls, benign_urls, filename="URL_Dataset.csv"):
+def write_to_csv(malicious_urls, benign_urls, filename=OUTPUT_CSV):
+
     with open(filename, 'w', newline='') as file:
         writer = csv.writer(file)
+        writer.writerow(["# Input file", URL_FILE])
+        writer.writerow([])  # Empty row for separation
         writer.writerow(["Malicious", "Benign"])
 
         # Find the maximum length of either list
@@ -99,19 +121,20 @@ def write_to_csv(malicious_urls, benign_urls, filename="URL_Dataset.csv"):
             benign = benign_urls[i] if i < len(benign_urls) else ""
             writer.writerow([malicious, benign])
 
-    print(f"CSV file '{filename}' has been created successfully.")
-
 
 async def main():
-    URLS_TO_CHECK = [
-        "https://www.example.com",
-        "https://www.google.com",
-        "https://www.github.com",
-        "http://ww6.17ebook.com/",
-    ]
+    if not os.path.exists(URL_FILE):
+        print(f"Error: File '{URL_FILE}' not found. Please create this file with one URL per line.")
+        return
 
-    print("Analyzing URLs...")
-    malicious_urls, benign_urls = await categorize_urls(URLS_TO_CHECK)
+    urls_to_check = load_urls_from_file(URL_FILE)
+
+    if not urls_to_check:
+        print("No URLs to check. Exiting.")
+        return
+
+    print(f"Analyzing {len(urls_to_check)} URLs...")
+    malicious_urls, benign_urls = await categorize_urls(urls_to_check)
 
     print("\nResults:")
     print(f"Malicious URLs ({len(malicious_urls)}):")
@@ -123,6 +146,7 @@ async def main():
         print(f"  - {url}")
 
     write_to_csv(malicious_urls, benign_urls)
+    print(f"Results written to {OUTPUT_CSV}")
 
 
 if __name__ == "__main__":
