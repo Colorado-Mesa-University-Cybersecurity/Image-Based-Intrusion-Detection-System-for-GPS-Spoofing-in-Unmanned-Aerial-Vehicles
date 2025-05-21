@@ -25,7 +25,7 @@ def check_with_google_safe_browsing(urls):
     headers = {"Content-Type": "application/json"}
     payload = {
         "client": {
-            "clientId": "yourcompanyname",
+            "clientId": "Colorado Mesa University Cybersecurity Research",
             "clientVersion": "1.0"
         },
         "threatInfo": {
