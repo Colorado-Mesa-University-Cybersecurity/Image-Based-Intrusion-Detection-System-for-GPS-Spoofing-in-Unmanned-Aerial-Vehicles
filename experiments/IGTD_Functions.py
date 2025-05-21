@@ -129,10 +129,9 @@ def generate_feature_distance_ranking(data, method='Pearson'):
         corr = squareform(pdist(np.transpose(data), metric='euclidean'))
         corr = np.max(corr) - corr
         corr = corr / np.max(corr)
-    elif method == 'set':  # This is the new set operation to calculate similarity. It does not tolerate all-zero features.
+    elif method == 'set':
         corr1 = np.dot(np.transpose(data), data)
         corr2 = data.shape[0] - np.dot(np.transpose(1 - data), 1 - data)
-        # Consider adding a check for corr2 == 0 here if it's possible for your data
         corr = corr1 / corr2
 
     corr = 1 - corr
@@ -167,7 +166,6 @@ def generate_matrix_distance_ranking(num_r, num_c, method='Euclidean', num=None)
     if num is None:
         num = num_r * num_c
 
-    # generate the coordinates of elements in a matrix
     for r in range(num_r):
         if r == 0:
             coordinate = np.transpose(np.vstack((np.zeros(num_c), range(num_c))))
@@ -175,7 +173,6 @@ def generate_matrix_distance_ranking(num_r, num_c, method='Euclidean', num=None)
             coordinate = np.vstack((coordinate, np.transpose(np.vstack((np.ones(num_c) * r, range(num_c))))))
     coordinate = coordinate[:num, :]
 
-    # calculate the closeness of the elements
     cord_dist = np.zeros((num, num))
     if method == 'Euclidean':
         for i in range(num):
@@ -193,7 +190,7 @@ def generate_matrix_distance_ranking(num_r, num_c, method='Euclidean', num=None)
     ranking[tril_id] = rank
     ranking = ranking + np.transpose(ranking)
 
-    coordinate = np.int64(coordinate)  # This is fine for specific NumPy integer types
+    coordinate = np.int64(coordinate)
     return (coordinate[:, 0], coordinate[:, 1]), ranking
 
 
@@ -224,7 +221,6 @@ def IGTD_absolute_error(source, target, max_step=30000, switch_t=0, val_step=300
     run_time: the time at which each step is completed in the optimization process
     '''
 
-    # Consider using np.random.default_rng(seed=random_state) for newer NumPy versions
     np.random.RandomState(seed=random_state)
     if save_folder and os.path.exists(save_folder):  # Check if save_folder is not None before using os.path.exists
         shutil.rmtree(save_folder)
