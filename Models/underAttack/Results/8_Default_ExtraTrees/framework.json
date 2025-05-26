@@ -1,0 +1,259 @@
+{
+    "uid": "93bbdb58-329c-43d5-a2fb-2d83a567c1ce",
+    "name": "8_Default_ExtraTrees",
+    "preprocessing": [
+        {
+            "categorical_y": {
+                "Benign": 0,
+                "DoS Attack": 1,
+                "Evil Twin": 2,
+                "FDI": 3,
+                "Replay Attack": 4
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        },
+        {
+            "categorical_y": {
+                "Benign": 0,
+                "DoS Attack": 1,
+                "Evil Twin": 2,
+                "FDI": 3,
+                "Replay Attack": 4
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        },
+        {
+            "categorical_y": {
+                "Benign": 0,
+                "DoS Attack": 1,
+                "Evil Twin": 2,
+                "FDI": 3,
+                "Replay Attack": 4
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        },
+        {
+            "categorical_y": {
+                "Benign": 0,
+                "DoS Attack": 1,
+                "Evil Twin": 2,
+                "FDI": 3,
+                "Replay Attack": 4
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        },
+        {
+            "categorical_y": {
+                "Benign": 0,
+                "DoS Attack": 1,
+                "Evil Twin": 2,
+                "FDI": 3,
+                "Replay Attack": 4
+            },
+            "ml_task": "multiclass_classification",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude",
+                    "categorical_to_int"
+                ],
+                "ml_task": "multiclass_classification"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "b34be8d8-275a-49e0-9a82-86f41feeea8d",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "criterion": "gini",
+                "max_features": 0.9,
+                "min_samples_split": 30,
+                "max_depth": 4,
+                "seed": 8,
+                "eval_metric_name": "logloss",
+                "num_class": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "896092eb-e9cc-447e-a315-e2e20c608b6f",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "criterion": "gini",
+                "max_features": 0.9,
+                "min_samples_split": 30,
+                "max_depth": 4,
+                "seed": 8,
+                "eval_metric_name": "logloss",
+                "num_class": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "1836a2be-1483-4155-9d02-6ef81fa44827",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "criterion": "gini",
+                "max_features": 0.9,
+                "min_samples_split": 30,
+                "max_depth": 4,
+                "seed": 8,
+                "eval_metric_name": "logloss",
+                "num_class": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "5290f09e-9ad8-49d9-bb3e-bc0d1fec8fe5",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "criterion": "gini",
+                "max_features": 0.9,
+                "min_samples_split": 30,
+                "max_depth": 4,
+                "seed": 8,
+                "eval_metric_name": "logloss",
+                "num_class": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "1627723c-7be2-4f24-bf14-9ab5259544ff",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "multiclass_classification",
+                "n_jobs": -1,
+                "criterion": "gini",
+                "max_features": 0.9,
+                "min_samples_split": 30,
+                "max_depth": 4,
+                "seed": 8,
+                "eval_metric_name": "logloss",
+                "num_class": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_4"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 100,
+            "max_steps": 50,
+            "early_stopping_rounds": 50,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {},
+            "target_preprocessing": [
+                "na_exclude",
+                "categorical_to_int"
+            ],
+            "ml_task": "multiclass_classification"
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "k_folds": 5,
+            "shuffle": true,
+            "random_seed": 1082,
+            "X_path": "mljar_uav_results\\X.data",
+            "y_path": "mljar_uav_results\\y.data",
+            "results_path": "mljar_uav_results"
+        },
+        "learner": {
+            "model_type": "Extra Trees",
+            "ml_task": "multiclass_classification",
+            "n_jobs": -1,
+            "criterion": "gini",
+            "max_features": 0.9,
+            "min_samples_split": 30,
+            "max_depth": 4,
+            "seed": 8,
+            "eval_metric_name": "logloss",
+            "num_class": 5,
+            "explain_level": 2
+        },
+        "automl_random_state": 1082,
+        "ml_task": "multiclass_classification",
+        "explain_level": 2,
+        "name": "8_Default_ExtraTrees",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 60
+    },
+    "saved": [
+        "8_Default_ExtraTrees\\learner_fold_0.extra_trees",
+        "8_Default_ExtraTrees\\learner_fold_1.extra_trees",
+        "8_Default_ExtraTrees\\learner_fold_2.extra_trees",
+        "8_Default_ExtraTrees\\learner_fold_3.extra_trees",
+        "8_Default_ExtraTrees\\learner_fold_4.extra_trees"
+    ],
+    "predictions_fname": "8_Default_ExtraTrees\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.5376979054043277",
+    "train_time": 15.353688716888428,
+    "is_stacked": false,
+    "joblib_version": "1.5.1"
+}

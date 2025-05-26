@@ -1,0 +1,24 @@
+if (time_since_last_packet > 0.0) and (wlan.duration > 144.5) and (wlan.seq > 16.5) and (frame.len <= 97.0) then class: DoS Attack (proba: 55.78%) | based on 10,955 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration <= 144.5) and (frame.number <= 1853.5) and (ip.dst <= 4.5) then class: Benign (proba: 80.13%) | based on 5,823 samples
+
+if (time_since_last_packet <= 0.0) and (udp.srcport > 2427.0) then class: Evil Twin (proba: 100.0%) | based on 3,648 samples
+
+if (time_since_last_packet <= 0.0) and (udp.srcport <= 2427.0) and (ip.id > 1.0) then class: FDI (proba: 100.0%) | based on 2,734 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration <= 144.5) and (frame.number > 1853.5) and (wlan.sa <= 1.5) then class: Replay Attack (proba: 50.63%) | based on 1,742 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration > 144.5) and (wlan.seq <= 16.5) and (wlan.fc.type > 1.0) then class: Replay Attack (proba: 99.92%) | based on 1,223 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration > 144.5) and (wlan.seq > 16.5) and (frame.len > 97.0) then class: Benign (proba: 61.26%) | based on 1,035 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration <= 144.5) and (frame.number > 1853.5) and (wlan.sa > 1.5) then class: Benign (proba: 100.0%) | based on 245 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration <= 144.5) and (frame.number <= 1853.5) and (ip.dst > 4.5) then class: DoS Attack (proba: 57.0%) | based on 100 samples
+
+if (time_since_last_packet <= 0.0) and (udp.srcport <= 2427.0) and (ip.id <= 1.0) and (frame.number <= 379.0) then class: Benign (proba: 68.75%) | based on 32 samples
+
+if (time_since_last_packet > 0.0) and (wlan.duration > 144.5) and (wlan.seq <= 16.5) and (wlan.fc.type <= 1.0) then class: Replay Attack (proba: 72.0%) | based on 25 samples
+
+if (time_since_last_packet <= 0.0) and (udp.srcport <= 2427.0) and (ip.id <= 1.0) and (frame.number > 379.0) then class: Replay Attack (proba: 100.0%) | based on 3 samples
+
