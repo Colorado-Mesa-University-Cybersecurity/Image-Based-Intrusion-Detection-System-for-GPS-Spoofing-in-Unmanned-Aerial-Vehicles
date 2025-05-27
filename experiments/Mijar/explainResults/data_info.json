@@ -1,0 +1,306 @@
+{
+    "columns": [
+        "q_0_",
+        "q_1_",
+        "q_2_",
+        "q_3_",
+        "delta_q_reset_0_",
+        "delta_q_reset_1_",
+        "delta_q_reset_2_",
+        "delta_q_reset_3_",
+        "quat_reset_counter",
+        "lat_x",
+        "lon_x",
+        "alt_x",
+        "alt_ellipsoid_x",
+        "delta_alt",
+        "eph_x",
+        "epv_x",
+        "terrain_alt",
+        "lat_lon_reset_counter",
+        "alt_reset_counter",
+        "terrain_alt_valid",
+        "dead_reckoning",
+        "time_utc_usec",
+        "lat_y",
+        "lon_y",
+        "alt_y",
+        "alt_ellipsoid_y",
+        "s_variance_m_s",
+        "c_variance_rad",
+        "eph_y",
+        "epv_y",
+        "hdop",
+        "vdop",
+        "noise_per_ms",
+        "jamming_indicator",
+        "vel_m_s",
+        "vel_n_m_s",
+        "vel_e_m_s",
+        "vel_d_m_s",
+        "cog_rad",
+        "timestamp_time_relative",
+        "heading_offset",
+        "fix_type",
+        "vel_ned_valid",
+        "satellites_used",
+        "ref_lat",
+        "ref_lon",
+        "x",
+        "y",
+        "z",
+        "delta_xy_0_",
+        "delta_xy_1_",
+        "delta_z",
+        "vx",
+        "vy",
+        "vz",
+        "z_deriv",
+        "delta_vxy_0_",
+        "delta_vxy_1_",
+        "delta_vz",
+        "ax",
+        "ay",
+        "az",
+        "heading_y",
+        "delta_heading",
+        "ref_alt",
+        "dist_bottom",
+        "eph",
+        "epv",
+        "evh",
+        "evv",
+        "xy_valid",
+        "z_valid",
+        "v_xy_valid",
+        "v_z_valid",
+        "xy_reset_counter",
+        "z_reset_counter",
+        "vxy_reset_counter",
+        "vz_reset_counter",
+        "heading_reset_counter",
+        "xy_global",
+        "z_global",
+        "dist_bottom_valid"
+    ],
+    "rows": 3622,
+    "cols": 82,
+    "target_is_numeric": true,
+    "columns_info": {
+        "q_0_": [],
+        "q_1_": [],
+        "q_2_": [],
+        "q_3_": [
+            "scale"
+        ],
+        "delta_q_reset_0_": [
+            "constant_column"
+        ],
+        "delta_q_reset_1_": [
+            "constant_column"
+        ],
+        "delta_q_reset_2_": [
+            "constant_column"
+        ],
+        "delta_q_reset_3_": [
+            "constant_column"
+        ],
+        "quat_reset_counter": [
+            "constant_column"
+        ],
+        "lat_x": [
+            "scale"
+        ],
+        "lon_x": [
+            "scale"
+        ],
+        "alt_x": [
+            "scale"
+        ],
+        "alt_ellipsoid_x": [
+            "scale"
+        ],
+        "delta_alt": [
+            "constant_column"
+        ],
+        "eph_x": [
+            "scale"
+        ],
+        "epv_x": [
+            "scale"
+        ],
+        "terrain_alt": [
+            "scale"
+        ],
+        "lat_lon_reset_counter": [
+            "constant_column"
+        ],
+        "alt_reset_counter": [
+            "constant_column"
+        ],
+        "terrain_alt_valid": [],
+        "dead_reckoning": [
+            "constant_column"
+        ],
+        "time_utc_usec": [
+            "constant_column"
+        ],
+        "lat_y": [
+            "scale"
+        ],
+        "lon_y": [
+            "scale"
+        ],
+        "alt_y": [
+            "scale"
+        ],
+        "alt_ellipsoid_y": [
+            "scale"
+        ],
+        "s_variance_m_s": [
+            "scale"
+        ],
+        "c_variance_rad": [
+            "scale"
+        ],
+        "eph_y": [
+            "scale"
+        ],
+        "epv_y": [
+            "scale"
+        ],
+        "hdop": [
+            "scale"
+        ],
+        "vdop": [
+            "scale"
+        ],
+        "noise_per_ms": [
+            "scale"
+        ],
+        "jamming_indicator": [
+            "scale"
+        ],
+        "vel_m_s": [],
+        "vel_n_m_s": [],
+        "vel_e_m_s": [],
+        "vel_d_m_s": [],
+        "cog_rad": [
+            "scale"
+        ],
+        "timestamp_time_relative": [
+            "constant_column"
+        ],
+        "heading_offset": [
+            "constant_column"
+        ],
+        "fix_type": [
+            "constant_column"
+        ],
+        "vel_ned_valid": [
+            "constant_column"
+        ],
+        "satellites_used": [
+            "scale"
+        ],
+        "ref_lat": [
+            "constant_column"
+        ],
+        "ref_lon": [
+            "constant_column"
+        ],
+        "x": [
+            "scale"
+        ],
+        "y": [],
+        "z": [],
+        "delta_xy_0_": [
+            "constant_column"
+        ],
+        "delta_xy_1_": [
+            "constant_column"
+        ],
+        "delta_z": [
+            "constant_column"
+        ],
+        "vx": [],
+        "vy": [],
+        "vz": [],
+        "z_deriv": [],
+        "delta_vxy_0_": [
+            "constant_column"
+        ],
+        "delta_vxy_1_": [
+            "constant_column"
+        ],
+        "delta_vz": [
+            "constant_column"
+        ],
+        "ax": [
+            "scale"
+        ],
+        "ay": [
+            "scale"
+        ],
+        "az": [
+            "scale"
+        ],
+        "heading_y": [
+            "scale"
+        ],
+        "delta_heading": [
+            "constant_column"
+        ],
+        "ref_alt": [
+            "constant_column"
+        ],
+        "dist_bottom": [
+            "scale"
+        ],
+        "eph": [
+            "scale"
+        ],
+        "epv": [],
+        "evh": [],
+        "evv": [],
+        "xy_valid": [
+            "scale"
+        ],
+        "z_valid": [
+            "constant_column"
+        ],
+        "v_xy_valid": [
+            "scale"
+        ],
+        "v_z_valid": [
+            "constant_column"
+        ],
+        "xy_reset_counter": [
+            "constant_column"
+        ],
+        "z_reset_counter": [
+            "constant_column"
+        ],
+        "vxy_reset_counter": [
+            "constant_column"
+        ],
+        "vz_reset_counter": [
+            "constant_column"
+        ],
+        "heading_reset_counter": [
+            "constant_column"
+        ],
+        "xy_global": [
+            "constant_column"
+        ],
+        "z_global": [
+            "constant_column"
+        ],
+        "dist_bottom_valid": []
+    },
+    "target_info": [],
+    "n_features": 82,
+    "is_sample_weighted": false,
+    "is_fairness_applied": false,
+    "n_classes": 2
+}

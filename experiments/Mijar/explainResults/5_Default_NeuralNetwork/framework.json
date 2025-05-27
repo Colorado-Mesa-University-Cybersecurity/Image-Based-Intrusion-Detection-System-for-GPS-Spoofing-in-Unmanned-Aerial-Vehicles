@@ -1,0 +1,646 @@
+{
+    "uid": "0f0e5df3-9071-4e52-b2da-bf309d060bf9",
+    "name": "5_Default_NeuralNetwork",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.23532517109527462,
+                        3.3485202120534016e-05,
+                        3.3255825634370533e-06,
+                        0.17851906782547194,
+                        0.6613353087281664,
+                        0.11382249669219763,
+                        0.004702519134029336,
+                        11.07032622484823,
+                        325.96046581753944,
+                        46.39978676457324,
+                        1091.2236937298767,
+                        1091.2115783236811,
+                        0.4676175245697935,
+                        0.45879680005237083,
+                        1.1877159841832459,
+                        1.1852194613993714,
+                        0.2186260672201897,
+                        0.1426645897495021,
+                        11.854882571641474,
+                        8.628568438532811,
+                        2.415662897628608,
+                        0.9708831704041753,
+                        3.7238154803088164,
+                        3.636469050753118,
+                        3.950037567950172,
+                        1.8409023873316104,
+                        0.3076262177042536,
+                        0.17646310028369824,
+                        0.31859387332640143,
+                        0.04033830543690022,
+                        0.04033830543690022
+                    ],
+                    "mean": [
+                        0.8636822105161635,
+                        36.2048302623785,
+                        138.25291591984535,
+                        51.80468239832106,
+                        85.39336329092416,
+                        2.7637377640891017,
+                        3.9292463220633285,
+                        2.5435377647779824,
+                        362048312.60717964,
+                        1382529151.803019,
+                        48152.664581745215,
+                        85249.01074545656,
+                        0.5247081751023565,
+                        0.8200007558584683,
+                        2.505641145880707,
+                        3.2641920843199563,
+                        0.8839388609580265,
+                        1.3332474242588368,
+                        108.06939400162003,
+                        26.423059111605305,
+                        4.308679690319389,
+                        10.735737312108249,
+                        2.7532423774730117,
+                        -0.11795000663945876,
+                        0.151802864086911,
+                        0.008227858447522829,
+                        -2.3604223633009203,
+                        0.605314687268078,
+                        0.6507437643204712,
+                        0.9979749631811488,
+                        0.9979749631811488
+                    ],
+                    "var": [
+                        0.05537793615102027,
+                        1.1212587610530158e-09,
+                        1.1059499386236562e-11,
+                        0.031869057577275456,
+                        0.4373643905705791,
+                        0.012955560753245339,
+                        2.2113686205912012e-05,
+                        122.55212272456248,
+                        106250.22527598731,
+                        2152.940211797866,
+                        1190769.1497574756,
+                        1190742.7086676592,
+                        0.21866614928478142,
+                        0.21049450373829515,
+                        1.4106692590843763,
+                        1.4047451716798158,
+                        0.047797357268166904,
+                        0.020353185168393743,
+                        140.53824078740877,
+                        74.45219329844457,
+                        5.835427234979444,
+                        0.9426141305740627,
+                        13.866801731387582,
+                        13.223907157085284,
+                        15.602796788217708,
+                        3.388921599683222,
+                        0.09463388981902482,
+                        0.031139225761734543,
+                        0.10150205612111914,
+                        0.001627178885520654,
+                        0.001627178885520654
+                    ],
+                    "n_samples_seen": 2716,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "ea07faa6-cd55-4f75-a326-7a4137b460a1",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "dense_1_size": 32,
+                "dense_2_size": 16,
+                "learning_rate": 0.05,
+                "seed": 5,
+                "explain_level": 2
+            },
+            "name": "learner_fold_0"
+        }
+    ],
+    "params": {
+        "additional": {
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "q_3_": [
+                    "scale_normal"
+                ],
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "lat_x": [
+                    "scale_normal"
+                ],
+                "lon_x": [
+                    "scale_normal"
+                ],
+                "alt_x": [
+                    "scale_normal"
+                ],
+                "alt_ellipsoid_x": [
+                    "scale_normal"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "eph_x": [
+                    "scale_normal"
+                ],
+                "epv_x": [
+                    "scale_normal"
+                ],
+                "terrain_alt": [
+                    "scale_normal"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "lat_y": [
+                    "scale_normal"
+                ],
+                "lon_y": [
+                    "scale_normal"
+                ],
+                "alt_y": [
+                    "scale_normal"
+                ],
+                "alt_ellipsoid_y": [
+                    "scale_normal"
+                ],
+                "s_variance_m_s": [
+                    "scale_normal"
+                ],
+                "c_variance_rad": [
+                    "scale_normal"
+                ],
+                "eph_y": [
+                    "scale_normal"
+                ],
+                "epv_y": [
+                    "scale_normal"
+                ],
+                "hdop": [
+                    "scale_normal"
+                ],
+                "vdop": [
+                    "scale_normal"
+                ],
+                "noise_per_ms": [
+                    "scale_normal"
+                ],
+                "jamming_indicator": [
+                    "scale_normal"
+                ],
+                "cog_rad": [
+                    "scale_normal"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "satellites_used": [
+                    "scale_normal"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "x": [
+                    "scale_normal"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "ax": [
+                    "scale_normal"
+                ],
+                "ay": [
+                    "scale_normal"
+                ],
+                "az": [
+                    "scale_normal"
+                ],
+                "heading_y": [
+                    "scale_normal"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "dist_bottom": [
+                    "scale_normal"
+                ],
+                "eph": [
+                    "scale_normal"
+                ],
+                "xy_valid": [
+                    "scale_normal"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_xy_valid": [
+                    "scale_normal"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification"
+        },
+        "validation_strategy": {
+            "validation_type": "split",
+            "train_ratio": 0.75,
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "explainResults\\X.data",
+            "y_path": "explainResults\\y.data",
+            "results_path": "explainResults"
+        },
+        "learner": {
+            "model_type": "Neural Network",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "dense_1_size": 32,
+            "dense_2_size": 16,
+            "learning_rate": 0.05,
+            "seed": 5,
+            "explain_level": 2
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 2,
+        "name": "5_Default_NeuralNetwork",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 360.0
+    },
+    "saved": [
+        "5_Default_NeuralNetwork\\learner_fold_0.neural_network"
+    ],
+    "predictions_fname": "5_Default_NeuralNetwork\\predictions_validation.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.008817896698365529",
+    "train_time": 2.7806475162506104,
+    "is_stacked": false,
+    "joblib_version": "1.5.1",
+    "threshold": 0.9990688783953894
+}
