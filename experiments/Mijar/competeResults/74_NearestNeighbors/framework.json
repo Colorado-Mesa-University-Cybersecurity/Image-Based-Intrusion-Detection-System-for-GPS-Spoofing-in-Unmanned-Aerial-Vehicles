@@ -1,0 +1,4190 @@
+{
+    "uid": "fae0e1eb-a6d1-4332-8cc5-ba7a357096ef",
+    "name": "74_NearestNeighbors",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.23250748828014703,
+                        3.292718436865562e-05,
+                        3.278327216931931e-06,
+                        0.18004060779562953,
+                        0.6697347787576434,
+                        0.11244216426573127,
+                        0.004579702013750188,
+                        11.398400116461705,
+                        323.07279187908506,
+                        46.075854611344056,
+                        1087.5994923499866,
+                        1087.5935288872622,
+                        0.47306685617336675,
+                        0.46480074603959926,
+                        1.17466675000268,
+                        1.1633099255667367,
+                        0.2240906254501406,
+                        0.1470298466922682,
+                        11.750196648166312,
+                        8.724419256745195,
+                        2.423878437100829,
+                        0.9994644391164899,
+                        3.6617081800883224,
+                        3.5663036725374484,
+                        3.982662642695238,
+                        1.7424162790065763,
+                        0.3154851286814733,
+                        0.1778908532403961,
+                        0.31513520953344437,
+                        0.038754849042247255,
+                        0.038754849042247255
+                    ],
+                    "mean": [
+                        0.8657070918704257,
+                        36.20482985598005,
+                        138.25291595584963,
+                        51.80738691730341,
+                        85.40549071739164,
+                        2.7625907426528578,
+                        3.929175693237438,
+                        2.700545153321826,
+                        362048310.05615646,
+                        1382529151.9574223,
+                        48170.502940084385,
+                        85266.84384457231,
+                        0.5273863396896433,
+                        0.8251565913256617,
+                        2.4934892695584963,
+                        3.248730987228616,
+                        0.886048647320023,
+                        1.3348603609574223,
+                        108.05989618051402,
+                        26.49153729669352,
+                        4.291086850610418,
+                        10.724566165980821,
+                        2.7080832523631755,
+                        -0.13863175332195243,
+                        0.10068349073207376,
+                        0.026666591800333983,
+                        -2.3577616932989263,
+                        0.607911418218412,
+                        0.6474645019911393,
+                        0.9982419127988875,
+                        0.9982419127988875
+                    ],
+                    "var": [
+                        0.05405973210634271,
+                        1.0841994704474391e-09,
+                        1.074742934127666e-11,
+                        0.0324146204554197,
+                        0.44854467387754965,
+                        0.012643240304761695,
+                        2.0973670534747532e-05,
+                        129.9235252149542,
+                        104376.0288525466,
+                        2122.9843781657155,
+                        1182872.6557599483,
+                        1182859.684077448,
+                        0.22379225040975287,
+                        0.21603973351896802,
+                        1.3798419735618586,
+                        1.3532899829220866,
+                        0.050216608414635204,
+                        0.021617775818351895,
+                        138.06712127057884,
+                        76.11549136746638,
+                        5.875186677842358,
+                        0.9989291650584398,
+                        13.408106796125734,
+                        12.718521884754091,
+                        15.861601725520215,
+                        3.036014489347123,
+                        0.0995308664191658,
+                        0.03164515566659615,
+                        0.09931020028768787,
+                        0.001501938324287373,
+                        0.001501938324287373
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.23231594288802096,
+                        3.3334177949391336e-05,
+                        3.3524656837536995e-06,
+                        0.1820776234157803,
+                        0.674259792337314,
+                        0.1141851885884401,
+                        0.004578512255047289,
+                        11.70968429384813,
+                        326.04862114448645,
+                        46.699861113167934,
+                        1101.562153469562,
+                        1101.557095234089,
+                        0.4654665094276789,
+                        0.47087062018550363,
+                        1.1878100913861074,
+                        1.1746951387339468,
+                        0.21450157163924582,
+                        0.1400569359403261,
+                        11.816611021992692,
+                        8.710599639565086,
+                        2.44129082768536,
+                        0.9633927684167897,
+                        3.706927598381863,
+                        3.581900037666156,
+                        3.9947396719890707,
+                        1.7822513888230158,
+                        0.3142472127843332,
+                        0.18012764524798483,
+                        0.31938837530987074,
+                        0.038754849042247255,
+                        0.038754849042247255
+                    ],
+                    "mean": [
+                        0.8656393256378596,
+                        36.204830080475645,
+                        138.25291593064827,
+                        51.80334487823935,
+                        85.41285829958957,
+                        2.76373309281473,
+                        3.929198371805908,
+                        2.8578886298082082,
+                        362048311.0936325,
+                        1382529151.8319907,
+                        48178.736145776755,
+                        85275.08338994248,
+                        0.5248106136484849,
+                        0.8312713661857308,
+                        2.502638889955121,
+                        3.2611808696793245,
+                        0.8831858228466052,
+                        1.332859638518604,
+                        108.11730114165708,
+                        26.370415346275408,
+                        4.262544613026414,
+                        10.735458188474109,
+                        2.733020901614576,
+                        -0.08418279028059072,
+                        0.05354346769414893,
+                        0.025200404637442924,
+                        -2.3574597182794785,
+                        0.603705601125585,
+                        0.6505085774516302,
+                        0.9982419127988875,
+                        0.9982419127988875
+                    ],
+                    "var": [
+                        0.05397069731995021,
+                        1.1111674195616876e-09,
+                        1.123902616074616e-11,
+                        0.03315226094873871,
+                        0.4546262675627578,
+                        0.01303825729297763,
+                        2.0962774469618208e-05,
+                        137.11670626159355,
+                        106307.70335022087,
+                        2180.8770279891746,
+                        1213439.1779564987,
+                        1213428.034060564,
+                        0.21665907139878748,
+                        0.22171914095388084,
+                        1.4108928131986729,
+                        1.3799086689651667,
+                        0.04601092423570651,
+                        0.019615945304992603,
+                        139.63229604507916,
+                        75.8745460807914,
+                        5.959900905340671,
+                        0.9281256262377661,
+                        13.741312219645126,
+                        12.83000787983281,
+                        15.957945046963347,
+                        3.1764200129615685,
+                        0.09875131074272198,
+                        0.03244596858258387,
+                        0.10200893428307885,
+                        0.001501938324287373,
+                        0.001501938324287373
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.2299194526110631,
+                        3.3055189275480374e-05,
+                        3.3713493338133074e-06,
+                        0.18008195867874763,
+                        0.670361099672528,
+                        0.1128745211828397,
+                        0.004551138467664259,
+                        11.435243476233323,
+                        324.83528750543104,
+                        46.993408876196625,
+                        1078.6665653441967,
+                        1078.6662585690447,
+                        0.48091426181913044,
+                        0.46762574168339244,
+                        1.1763605332740095,
+                        1.161975673963732,
+                        0.2289485593939761,
+                        0.14676500605977746,
+                        11.760995242271866,
+                        8.745333737298012,
+                        2.429144103328674,
+                        0.9940977177916672,
+                        3.675962808823098,
+                        3.5801822080516015,
+                        3.998563971512691,
+                        1.8117787808090715,
+                        0.3076835742115998,
+                        0.17763429444728202,
+                        0.3155762528729197,
+                        0.03750573618295658,
+                        0.03750573618295658
+                    ],
+                    "mean": [
+                        0.8672185385026852,
+                        36.204829913421555,
+                        138.2529159618335,
+                        51.804013828607594,
+                        85.40817216766398,
+                        2.7630170923993096,
+                        3.9291914034338324,
+                        2.7150523369812043,
+                        362048310.78174144,
+                        1382529152.0920599,
+                        48174.84115637515,
+                        85271.19045711163,
+                        0.5303313200583045,
+                        0.8279370853588033,
+                        2.5004516569221327,
+                        3.2553636467729197,
+                        0.8866366347464134,
+                        1.3347743082401229,
+                        108.10423748454161,
+                        26.469061520214808,
+                        4.282270531389053,
+                        10.724363557213273,
+                        2.714478392940123,
+                        -0.0786299191510932,
+                        0.10058125562496471,
+                        0.03377128253974328,
+                        -2.358758082755773,
+                        0.6047615634681244,
+                        0.6489694910886844,
+                        0.9984337041299194,
+                        0.9984337041299194
+                    ],
+                    "var": [
+                        0.05286295468897089,
+                        1.0926455380378326e-09,
+                        1.1365996330603431e-11,
+                        0.032429511841574166,
+                        0.449384003954161,
+                        0.012740657532255326,
+                        2.0712861351853373e-05,
+                        130.76479336073677,
+                        105517.96400873605,
+                        2208.3804778053955,
+                        1163521.5591914463,
+                        1163520.897375341,
+                        0.23127852722103912,
+                        0.21867383428494286,
+                        1.383824104244712,
+                        1.3501874668834688,
+                        0.052417442848576995,
+                        0.02153996700372652,
+                        138.32100908874145,
+                        76.4808621767228,
+                        5.900741074736467,
+                        0.9882302725186012,
+                        13.512702571850602,
+                        12.81770464284924,
+                        15.988513834279344,
+                        3.2825423505900053,
+                        0.09466918183962504,
+                        0.03155394256378369,
+                        0.09958837137731295,
+                        0.0014066802466255383,
+                        0.0014066802466255383
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.22769933446974203,
+                        3.3016058492919794e-05,
+                        3.368175967388994e-06,
+                        0.181056825171019,
+                        0.6700761595549082,
+                        0.11319522373278042,
+                        0.004517030090644391,
+                        11.59445127941238,
+                        324.5172632522475,
+                        47.06520155121282,
+                        1087.4627128585262,
+                        1087.462664545988,
+                        0.47599006129350546,
+                        0.46986385483317444,
+                        1.1794992055634457,
+                        1.1637867706552791,
+                        0.2247196764686344,
+                        0.14535306132653264,
+                        11.768573520873002,
+                        8.774511585499273,
+                        2.4372870531199395,
+                        0.9888792728827911,
+                        3.671517461571981,
+                        3.5747650653917074,
+                        4.003399392260175,
+                        1.8192784061849752,
+                        0.30511031966700436,
+                        0.17905304703822744,
+                        0.316648772843569,
+                        0.038754849042247255,
+                        0.038754849042247255
+                    ],
+                    "mean": [
+                        0.8680212995764864,
+                        36.20482991956271,
+                        138.25291593314154,
+                        51.80373427340238,
+                        85.40779139076717,
+                        2.7630416089052554,
+                        3.9291636660053704,
+                        2.798948836674338,
+                        362048310.6131953,
+                        1382529151.9198313,
+                        48176.79856532413,
+                        85273.14427095128,
+                        0.5298556696818949,
+                        0.829633388173993,
+                        2.4979453735113157,
+                        3.252575645195627,
+                        0.8858435607303797,
+                        1.3345408234844651,
+                        108.05002788864597,
+                        26.448827059370924,
+                        4.271082004923767,
+                        10.724772062597237,
+                        2.715103142171768,
+                        -0.08460526808306866,
+                        0.10635805498986815,
+                        0.0016500889755729476,
+                        -2.358295977652704,
+                        0.6039939774459915,
+                        0.6486971397183353,
+                        0.9982419127988875,
+                        0.9982419127988875
+                    ],
+                    "var": [
+                        0.05184698691796345,
+                        1.0900601184079015e-09,
+                        1.1344609347296786e-11,
+                        0.032781573941008946,
+                        0.44900205960385475,
+                        0.012813158675914215,
+                        2.0403560839786878e-05,
+                        134.4313004706674,
+                        105311.4541487285,
+                        2215.133197056286,
+                        1182575.1518576252,
+                        1182575.04678146,
+                        0.2265665384501951,
+                        0.22077204207869042,
+                        1.3912183759247996,
+                        1.3543996475522435,
+                        0.05049893299216771,
+                        0.021127512436994757,
+                        138.49932271619315,
+                        76.99205356406095,
+                        5.940368179306079,
+                        0.9778822163371976,
+                        13.480040470627962,
+                        12.778945272744979,
+                        16.02720669394914,
+                        3.3097739192109437,
+                        0.09309230716730157,
+                        0.032059993653673693,
+                        0.10026644534333816,
+                        0.001501938324287373,
+                        0.001501938324287373
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.23328418637282447,
+                        3.33653071330145e-05,
+                        3.350363424039649e-06,
+                        0.1814267557937271,
+                        0.6724070326024627,
+                        0.11411437486961773,
+                        0.004586219977919222,
+                        11.468321176857687,
+                        327.18118869095787,
+                        46.68373928430962,
+                        1096.125542975314,
+                        1096.1179533493623,
+                        0.4751188323983799,
+                        0.47145868899953136,
+                        1.1855998789146955,
+                        1.1717144151531083,
+                        0.22395953851907852,
+                        0.1458520417079012,
+                        11.799701745322395,
+                        8.74306986296735,
+                        2.4418562515991558,
+                        0.9896864614603148,
+                        3.7104838713297505,
+                        3.5975739359260896,
+                        4.005057566624904,
+                        1.784938414385215,
+                        0.3186364910694764,
+                        0.1790859607757102,
+                        0.3188453719310652,
+                        0.038206691315575206,
+                        0.038206691315575206
+                    ],
+                    "mean": [
+                        0.865228710420982,
+                        36.204830103011126,
+                        138.2529159371308,
+                        51.803483258151125,
+                        85.40768738051017,
+                        2.7636131454434216,
+                        3.9291963522017648,
+                        2.7299953787418487,
+                        362048311.8008439,
+                        1382529151.907173,
+                        48180.11876398926,
+                        85276.46147784044,
+                        0.5295775863599923,
+                        0.8313534070084388,
+                        2.5037177299858073,
+                        3.2596389421971614,
+                        0.8857022891900652,
+                        1.3344875020122748,
+                        108.07558388266207,
+                        26.568864138270044,
+                        4.264448409183223,
+                        10.727099435178749,
+                        2.7355842866186806,
+                        -0.10947727291066359,
+                        0.0687981462328321,
+                        0.012959854549127998,
+                        -2.356172530802455,
+                        0.6040620599398158,
+                        0.6502205301166092,
+                        0.9983697736862294,
+                        0.9983697736862294
+                    ],
+                    "var": [
+                        0.054421511611630696,
+                        1.113243720080388e-09,
+                        1.1224935073142678e-11,
+                        0.03291566771783669,
+                        0.4521312174932494,
+                        0.013022090551883641,
+                        2.103341368586539e-05,
+                        131.5223906155625,
+                        107047.53023322817,
+                        2179.371513565393,
+                        1201491.2059629268,
+                        1201474.567654795,
+                        0.2257379048995998,
+                        0.22227329543315685,
+                        1.4056470728825408,
+                        1.3729146706775908,
+                        0.050157874893678615,
+                        0.021272818070363353,
+                        139.23296127856437,
+                        76.44127062872789,
+                        5.962661953473879,
+                        0.9794792919978391,
+                        13.767690559398213,
+                        12.942538224454735,
+                        16.0404861119794,
+                        3.1860051431480056,
+                        0.10152921344106851,
+                        0.03207178134695922,
+                        0.1016623712018593,
+                        0.00145975126128365,
+                        0.00145975126128365
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.22946592358537773,
+                        3.290652788444691e-05,
+                        3.345286117200409e-06,
+                        0.18014534976865915,
+                        0.6694998810784172,
+                        0.11258725177702752,
+                        0.004548132774089236,
+                        11.417522439985344,
+                        323.5167109126948,
+                        46.279677807645456,
+                        1090.298584292896,
+                        1090.2947518598298,
+                        0.47686470715370277,
+                        0.46652622706009966,
+                        1.1753857594800803,
+                        1.1586746817106113,
+                        0.22550031053500502,
+                        0.14590527061635788,
+                        11.754894545890599,
+                        8.816730515035076,
+                        2.4252483234718962,
+                        0.9888942678438462,
+                        3.6594868270164045,
+                        3.5454771972090944,
+                        3.9860798057032025,
+                        1.7797337157048263,
+                        0.3113455720000029,
+                        0.17771756770764402,
+                        0.3152581829126327,
+                        0.033459785864565064,
+                        0.033459785864565064
+                    ],
+                    "mean": [
+                        0.8672362486444957,
+                        36.204829870264675,
+                        138.25291593732257,
+                        51.80498094522439,
+                        85.4035430356732,
+                        2.762592764605677,
+                        3.929153624444955,
+                        2.700344252121212,
+                        362048310.297967,
+                        1382529151.8891447,
+                        48178.94555921365,
+                        85275.29662442271,
+                        0.5281081055924434,
+                        0.8267829680477178,
+                        2.4929410633743765,
+                        3.2471604885320295,
+                        0.8859698103786727,
+                        1.3345510699259686,
+                        108.00316523851171,
+                        26.45863951494054,
+                        4.287251545260338,
+                        10.72617965875374,
+                        2.709725222131262,
+                        -0.083265804773341,
+                        0.07357151434952179,
+                        0.01457729767429485,
+                        -2.357514516922516,
+                        0.6057759277513234,
+                        0.64723801304369,
+                        0.9986254954609511,
+                        0.9986254954609511
+                    ],
+                    "var": [
+                        0.052654610086890416,
+                        1.082839577409882e-09,
+                        1.119093920593379e-11,
+                        0.032452347043272545,
+                        0.44823009076401477,
+                        0.012675889262703788,
+                        2.068551173074465e-05,
+                        130.3598186675689,
+                        104663.06223976816,
+                        2141.808577979471,
+                        1188751.0029110932,
+                        1188742.645933088,
+                        0.2273999489287867,
+                        0.21764672053493167,
+                        1.3815316835885652,
+                        1.3425270180371862,
+                        0.0508503900513837,
+                        0.02128834799363263,
+                        138.17754578500856,
+                        77.73473697475067,
+                        5.8818294305032435,
+                        0.9779118729744165,
+                        13.391843837106592,
+                        12.570408555929655,
+                        15.888832217434881,
+                        3.1674520988165074,
+                        0.09693606520400899,
+                        0.03158353387192103,
+                        0.09938772189337496,
+                        0.0011195572701025482,
+                        0.0011195572701025482
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.22976436510756776,
+                        3.287704859686942e-05,
+                        3.3547141805232335e-06,
+                        0.1790361085077844,
+                        0.6728030527519782,
+                        0.11192080286041789,
+                        0.004611101124375843,
+                        11.475441916496626,
+                        322.54289641095954,
+                        46.18039004104837,
+                        1087.6945603246502,
+                        1087.6875925774482,
+                        0.4817862434955898,
+                        0.46981577983775824,
+                        1.1712376949181027,
+                        1.1636399001875901,
+                        0.2316506150078386,
+                        0.14947831892971405,
+                        11.737904482345646,
+                        8.833151460347228,
+                        2.431755406712004,
+                        1.0075346653438169,
+                        3.656210724841686,
+                        3.5506893849557053,
+                        4.004696490973135,
+                        1.8024348336874365,
+                        0.295900917985864,
+                        0.17690770797680955,
+                        0.31364784498982157,
+                        0.02714556952065017,
+                        0.02714556952065017
+                    ],
+                    "mean": [
+                        0.8671273938755274,
+                        36.204829780544685,
+                        138.2529159150748,
+                        51.80684940873802,
+                        85.40587018744534,
+                        2.76224436851285,
+                        3.929172836110856,
+                        2.7394634431760645,
+                        362048309.7479095,
+                        1382529151.3973916,
+                        48165.263102247794,
+                        85261.6070696586,
+                        0.5279929571989643,
+                        0.8293219070051401,
+                        2.4912037473103186,
+                        3.2473048528270043,
+                        0.8874876800439586,
+                        1.33539234233832,
+                        108.02968254104334,
+                        26.487646709804373,
+                        4.276984147304013,
+                        10.721981143565019,
+                        2.699690999078635,
+                        -0.07151561934504795,
+                        0.07327318149404537,
+                        -0.0015990169734086393,
+                        -2.3626817679897583,
+                        0.6077525981011508,
+                        0.6463795299869965,
+                        0.9990090781230149,
+                        0.9990090781230149
+                    ],
+                    "var": [
+                        0.052791663473283706,
+                        1.0809003244409133e-09,
+                        1.1254107233003669e-11,
+                        0.03205392814961115,
+                        0.45266394779238106,
+                        0.012526266112920527,
+                        2.1262253579220163e-05,
+                        131.68576717888777,
+                        104033.92002517097,
+                        2132.6284243433593,
+                        1183079.4565598343,
+                        1183064.299046925,
+                        0.23211798442159173,
+                        0.2207268669845609,
+                        1.3717977379970705,
+                        1.3540578173085849,
+                        0.05366200743350985,
+                        0.022343767830053308,
+                        137.77840163667003,
+                        78.02456472143437,
+                        5.913434358073063,
+                        1.015126101869477,
+                        13.367876864447368,
+                        12.607395108437126,
+                        16.03759398481254,
+                        3.248771329689857,
+                        0.087557353264877,
+                        0.03129633714160812,
+                        0.09837497066675915,
+                        0.0007368819446004515,
+                        0.0007368819446004515
+                    ],
+                    "n_samples_seen": 2607,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.2319337476851581,
+                        3.3300699151283285e-05,
+                        3.324159630129486e-06,
+                        0.18129261568424485,
+                        0.6657108273876585,
+                        0.11387650208865152,
+                        0.004596050556376098,
+                        11.248552775654408,
+                        326.9684014393343,
+                        46.688548151303245,
+                        1090.6313136655422,
+                        1090.6223776016025,
+                        0.47932803032879845,
+                        0.461120404463845,
+                        1.1859085143929775,
+                        1.1701596153920704,
+                        0.2262774141719105,
+                        0.14574822486852537,
+                        11.808497789637537,
+                        8.702888334169106,
+                        2.4186445725722057,
+                        0.9864113540526059,
+                        3.70337294577808,
+                        3.5811432237410656,
+                        4.0059825537048654,
+                        1.7957098037995967,
+                        0.31632055973707934,
+                        0.17860817129355402,
+                        0.31853603890359244,
+                        0.038747433623221826,
+                        0.038747433623221826
+                    ],
+                    "mean": [
+                        0.8656464657899157,
+                        36.204830131993866,
+                        138.2529159443635,
+                        51.803818096257665,
+                        85.40230554536042,
+                        2.763569968070552,
+                        3.929201938056365,
+                        2.623879940268405,
+                        362048312.66786814,
+                        1382529151.8194017,
+                        48177.16482542945,
+                        85273.50707361195,
+                        0.5285895992162193,
+                        0.8223319333650306,
+                        2.5027571635118866,
+                        3.2574603963431747,
+                        0.8859003650453605,
+                        1.3343347740801381,
+                        108.10820787921779,
+                        26.497758122358128,
+                        4.30179567697372,
+                        10.728523509268406,
+                        2.7388119809544476,
+                        -0.04415605549878452,
+                        0.08535971499441193,
+                        0.024310790621042445,
+                        -2.35647977341204,
+                        0.6048389473201303,
+                        0.6501374028184433,
+                        0.9982425869120781,
+                        0.9982425869120781
+                    ],
+                    "var": [
+                        0.05379326331528258,
+                        1.1089365639642793e-09,
+                        1.1050037246582602e-11,
+                        0.032867012501635304,
+                        0.4431709057011609,
+                        0.012967857727946654,
+                        2.1123680716765037e-05,
+                        126.52993954668248,
+                        106908.33553979367,
+                        2179.8205284765613,
+                        1189476.6623478264,
+                        1189457.1705253725,
+                        0.22975536065888552,
+                        0.2126320274129,
+                        1.406379004509759,
+                        1.369273525494518,
+                        0.05120146816432632,
+                        0.021242545052326235,
+                        139.44062004787457,
+                        75.74026535701671,
+                        5.8498415684329865,
+                        0.9730073594038956,
+                        13.714971175521015,
+                        12.824586788946553,
+                        16.047896220587756,
+                        3.2245736994619856,
+                        0.10005869651237918,
+                        0.03190087885282754,
+                        0.10146520808039095,
+                        0.0015013636123859813,
+                        0.0015013636123859813
+                    ],
+                    "n_samples_seen": 2608,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.23269698493016228,
+                        3.342093517496833e-05,
+                        3.373766470776588e-06,
+                        0.1788371686799631,
+                        0.6678169948658257,
+                        0.11393209299334374,
+                        0.004626389761410383,
+                        11.354986497353902,
+                        325.9648828445519,
+                        46.53607654743665,
+                        1080.8522946241183,
+                        1080.846993550474,
+                        0.467235910480702,
+                        0.4664873465641163,
+                        1.185613168504402,
+                        1.1765945993223468,
+                        0.21670290107363419,
+                        0.14067382738619508,
+                        11.77246179814331,
+                        8.659630671461018,
+                        2.4284422488076265,
+                        0.9684844262497698,
+                        3.716708831065477,
+                        3.583019674700078,
+                        3.9798617806363614,
+                        1.7896151688434758,
+                        0.3049877696423276,
+                        0.17605581995214972,
+                        0.31857518910971366,
+                        0.038747433623221826,
+                        0.038747433623221826
+                    ],
+                    "mean": [
+                        0.8656521761907592,
+                        36.20483009649157,
+                        138.25291592871932,
+                        51.80608220083973,
+                        85.40460369552915,
+                        2.7633421931468556,
+                        3.9291963100486966,
+                        2.6794548495207056,
+                        362048310.9827454,
+                        1382529151.9072087,
+                        48167.60644344325,
+                        85263.9468066181,
+                        0.5246114576321702,
+                        0.8266177244617332,
+                        2.498578270202837,
+                        3.2571905571552917,
+                        0.8837818983271472,
+                        1.3332197980444787,
+                        108.0454300588957,
+                        26.374880202342794,
+                        4.284996904888636,
+                        10.733019656656058,
+                        2.7348477147555217,
+                        -0.09269422599969326,
+                        0.11400114759485021,
+                        0.03301890620752174,
+                        -2.360427779794862,
+                        0.6072010804268021,
+                        0.6491580043578221,
+                        0.9982425869120781,
+                        0.9982425869120781
+                    ],
+                    "var": [
+                        0.05414788679558817,
+                        1.1169589079694355e-09,
+                        1.1382300199336314e-11,
+                        0.031982732901465576,
+                        0.44597953863162226,
+                        0.012980521813843926,
+                        2.1403482224482827e-05,
+                        128.93571835508945,
+                        106253.10484786243,
+                        2165.6064204288837,
+                        1168241.6827942217,
+                        1168230.2234670983,
+                        0.21830939604273056,
+                        0.21761044450442993,
+                        1.4056785853310474,
+                        1.384374851154514,
+                        0.04696014733372929,
+                        0.019789125711481007,
+                        138.59085678874362,
+                        74.9892033661084,
+                        5.897331755793843,
+                        0.9379620838883459,
+                        13.813924534920105,
+                        12.838029989287856,
+                        15.83929979297003,
+                        3.2027224525546623,
+                        0.0930175396314015,
+                        0.030995651739023758,
+                        0.10149015111628981,
+                        0.0015013636123859813,
+                        0.0015013636123859813
+                    ],
+                    "n_samples_seen": 2608,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "scale": [
+                {
+                    "scale": [
+                        0.2317894113208514,
+                        3.304841734134761e-05,
+                        3.323509270384238e-06,
+                        0.17925299422229676,
+                        0.6629126064231158,
+                        0.1128607880352925,
+                        0.004582780382984928,
+                        11.174988727669936,
+                        323.59459504345546,
+                        46.5543478424565,
+                        1078.27934553135,
+                        1078.272982628293,
+                        0.4778615129858532,
+                        0.4600059211803403,
+                        1.1766017620692901,
+                        1.1680939648645927,
+                        0.22761872502979658,
+                        0.14634534067703558,
+                        11.740208286074324,
+                        8.743312388296367,
+                        2.408965627882376,
+                        0.9922543388688027,
+                        3.675025421022124,
+                        3.5750686830879306,
+                        3.9801332454400224,
+                        1.7859314201958774,
+                        0.3118852303655555,
+                        0.1769788085407251,
+                        0.31576193157682547,
+                        0.03586933479680136,
+                        0.03586933479680136
+                    ],
+                    "mean": [
+                        0.8660602156437116,
+                        36.20482995105062,
+                        138.25291592388805,
+                        51.80602872014953,
+                        85.39730939441718,
+                        2.7626841309766106,
+                        3.92917429022546,
+                        2.586608767124233,
+                        362048310.8298696,
+                        1382529151.5145705,
+                        48159.29164345476,
+                        85255.63517902223,
+                        0.5253203641789495,
+                        0.8198363606131901,
+                        2.493009772211273,
+                        3.2495994185958588,
+                        0.8863494925800612,
+                        1.3345718101411044,
+                        107.98234210341259,
+                        26.408902326970857,
+                        4.318559411052784,
+                        10.726923122178299,
+                        2.7185803567148006,
+                        -0.1062318779820322,
+                        0.11200361063588048,
+                        0.013152832650938267,
+                        -2.358397417967791,
+                        0.6066073219640722,
+                        0.6474450797985046,
+                        0.9985301635991947,
+                        0.9985301635991947
+                    ],
+                    "var": [
+                        0.05372633120046683,
+                        1.0921978887678857e-09,
+                        1.104571387032997e-11,
+                        0.032131635937658755,
+                        0.43945312375468887,
+                        0.012737557475947223,
+                        2.100187603867149e-05,
+                        124.88037306355014,
+                        104713.46194133793,
+                        2167.307303036434,
+                        1162686.3469995162,
+                        1162672.6250661148,
+                        0.22835162559312877,
+                        0.21160544752097343,
+                        1.3843917065045583,
+                        1.3644435107530843,
+                        0.05181028398419014,
+                        0.02141695873787761,
+                        137.83249060040822,
+                        76.44551151933673,
+                        5.803115396318732,
+                        0.9845686730039647,
+                        13.50581184515884,
+                        12.78111608879607,
+                        15.841460651456927,
+                        3.1895510376428633,
+                        0.0972723969201756,
+                        0.03132149867249463,
+                        0.0997055974331278,
+                        0.0012866091787650245,
+                        0.0012866091787650245
+                    ],
+                    "n_samples_seen": 2608,
+                    "n_features_in": 31,
+                    "columns": [
+                        "q_3_",
+                        "lat_x",
+                        "lon_x",
+                        "alt_x",
+                        "alt_ellipsoid_x",
+                        "eph_x",
+                        "epv_x",
+                        "terrain_alt",
+                        "lat_y",
+                        "lon_y",
+                        "alt_y",
+                        "alt_ellipsoid_y",
+                        "s_variance_m_s",
+                        "c_variance_rad",
+                        "eph_y",
+                        "epv_y",
+                        "hdop",
+                        "vdop",
+                        "noise_per_ms",
+                        "jamming_indicator",
+                        "cog_rad",
+                        "satellites_used",
+                        "x",
+                        "ax",
+                        "ay",
+                        "az",
+                        "heading_y",
+                        "dist_bottom",
+                        "eph",
+                        "xy_valid",
+                        "v_xy_valid"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "q_3_": [
+                        "scale_normal"
+                    ],
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "lat_x": [
+                        "scale_normal"
+                    ],
+                    "lon_x": [
+                        "scale_normal"
+                    ],
+                    "alt_x": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_x": [
+                        "scale_normal"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "eph_x": [
+                        "scale_normal"
+                    ],
+                    "epv_x": [
+                        "scale_normal"
+                    ],
+                    "terrain_alt": [
+                        "scale_normal"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "lat_y": [
+                        "scale_normal"
+                    ],
+                    "lon_y": [
+                        "scale_normal"
+                    ],
+                    "alt_y": [
+                        "scale_normal"
+                    ],
+                    "alt_ellipsoid_y": [
+                        "scale_normal"
+                    ],
+                    "s_variance_m_s": [
+                        "scale_normal"
+                    ],
+                    "c_variance_rad": [
+                        "scale_normal"
+                    ],
+                    "eph_y": [
+                        "scale_normal"
+                    ],
+                    "epv_y": [
+                        "scale_normal"
+                    ],
+                    "hdop": [
+                        "scale_normal"
+                    ],
+                    "vdop": [
+                        "scale_normal"
+                    ],
+                    "noise_per_ms": [
+                        "scale_normal"
+                    ],
+                    "jamming_indicator": [
+                        "scale_normal"
+                    ],
+                    "cog_rad": [
+                        "scale_normal"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "satellites_used": [
+                        "scale_normal"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "x": [
+                        "scale_normal"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "ax": [
+                        "scale_normal"
+                    ],
+                    "ay": [
+                        "scale_normal"
+                    ],
+                    "az": [
+                        "scale_normal"
+                    ],
+                    "heading_y": [
+                        "scale_normal"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "dist_bottom": [
+                        "scale_normal"
+                    ],
+                    "eph": [
+                        "scale_normal"
+                    ],
+                    "xy_valid": [
+                        "scale_normal"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_xy_valid": [
+                        "scale_normal"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "3bb859ee-d1f8-450b-afb0-14a5b429dd44",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "189db409-d650-4001-a932-76431e7ce2d5",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "3826ad42-4b46-4bfd-b7bd-06a0d03f7053",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "dbcf9074-74b7-4a85-8145-2bafa266bc81",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "ed58d1ee-22d1-4eaf-88d0-1a3fedfce2ed",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_4"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "9b81b587-e3ca-46a4-9aa9-62c54c64a06c",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_5"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "811a1a00-690b-4c68-9bcd-4bd87b11d95a",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_6"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "3b52f73d-5324-486c-b558-38844d8bc848",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_7"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "8376dfaf-4dd7-4929-affa-e8369d5f9421",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_8"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "k-Nearest Neighbors",
+            "algorithm_short_name": "Nearest Neighbors",
+            "uid": "84c7372c-70cc-4c42-a80c-706eb3c9050e",
+            "params": {
+                "model_type": "Nearest Neighbors",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1091,
+                "n_neighbors": 7,
+                "weights": "uniform",
+                "explain_level": 1
+            },
+            "name": "learner_fold_9"
+        }
+    ],
+    "params": {
+        "additional": {
+            "max_rows_limit": 100000,
+            "max_cols_limit": 100
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "q_3_": [
+                    "scale_normal"
+                ],
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "lat_x": [
+                    "scale_normal"
+                ],
+                "lon_x": [
+                    "scale_normal"
+                ],
+                "alt_x": [
+                    "scale_normal"
+                ],
+                "alt_ellipsoid_x": [
+                    "scale_normal"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "eph_x": [
+                    "scale_normal"
+                ],
+                "epv_x": [
+                    "scale_normal"
+                ],
+                "terrain_alt": [
+                    "scale_normal"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "lat_y": [
+                    "scale_normal"
+                ],
+                "lon_y": [
+                    "scale_normal"
+                ],
+                "alt_y": [
+                    "scale_normal"
+                ],
+                "alt_ellipsoid_y": [
+                    "scale_normal"
+                ],
+                "s_variance_m_s": [
+                    "scale_normal"
+                ],
+                "c_variance_rad": [
+                    "scale_normal"
+                ],
+                "eph_y": [
+                    "scale_normal"
+                ],
+                "epv_y": [
+                    "scale_normal"
+                ],
+                "hdop": [
+                    "scale_normal"
+                ],
+                "vdop": [
+                    "scale_normal"
+                ],
+                "noise_per_ms": [
+                    "scale_normal"
+                ],
+                "jamming_indicator": [
+                    "scale_normal"
+                ],
+                "cog_rad": [
+                    "scale_normal"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "satellites_used": [
+                    "scale_normal"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "x": [
+                    "scale_normal"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "ax": [
+                    "scale_normal"
+                ],
+                "ay": [
+                    "scale_normal"
+                ],
+                "az": [
+                    "scale_normal"
+                ],
+                "heading_y": [
+                    "scale_normal"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "dist_bottom": [
+                    "scale_normal"
+                ],
+                "eph": [
+                    "scale_normal"
+                ],
+                "xy_valid": [
+                    "scale_normal"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_xy_valid": [
+                    "scale_normal"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification"
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "competeResults\\X.data",
+            "y_path": "competeResults\\y.data",
+            "results_path": "competeResults",
+            "k_folds": 10
+        },
+        "learner": {
+            "model_type": "Nearest Neighbors",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "seed": 1091,
+            "n_neighbors": 7,
+            "weights": "uniform",
+            "explain_level": 1
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 1,
+        "name": "74_NearestNeighbors",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 396.0
+    },
+    "saved": [
+        "74_NearestNeighbors\\learner_fold_0.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_1.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_2.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_3.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_4.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_5.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_6.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_7.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_8.k_neighbors",
+        "74_NearestNeighbors\\learner_fold_9.k_neighbors"
+    ],
+    "predictions_fname": "74_NearestNeighbors\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.01047824370954968",
+    "train_time": 9.682404279708862,
+    "is_stacked": false,
+    "joblib_version": "1.5.1",
+    "threshold": 0.0
+}

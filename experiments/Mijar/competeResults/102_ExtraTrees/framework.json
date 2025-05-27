@@ -1,0 +1,2686 @@
+{
+    "uid": "a29c593c-ae60-4c0d-ac29-84013bb1aff3",
+    "name": "102_ExtraTrees",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_0.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_1.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_2.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_3.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_4.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_5.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_6.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_7.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_8.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "102_ExtraTrees\\kmeans_fold_9.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "3dc609e1-4ff5-4f78-9bca-db5c363c05b1",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "f19926c9-2066-484e-8333-754ebdcc5b3b",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "64e07869-f77d-4e67-9208-c538718426e3",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "94af86e3-fbee-47f0-a85b-82d1a33d3bfa",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "788cd75e-8019-49d8-8f97-529ff324d664",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_4"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "2ce7658f-f536-435a-bc94-ec9055884248",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_5"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "11cae54c-6a51-41fb-b3f3-e4bf973caafd",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_6"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "3f193b15-c551-44ed-afab-058720b7f09d",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_7"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "7d039717-dfe2-4a09-b7d1-9c9b6b99fdba",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_8"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "b217f500-13ae-4360-9ac8-48811650cb7d",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_9"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 100,
+            "max_steps": 50,
+            "early_stopping_rounds": 50,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification",
+            "kmeans_features": {
+                "results_path": "competeResults"
+            }
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "competeResults\\X.data",
+            "y_path": "competeResults\\y.data",
+            "results_path": "competeResults",
+            "k_folds": 10
+        },
+        "learner": {
+            "model_type": "Extra Trees",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "seed": 1087,
+            "criterion": "entropy",
+            "max_features": 0.6,
+            "min_samples_split": 40,
+            "max_depth": 6,
+            "eval_metric_name": "logloss",
+            "explain_level": 1
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 1,
+        "name": "102_ExtraTrees",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original_kmeans_features",
+        "max_time_for_learner": 396.0
+    },
+    "saved": [
+        "102_ExtraTrees\\learner_fold_0.extra_trees",
+        "102_ExtraTrees\\learner_fold_1.extra_trees",
+        "102_ExtraTrees\\learner_fold_2.extra_trees",
+        "102_ExtraTrees\\learner_fold_3.extra_trees",
+        "102_ExtraTrees\\learner_fold_4.extra_trees",
+        "102_ExtraTrees\\learner_fold_5.extra_trees",
+        "102_ExtraTrees\\learner_fold_6.extra_trees",
+        "102_ExtraTrees\\learner_fold_7.extra_trees",
+        "102_ExtraTrees\\learner_fold_8.extra_trees",
+        "102_ExtraTrees\\learner_fold_9.extra_trees"
+    ],
+    "predictions_fname": "102_ExtraTrees\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.00038241149901717636",
+    "train_time": 23.636006355285645,
+    "is_stacked": false,
+    "joblib_version": "1.5.1",
+    "threshold": 0.019086021505376343
+}

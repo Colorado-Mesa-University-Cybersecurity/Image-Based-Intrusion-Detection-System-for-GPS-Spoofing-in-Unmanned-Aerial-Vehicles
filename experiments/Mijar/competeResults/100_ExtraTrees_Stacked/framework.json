@@ -1,0 +1,1814 @@
+{
+    "uid": "871489c7-1f54-4b28-aa40-ece5b4a1c12a",
+    "name": "100_ExtraTrees_Stacked",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "5eac8b7a-4e84-4f85-864f-9264634bff1a",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "51a7fc16-e96f-4076-8305-0ea9a6511ea6",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "94156c6e-32c6-4b96-b4e5-38b4c8970dda",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "82990334-a3e9-472d-927a-591debd25e7d",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "647f004e-94c3-4f64-aa0e-9e77a80230a5",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_4"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "e2484cec-c21c-48cd-ac45-b63cedc33345",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_5"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "2d1551f6-357d-40a4-a0eb-7d04463dc6c3",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_6"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "cd10d254-2c45-446e-9758-56a9f595a922",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_7"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "4ff8f1d4-c37e-450c-9d7c-3edc12d19402",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_8"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "2c1e6def-bcdd-4d1c-b401-9bafafb103ea",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 40,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_9"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 100,
+            "max_steps": 50,
+            "early_stopping_rounds": 50,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification"
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "competeResults\\X_stacked.data",
+            "y_path": "competeResults\\y.data",
+            "results_path": "competeResults",
+            "k_folds": 10
+        },
+        "learner": {
+            "model_type": "Extra Trees",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "seed": 1087,
+            "criterion": "gini",
+            "max_features": 0.6,
+            "min_samples_split": 40,
+            "max_depth": 6,
+            "eval_metric_name": "logloss",
+            "explain_level": 1
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 1,
+        "name": "100_ExtraTrees_Stacked",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original_stacked",
+        "max_time_for_learner": 396.0,
+        "is_stacked": true
+    },
+    "saved": [
+        "100_ExtraTrees_Stacked\\learner_fold_0.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_1.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_2.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_3.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_4.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_5.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_6.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_7.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_8.extra_trees",
+        "100_ExtraTrees_Stacked\\learner_fold_9.extra_trees"
+    ],
+    "predictions_fname": "100_ExtraTrees_Stacked\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.0002393829515647434",
+    "train_time": 27.81421208381653,
+    "is_stacked": true,
+    "joblib_version": "1.5.1",
+    "threshold": 0.0
+}

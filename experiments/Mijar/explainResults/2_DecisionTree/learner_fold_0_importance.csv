@@ -40,11 +40,11 @@ lon_y,0.0
 alt_y,0.0
 alt_ellipsoid_y,0.0
 s_variance_m_s,0.0
-c_variance_rad,0.0
 eph_y,0.0
 epv_y,0.0
+hdop,0.0
 vdop,0.0
 jamming_indicator,0.0
 dist_bottom_valid,0.0
-hdop,3.469102180497809
-lat_y,5.060433455955521
+c_variance_rad,0.9247061421207986
+lat_y,7.616396826500342

@@ -18,94 +18,94 @@ logloss
 
 ## Training time
 
-4.9 seconds
+5.4 seconds
 
 ## Metric details
 |           |      score |     threshold |
 |:----------|-----------:|--------------:|
-| logloss   | 0.00506247 | nan           |
+| logloss   | 0.00168599 | nan           |
 | auc       | 1          | nan           |
-| f1        | 0.987854   |   0.872702    |
-| accuracy  | 0.996689   |   0.872702    |
-| precision | 1          |   0.872702    |
-| recall    | 1          |   6.07993e-06 |
-| mcc       | 0.986035   |   0.872702    |
+| f1        | 0.995025   |   0.066965    |
+| accuracy  | 0.998621   |   0.066965    |
+| precision | 1          |   0.999006    |
+| recall    | 1          |   3.29163e-06 |
+| mcc       | 0.994241   |   0.066965    |
 
 
 ## Metric details with threshold from accuracy metric
 |           |      score |   threshold |
 |:----------|-----------:|------------:|
-| logloss   | 0.00506247 |  nan        |
+| logloss   | 0.00168599 |  nan        |
 | auc       | 1          |  nan        |
-| f1        | 0.987854   |    0.872702 |
-| accuracy  | 0.996689   |    0.872702 |
-| precision | 1          |    0.872702 |
-| recall    | 0.976      |    0.872702 |
-| mcc       | 0.986035   |    0.872702 |
+| f1        | 0.995025   |    0.066965 |
+| accuracy  | 0.998621   |    0.066965 |
+| precision | 0.990099   |    0.066965 |
+| recall    | 1          |    0.066965 |
+| mcc       | 0.994241   |    0.066965 |
 
 
-## Confusion matrix (at threshold=0.872702)
+## Confusion matrix (at threshold=0.066965)
 |              |   Predicted as 0 |   Predicted as 1 |
 |:-------------|-----------------:|-----------------:|
-| Labeled as 0 |              781 |                0 |
-| Labeled as 1 |                3 |              122 |
+| Labeled as 0 |              624 |                1 |
+| Labeled as 1 |                0 |              100 |
 
 ## Learning curves
 ![Learning curves](learning_curves.png)
 
 ## Coefficients
-| feature           |   Learner_1 |
-|:------------------|------------:|
-| vdop              |  1.69925    |
-| hdop              |  1.2268     |
-| lat_y             |  1.15153    |
-| lat_x             |  0.928524   |
-| x                 |  0.928331   |
-| jamming_indicator |  0.900153   |
-| s_variance_m_s    |  0.81073    |
-| vel_n_m_s         |  0.786786   |
-| q_0_              |  0.746068   |
-| vel_m_s           |  0.610793   |
-| alt_y             |  0.566766   |
-| alt_ellipsoid_y   |  0.566476   |
-| eph_x             |  0.514049   |
-| dist_bottom       |  0.326042   |
-| ay                |  0.301269   |
-| alt_x             |  0.285956   |
-| heading_y         |  0.251552   |
-| eph               |  0.224376   |
-| epv_x             |  0.181068   |
-| z                 |  0.16591    |
-| noise_per_ms      |  0.155376   |
-| eph_y             |  0.0749973  |
-| vy                |  0.063827   |
-| alt_ellipsoid_x   |  0.0505181  |
-| terrain_alt       |  0.0160511  |
-| q_1_              |  0.00257944 |
-| q_2_              | -0.00897288 |
-| vx                | -0.00919371 |
-| epv_y             | -0.047426   |
-| lon_x             | -0.0494589  |
-| vel_d_m_s         | -0.0974719  |
-| terrain_alt_valid | -0.0982608  |
-| dist_bottom_valid | -0.0992946  |
-| xy_valid          | -0.122941   |
-| v_xy_valid        | -0.122941   |
-| z_deriv           | -0.147946   |
-| evv               | -0.175863   |
-| vel_e_m_s         | -0.321394   |
-| lon_y             | -0.324409   |
-| evh               | -0.369321   |
-| az                | -0.371633   |
-| vz                | -0.407474   |
-| ax                | -0.666298   |
-| q_3_              | -0.688316   |
-| y                 | -0.709508   |
-| cog_rad           | -0.7907     |
-| epv               | -0.809123   |
-| c_variance_rad    | -0.888094   |
-| satellites_used   | -1.83019    |
-| intercept         | -3.30977    |
+| feature           |    Learner_1 |
+|:------------------|-------------:|
+| vdop              |  1.73178     |
+| hdop              |  1.23874     |
+| lat_y             |  1.19694     |
+| jamming_indicator |  0.975933    |
+| lat_x             |  0.970651    |
+| x                 |  0.970433    |
+| s_variance_m_s    |  0.79396     |
+| vel_n_m_s         |  0.772186    |
+| q_0_              |  0.749893    |
+| alt_y             |  0.699389    |
+| alt_ellipsoid_y   |  0.698987    |
+| vel_m_s           |  0.598714    |
+| eph_x             |  0.473716    |
+| dist_bottom       |  0.327795    |
+| alt_x             |  0.299105    |
+| heading_y         |  0.280782    |
+| ay                |  0.199396    |
+| z                 |  0.170482    |
+| alt_ellipsoid_x   |  0.138343    |
+| eph               |  0.123343    |
+| epv_x             |  0.109713    |
+| vy                |  0.099368    |
+| terrain_alt       |  0.0620976   |
+| lon_x             |  0.0290657   |
+| q_1_              |  0.000141255 |
+| q_2_              | -0.013814    |
+| vx                | -0.025285    |
+| noise_per_ms      | -0.0653756   |
+| eph_y             | -0.0868026   |
+| vel_d_m_s         | -0.0937576   |
+| terrain_alt_valid | -0.0945305   |
+| dist_bottom_valid | -0.0945585   |
+| xy_valid          | -0.112731    |
+| v_xy_valid        | -0.112731    |
+| evv               | -0.178746    |
+| z_deriv           | -0.181956    |
+| epv_y             | -0.194905    |
+| lon_y             | -0.263134    |
+| vel_e_m_s         | -0.355033    |
+| evh               | -0.377289    |
+| vz                | -0.433021    |
+| az                | -0.531932    |
+| y                 | -0.689958    |
+| cog_rad           | -0.702935    |
+| q_3_              | -0.721261    |
+| epv               | -0.820811    |
+| ax                | -0.892128    |
+| c_variance_rad    | -1.00334     |
+| satellites_used   | -1.86428     |
+| intercept         | -3.447       |
 
 
 ## Permutation-based Importance

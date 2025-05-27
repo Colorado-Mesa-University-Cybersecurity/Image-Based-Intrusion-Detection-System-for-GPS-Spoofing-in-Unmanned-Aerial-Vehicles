@@ -20,37 +20,37 @@ logloss
 
 ## Training time
 
-9.9 seconds
+13.0 seconds
 
 ## Metric details
-|           |     score |   threshold |
-|:----------|----------:|------------:|
-| logloss   | 0.0175966 |         nan |
-| auc       | 0.996     |         nan |
-| f1        | 0.995984  |           0 |
-| accuracy  | 0.998896  |           0 |
-| precision | 1         |           0 |
-| recall    | 0.992     |           0 |
-| mcc       | 0.995355  |           0 |
+|           |       score |   threshold |
+|:----------|------------:|------------:|
+| logloss   | 1.19209e-07 |         nan |
+| auc       | 1           |         nan |
+| f1        | 1           |           0 |
+| accuracy  | 1           |           0 |
+| precision | 1           |           0 |
+| recall    | 1           |           0 |
+| mcc       | 1           |           0 |
 
 
 ## Metric details with threshold from accuracy metric
-|           |     score |   threshold |
-|:----------|----------:|------------:|
-| logloss   | 0.0175966 |         nan |
-| auc       | 0.996     |         nan |
-| f1        | 0.995984  |           0 |
-| accuracy  | 0.998896  |           0 |
-| precision | 1         |           0 |
-| recall    | 0.992     |           0 |
-| mcc       | 0.995355  |           0 |
+|           |       score |   threshold |
+|:----------|------------:|------------:|
+| logloss   | 1.19209e-07 |         nan |
+| auc       | 1           |         nan |
+| f1        | 1           |           0 |
+| accuracy  | 1           |           0 |
+| precision | 1           |           0 |
+| recall    | 1           |           0 |
+| mcc       | 1           |           0 |
 
 
 ## Confusion matrix (at threshold=0.0)
 |              |   Predicted as 0 |   Predicted as 1 |
 |:-------------|-----------------:|-----------------:|
-| Labeled as 0 |              781 |                0 |
-| Labeled as 1 |                1 |              124 |
+| Labeled as 0 |              625 |                0 |
+| Labeled as 1 |                0 |              100 |
 
 ## Learning curves
 ![Learning curves](learning_curves.png)
@@ -62,11 +62,11 @@ logloss
 
 ### Rules
 
-if (lat_y <= 362048272.0) and (hdop <= 0.876) then class: 0 (proba: 100.0%) | based on 2,343 samples
+if (lat_y <= 362048272.0) and (c_variance_rad > 0.636) then class: 0 (proba: 100.0%) | based on 1,874 samples
 
-if (lat_y > 362048272.0) then class: 1 (proba: 100.0%) | based on 365 samples
+if (lat_y > 362048272.0) then class: 1 (proba: 100.0%) | based on 288 samples
 
-if (lat_y <= 362048272.0) and (hdop > 0.876) then class: 1 (proba: 100.0%) | based on 8 samples
+if (lat_y <= 362048272.0) and (c_variance_rad <= 0.636) then class: 1 (proba: 100.0%) | based on 10 samples
 
 
 

@@ -1,0 +1,17 @@
+{
+    "name": "Ensemble",
+    "ml_task": "binary_classification",
+    "optimize_metric": "logloss",
+    "selected_models": [
+        {
+            "model": "52_ExtraTrees",
+            "repeat": 1.0
+        }
+    ],
+    "predictions_fname": "Ensemble\\predictions_ensemble.csv",
+    "metric_name": "logloss",
+    "final_loss": 1.1920929665620922e-07,
+    "train_time": 83.43606090545654,
+    "is_stacked": false,
+    "threshold": 0.0
+}

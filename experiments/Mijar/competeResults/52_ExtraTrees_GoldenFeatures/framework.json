@@ -1,0 +1,2638 @@
+{
+    "uid": "6c3042d1-e092-4ba8-98cc-cbb79020a29d",
+    "name": "52_ExtraTrees_GoldenFeatures",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "golden_features": {
+                "new_features": [
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "vdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "q_0_",
+                        "feature2": "hdop",
+                        "operation": "diff",
+                        "score": 0.0027406266
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031191008
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "q_3_",
+                        "operation": "ratio",
+                        "score": 0.0031827419
+                    },
+                    {
+                        "feature1": "hdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "evv",
+                        "operation": "diff",
+                        "score": 0.0073956654
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "c_variance_rad",
+                        "operation": "multiply",
+                        "score": 0.0125031522
+                    },
+                    {
+                        "feature1": "vdop",
+                        "feature2": "epv_x",
+                        "operation": "multiply",
+                        "score": 0.0188960714
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "vdop",
+                        "operation": "ratio",
+                        "score": 0.0190934691
+                    },
+                    {
+                        "feature1": "cog_rad",
+                        "feature2": "hdop",
+                        "operation": "ratio",
+                        "score": 0.0192854386
+                    }
+                ],
+                "new_columns": [
+                    "q_0__diff_vdop",
+                    "q_0__diff_hdop",
+                    "hdop_ratio_q_3_",
+                    "vdop_ratio_q_3_",
+                    "hdop_diff_evv",
+                    "vdop_diff_evv",
+                    "cog_rad_multiply_c_variance_rad",
+                    "vdop_multiply_epv_x",
+                    "cog_rad_ratio_vdop",
+                    "cog_rad_ratio_hdop"
+                ],
+                "ml_task": "binary_classification"
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "golden_features": {
+                    "results_path": "competeResults",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1
+                }
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "fcff8de7-0a86-4fb0-afb0-2afe58c706b1",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "b70008c1-69e3-4332-a736-1aa1f7a1701a",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "d4e204b4-a8d4-4805-9623-5c793c0e66fb",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "2ac68fde-eff8-47fb-a01c-b11febc1f54e",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "a13a525f-1393-43a2-a72f-d7be02fbe4fe",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_4"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "6c9749bb-a4ef-40ef-937b-4ac1022373a6",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_5"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "1a29e761-3bcb-4e08-9625-3a0886bf0167",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_6"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "2f7d90dc-3e32-4e05-99ac-6b36b5ef0f6e",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_7"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "53e88567-e36c-4f6c-a201-b7c29aee9a44",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_8"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "bd99c2ba-9758-42ee-a82c-3e5ae0e0d7e2",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "gini",
+                "max_features": 0.6,
+                "min_samples_split": 30,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_9"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 100,
+            "max_steps": 50,
+            "early_stopping_rounds": 50,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification",
+            "golden_features": {
+                "results_path": "competeResults",
+                "ml_task": "binary_classification",
+                "n_jobs": -1
+            }
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "competeResults\\X.data",
+            "y_path": "competeResults\\y.data",
+            "results_path": "competeResults",
+            "k_folds": 10
+        },
+        "learner": {
+            "model_type": "Extra Trees",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "seed": 1087,
+            "criterion": "gini",
+            "max_features": 0.6,
+            "min_samples_split": 30,
+            "max_depth": 6,
+            "eval_metric_name": "logloss",
+            "explain_level": 1
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 1,
+        "name": "52_ExtraTrees_GoldenFeatures",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original_golden_features",
+        "max_time_for_learner": 396.0
+    },
+    "saved": [
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_0.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_1.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_2.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_3.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_4.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_5.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_6.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_7.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_8.extra_trees",
+        "52_ExtraTrees_GoldenFeatures\\learner_fold_9.extra_trees"
+    ],
+    "predictions_fname": "52_ExtraTrees_GoldenFeatures\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.0007932241513002075",
+    "train_time": 22.930912256240845,
+    "is_stacked": false,
+    "joblib_version": "1.5.1",
+    "threshold": 0.0162914580881913
+}

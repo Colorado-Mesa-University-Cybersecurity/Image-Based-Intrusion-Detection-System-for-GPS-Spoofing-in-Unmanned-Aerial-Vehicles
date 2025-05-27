@@ -1,0 +1,77 @@
+{
+    "new_features": [
+        {
+            "feature1": "q_0_",
+            "feature2": "vdop",
+            "operation": "diff",
+            "score": 0.0027406266
+        },
+        {
+            "feature1": "q_0_",
+            "feature2": "hdop",
+            "operation": "diff",
+            "score": 0.0027406266
+        },
+        {
+            "feature1": "hdop",
+            "feature2": "q_3_",
+            "operation": "ratio",
+            "score": 0.0031191008
+        },
+        {
+            "feature1": "vdop",
+            "feature2": "q_3_",
+            "operation": "ratio",
+            "score": 0.0031827419
+        },
+        {
+            "feature1": "hdop",
+            "feature2": "evv",
+            "operation": "diff",
+            "score": 0.0073956654
+        },
+        {
+            "feature1": "vdop",
+            "feature2": "evv",
+            "operation": "diff",
+            "score": 0.0073956654
+        },
+        {
+            "feature1": "cog_rad",
+            "feature2": "c_variance_rad",
+            "operation": "multiply",
+            "score": 0.0125031522
+        },
+        {
+            "feature1": "vdop",
+            "feature2": "epv_x",
+            "operation": "multiply",
+            "score": 0.0188960714
+        },
+        {
+            "feature1": "cog_rad",
+            "feature2": "vdop",
+            "operation": "ratio",
+            "score": 0.0190934691
+        },
+        {
+            "feature1": "cog_rad",
+            "feature2": "hdop",
+            "operation": "ratio",
+            "score": 0.0192854386
+        }
+    ],
+    "new_columns": [
+        "q_0__diff_vdop",
+        "q_0__diff_hdop",
+        "hdop_ratio_q_3_",
+        "vdop_ratio_q_3_",
+        "hdop_diff_evv",
+        "vdop_diff_evv",
+        "cog_rad_multiply_c_variance_rad",
+        "vdop_multiply_epv_x",
+        "cog_rad_ratio_vdop",
+        "cog_rad_ratio_hdop"
+    ],
+    "ml_task": "binary_classification"
+}

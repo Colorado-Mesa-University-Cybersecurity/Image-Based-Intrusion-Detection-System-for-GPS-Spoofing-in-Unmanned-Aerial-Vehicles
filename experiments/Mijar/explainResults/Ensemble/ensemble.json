@@ -5,17 +5,13 @@
     "selected_models": [
         {
             "model": "2_DecisionTree",
-            "repeat": 2.0
-        },
-        {
-            "model": "3_Linear",
-            "repeat": 3.0
+            "repeat": 1.0
         }
     ],
     "predictions_fname": "Ensemble\\predictions_ensemble.csv",
     "metric_name": "logloss",
-    "final_loss": 0.004846880971405272,
-    "train_time": 2.194901704788208,
+    "final_loss": 1.192092966562092e-07,
+    "train_time": 1.8382937908172607,
     "is_stacked": false,
-    "threshold": 0.9236209678069212
+    "threshold": 0.0
 }

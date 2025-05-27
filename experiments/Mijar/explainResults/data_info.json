@@ -83,7 +83,7 @@
         "z_global",
         "dist_bottom_valid"
     ],
-    "rows": 3622,
+    "rows": 2897,
     "cols": 82,
     "target_is_numeric": true,
     "columns_info": {

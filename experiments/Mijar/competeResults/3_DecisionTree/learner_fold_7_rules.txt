@@ -1,0 +1,6 @@
+if (lat_y <= 362048272.0) and (c_variance_rad > 0.636) then class: 0 (proba: 100.0%) | based on 2,249 samples
+
+if (lat_y > 362048272.0) then class: 1 (proba: 100.0%) | based on 349 samples
+
+if (lat_y <= 362048272.0) and (c_variance_rad <= 0.636) then class: 1 (proba: 100.0%) | based on 10 samples
+

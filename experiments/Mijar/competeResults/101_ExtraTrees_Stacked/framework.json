@@ -1,0 +1,3447 @@
+{
+    "uid": "7554e89a-8894-4714-bf08-8de60b7e4c16",
+    "name": "101_ExtraTrees_Stacked",
+    "preprocessing": [
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_0.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_1.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_2.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_3.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_4.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_5.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_6.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_7.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_8.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        },
+        {
+            "remove_columns": [
+                "delta_q_reset_0_",
+                "delta_q_reset_1_",
+                "delta_q_reset_2_",
+                "delta_q_reset_3_",
+                "quat_reset_counter",
+                "delta_alt",
+                "lat_lon_reset_counter",
+                "alt_reset_counter",
+                "dead_reckoning",
+                "time_utc_usec",
+                "timestamp_time_relative",
+                "heading_offset",
+                "fix_type",
+                "vel_ned_valid",
+                "ref_lat",
+                "ref_lon",
+                "delta_xy_0_",
+                "delta_xy_1_",
+                "delta_z",
+                "delta_vxy_0_",
+                "delta_vxy_1_",
+                "delta_vz",
+                "delta_heading",
+                "ref_alt",
+                "z_valid",
+                "v_z_valid",
+                "xy_reset_counter",
+                "z_reset_counter",
+                "vxy_reset_counter",
+                "vz_reset_counter",
+                "heading_reset_counter",
+                "xy_global",
+                "z_global"
+            ],
+            "kmeans": {
+                "new_features": [
+                    "Dist_Cluster_0",
+                    "Dist_Cluster_1",
+                    "Dist_Cluster_2",
+                    "Dist_Cluster_3",
+                    "Dist_Cluster_4",
+                    "Dist_Cluster_5",
+                    "Dist_Cluster_6",
+                    "Dist_Cluster_7",
+                    "Dist_Cluster_8",
+                    "Dist_Cluster_9",
+                    "Dist_Cluster_10",
+                    "Dist_Cluster_11",
+                    "Dist_Cluster_12",
+                    "Dist_Cluster_13",
+                    "Dist_Cluster_14",
+                    "Dist_Cluster_15",
+                    "Dist_Cluster_16",
+                    "Dist_Cluster_17",
+                    "Dist_Cluster_18",
+                    "Dist_Cluster_19",
+                    "Dist_Cluster_20",
+                    "Dist_Cluster_21",
+                    "Dist_Cluster_22",
+                    "Dist_Cluster_23",
+                    "Dist_Cluster_24",
+                    "Dist_Cluster_25",
+                    "Dist_Cluster_26",
+                    "Cluster"
+                ],
+                "result_file": "101_ExtraTrees_Stacked\\kmeans_fold_9.joblib",
+                "input_columns": [
+                    "q_0_",
+                    "q_1_",
+                    "q_2_",
+                    "q_3_",
+                    "lat_x",
+                    "lon_x",
+                    "alt_x",
+                    "alt_ellipsoid_x",
+                    "eph_x",
+                    "epv_x",
+                    "terrain_alt",
+                    "terrain_alt_valid",
+                    "lat_y",
+                    "lon_y",
+                    "alt_y",
+                    "alt_ellipsoid_y",
+                    "s_variance_m_s",
+                    "c_variance_rad",
+                    "eph_y",
+                    "epv_y",
+                    "hdop",
+                    "vdop",
+                    "noise_per_ms",
+                    "jamming_indicator",
+                    "vel_m_s",
+                    "vel_n_m_s",
+                    "vel_e_m_s",
+                    "vel_d_m_s",
+                    "cog_rad",
+                    "satellites_used",
+                    "x",
+                    "y",
+                    "z",
+                    "vx",
+                    "vy",
+                    "vz",
+                    "z_deriv",
+                    "ax",
+                    "ay",
+                    "az",
+                    "heading_y",
+                    "dist_bottom",
+                    "eph",
+                    "epv",
+                    "evh",
+                    "evv",
+                    "xy_valid",
+                    "v_xy_valid",
+                    "dist_bottom_valid",
+                    "100_ExtraTrees_prediction",
+                    "52_ExtraTrees_prediction",
+                    "103_ExtraTrees_prediction",
+                    "101_ExtraTrees_prediction",
+                    "99_ExtraTrees_prediction",
+                    "99_ExtraTrees_BoostOnErrors_prediction",
+                    "Ensemble_prediction",
+                    "76_ExtraTrees_prediction",
+                    "52_ExtraTrees_KMeansFeatures_prediction",
+                    "48_ExtraTrees_prediction",
+                    "77_ExtraTrees_prediction",
+                    "85_CatBoost_prediction",
+                    "6_Default_Xgboost_SelectedFeatures_prediction",
+                    "78_Xgboost_SelectedFeatures_prediction",
+                    "108_Xgboost_SelectedFeatures_prediction",
+                    "79_Xgboost_SelectedFeatures_prediction",
+                    "107_Xgboost_SelectedFeatures_prediction",
+                    "81_Xgboost_prediction",
+                    "80_Xgboost_prediction",
+                    "6_Default_Xgboost_prediction",
+                    "106_CatBoost_prediction",
+                    "109_CatBoost_prediction",
+                    "38_CatBoost_prediction",
+                    "36_CatBoost_prediction",
+                    "30_CatBoost_prediction",
+                    "83_CatBoost_prediction",
+                    "32_CatBoost_prediction",
+                    "31_CatBoost_prediction",
+                    "33_CatBoost_prediction",
+                    "91_NeuralNetwork_prediction",
+                    "21_LightGBM_prediction",
+                    "28_LightGBM_prediction",
+                    "87_LightGBM_prediction",
+                    "25_LightGBM_prediction",
+                    "86_LightGBM_prediction",
+                    "5_Default_LightGBM_prediction",
+                    "27_LightGBM_prediction",
+                    "88_LightGBM_prediction",
+                    "89_LightGBM_prediction",
+                    "21_LightGBM_SelectedFeatures_prediction",
+                    "4_Linear_prediction",
+                    "8_Default_NeuralNetwork_prediction",
+                    "47_RandomForest_SelectedFeatures_prediction",
+                    "115_RandomForest_SelectedFeatures_prediction",
+                    "114_RandomForest_SelectedFeatures_prediction",
+                    "61_NeuralNetwork_prediction",
+                    "90_NeuralNetwork_prediction",
+                    "60_NeuralNetwork_prediction",
+                    "94_NeuralNetwork_prediction",
+                    "92_RandomForest_SelectedFeatures_prediction",
+                    "1_DecisionTree_prediction",
+                    "42_RandomForest_prediction",
+                    "2_DecisionTree_prediction",
+                    "3_DecisionTree_prediction",
+                    "9_Default_RandomForest_prediction",
+                    "44_RandomForest_prediction",
+                    "43_RandomForest_prediction",
+                    "41_RandomForest_prediction",
+                    "97_DecisionTree_prediction",
+                    "47_RandomForest_prediction",
+                    "111_NeuralNetwork_prediction",
+                    "93_NeuralNetwork_prediction",
+                    "58_NeuralNetwork_prediction",
+                    "73_NearestNeighbors_prediction",
+                    "98_Xgboost_prediction",
+                    "15_Xgboost_prediction",
+                    "113_NeuralNetwork_prediction",
+                    "68_NearestNeighbors_prediction",
+                    "70_NearestNeighbors_prediction",
+                    "71_NearestNeighbors_prediction",
+                    "69_NearestNeighbors_prediction",
+                    "11_Default_NearestNeighbors_prediction",
+                    "67_NearestNeighbors_prediction",
+                    "74_NearestNeighbors_prediction",
+                    "66_NearestNeighbors_prediction",
+                    "72_NearestNeighbors_prediction"
+                ]
+            },
+            "ml_task": "binary_classification",
+            "params": {
+                "columns_preprocessing": {
+                    "delta_q_reset_0_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_1_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_2_": [
+                        "remove_column"
+                    ],
+                    "delta_q_reset_3_": [
+                        "remove_column"
+                    ],
+                    "quat_reset_counter": [
+                        "remove_column"
+                    ],
+                    "delta_alt": [
+                        "remove_column"
+                    ],
+                    "lat_lon_reset_counter": [
+                        "remove_column"
+                    ],
+                    "alt_reset_counter": [
+                        "remove_column"
+                    ],
+                    "dead_reckoning": [
+                        "remove_column"
+                    ],
+                    "time_utc_usec": [
+                        "remove_column"
+                    ],
+                    "timestamp_time_relative": [
+                        "remove_column"
+                    ],
+                    "heading_offset": [
+                        "remove_column"
+                    ],
+                    "fix_type": [
+                        "remove_column"
+                    ],
+                    "vel_ned_valid": [
+                        "remove_column"
+                    ],
+                    "ref_lat": [
+                        "remove_column"
+                    ],
+                    "ref_lon": [
+                        "remove_column"
+                    ],
+                    "delta_xy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_xy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_z": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_0_": [
+                        "remove_column"
+                    ],
+                    "delta_vxy_1_": [
+                        "remove_column"
+                    ],
+                    "delta_vz": [
+                        "remove_column"
+                    ],
+                    "delta_heading": [
+                        "remove_column"
+                    ],
+                    "ref_alt": [
+                        "remove_column"
+                    ],
+                    "z_valid": [
+                        "remove_column"
+                    ],
+                    "v_z_valid": [
+                        "remove_column"
+                    ],
+                    "xy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "z_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vxy_reset_counter": [
+                        "remove_column"
+                    ],
+                    "vz_reset_counter": [
+                        "remove_column"
+                    ],
+                    "heading_reset_counter": [
+                        "remove_column"
+                    ],
+                    "xy_global": [
+                        "remove_column"
+                    ],
+                    "z_global": [
+                        "remove_column"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "binary_classification",
+                "kmeans_features": {
+                    "results_path": "competeResults"
+                }
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "cd68a728-ec30-4847-b3d5-bd0a5844ef0f",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "f9ffdd0e-eb09-4114-a4f8-316db0127709",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "631d8d80-3dc9-4404-ac45-ae4b625761e3",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "106bca89-6bb3-43bc-8d98-99787c49514a",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "41a6cf78-9ed4-482d-8bd9-a0cff478e372",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_4"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "48e56c0b-17cb-4eda-8456-2c31a6368eb0",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_5"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "470f34f1-d8ab-4177-8e99-e2830256ae24",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_6"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "61061d08-7bda-4aba-9ee0-2e3ef4c0a94d",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_7"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "47315ec9-a1ae-4db6-bf74-d7900f3037d1",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_8"
+        },
+        {
+            "library_version": "1.6.1",
+            "algorithm_name": "Extra Trees Classifier",
+            "algorithm_short_name": "Extra Trees",
+            "uid": "cfb4bfc9-d157-4d0f-943c-b517e46645d2",
+            "params": {
+                "model_type": "Extra Trees",
+                "ml_task": "binary_classification",
+                "n_jobs": -1,
+                "seed": 1087,
+                "criterion": "entropy",
+                "max_features": 0.6,
+                "min_samples_split": 20,
+                "max_depth": 6,
+                "eval_metric_name": "logloss",
+                "explain_level": 1
+            },
+            "name": "learner_fold_9"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 100,
+            "max_steps": 50,
+            "early_stopping_rounds": 50,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "delta_q_reset_0_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_1_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_2_": [
+                    "remove_column"
+                ],
+                "delta_q_reset_3_": [
+                    "remove_column"
+                ],
+                "quat_reset_counter": [
+                    "remove_column"
+                ],
+                "delta_alt": [
+                    "remove_column"
+                ],
+                "lat_lon_reset_counter": [
+                    "remove_column"
+                ],
+                "alt_reset_counter": [
+                    "remove_column"
+                ],
+                "dead_reckoning": [
+                    "remove_column"
+                ],
+                "time_utc_usec": [
+                    "remove_column"
+                ],
+                "timestamp_time_relative": [
+                    "remove_column"
+                ],
+                "heading_offset": [
+                    "remove_column"
+                ],
+                "fix_type": [
+                    "remove_column"
+                ],
+                "vel_ned_valid": [
+                    "remove_column"
+                ],
+                "ref_lat": [
+                    "remove_column"
+                ],
+                "ref_lon": [
+                    "remove_column"
+                ],
+                "delta_xy_0_": [
+                    "remove_column"
+                ],
+                "delta_xy_1_": [
+                    "remove_column"
+                ],
+                "delta_z": [
+                    "remove_column"
+                ],
+                "delta_vxy_0_": [
+                    "remove_column"
+                ],
+                "delta_vxy_1_": [
+                    "remove_column"
+                ],
+                "delta_vz": [
+                    "remove_column"
+                ],
+                "delta_heading": [
+                    "remove_column"
+                ],
+                "ref_alt": [
+                    "remove_column"
+                ],
+                "z_valid": [
+                    "remove_column"
+                ],
+                "v_z_valid": [
+                    "remove_column"
+                ],
+                "xy_reset_counter": [
+                    "remove_column"
+                ],
+                "z_reset_counter": [
+                    "remove_column"
+                ],
+                "vxy_reset_counter": [
+                    "remove_column"
+                ],
+                "vz_reset_counter": [
+                    "remove_column"
+                ],
+                "heading_reset_counter": [
+                    "remove_column"
+                ],
+                "xy_global": [
+                    "remove_column"
+                ],
+                "z_global": [
+                    "remove_column"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "binary_classification",
+            "kmeans_features": {
+                "results_path": "competeResults"
+            }
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "shuffle": true,
+            "stratify": true,
+            "X_path": "competeResults\\X_stacked.data",
+            "y_path": "competeResults\\y.data",
+            "results_path": "competeResults",
+            "k_folds": 10
+        },
+        "learner": {
+            "model_type": "Extra Trees",
+            "ml_task": "binary_classification",
+            "n_jobs": -1,
+            "seed": 1087,
+            "criterion": "entropy",
+            "max_features": 0.6,
+            "min_samples_split": 20,
+            "max_depth": 6,
+            "eval_metric_name": "logloss",
+            "explain_level": 1
+        },
+        "automl_random_state": 1082,
+        "ml_task": "binary_classification",
+        "explain_level": 1,
+        "name": "101_ExtraTrees_Stacked",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original_kmeans_features_stacked",
+        "max_time_for_learner": 396.0,
+        "is_stacked": true
+    },
+    "saved": [
+        "101_ExtraTrees_Stacked\\learner_fold_0.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_1.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_2.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_3.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_4.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_5.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_6.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_7.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_8.extra_trees",
+        "101_ExtraTrees_Stacked\\learner_fold_9.extra_trees"
+    ],
+    "predictions_fname": "101_ExtraTrees_Stacked\\predictions_out_of_folds.csv",
+    "metric_name": "logloss",
+    "final_loss": "0.0002835090740806181",
+    "train_time": 35.90264129638672,
+    "is_stacked": true,
+    "joblib_version": "1.5.1",
+    "threshold": 0.0
+}

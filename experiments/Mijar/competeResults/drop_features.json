@@ -1,0 +1,23 @@
+[
+    "lat_x",
+    "lon_y",
+    "q_0_",
+    "vz",
+    "alt_x",
+    "heading_y",
+    "vel_d_m_s",
+    "v_xy_valid",
+    "xy_valid",
+    "dist_bottom_valid",
+    "q_2_",
+    "az",
+    "q_3_",
+    "vx",
+    "q_1_",
+    "terrain_alt_valid",
+    "terrain_alt",
+    "vy",
+    "lon_x",
+    "random_feature",
+    "ay"
+]

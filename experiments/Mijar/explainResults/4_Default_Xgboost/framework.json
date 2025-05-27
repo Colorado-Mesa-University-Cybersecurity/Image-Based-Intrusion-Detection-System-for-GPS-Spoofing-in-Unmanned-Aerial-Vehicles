@@ -1,5 +1,5 @@
 {
-    "uid": "f26691b2-55db-4445-b1ca-6d27cfa8fe65",
+    "uid": "8cd74097-a484-4ec6-aca0-2512756375c9",
     "name": "4_Default_Xgboost",
     "preprocessing": [
         {
@@ -153,7 +153,7 @@
             "library_version": "2.1.4",
             "algorithm_name": "Extreme Gradient Boosting",
             "algorithm_short_name": "Xgboost",
-            "uid": "d801d2b1-edb0-411d-8f1f-19157557f3cc",
+            "uid": "46c23d48-64d5-47f5-ac2e-b755d2f02c94",
             "params": {
                 "model_type": "Xgboost",
                 "ml_task": "binary_classification",
@@ -323,9 +323,9 @@
     ],
     "predictions_fname": "4_Default_Xgboost\\predictions_validation.csv",
     "metric_name": "logloss",
-    "final_loss": "0.006832096441018854",
-    "train_time": 5.764050722122192,
+    "final_loss": "0.0008176747811149677",
+    "train_time": 5.88906455039978,
     "is_stacked": false,
     "joblib_version": "1.5.1",
-    "threshold": 0.9662408828735352
+    "threshold": 0.004175185225903988
 }

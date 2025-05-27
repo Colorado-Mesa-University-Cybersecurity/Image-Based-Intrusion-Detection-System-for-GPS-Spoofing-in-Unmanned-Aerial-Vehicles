@@ -3,7 +3,7 @@
     "ml_task": "binary_classification",
     "results_path": "explainResults",
     "total_time_limit": 3600,
-    "model_time_limit": null,
+    "model_time_limit": 3600,
     "algorithms": [
         "Baseline",
         "Linear",
@@ -47,10 +47,8 @@
         "Ensemble"
     ],
     "fit_level": "finished",
-    "best_model": "Ensemble",
+    "best_model": "2_DecisionTree",
     "load_on_predict": [
-        "2_DecisionTree",
-        "3_Linear",
-        "Ensemble"
+        "2_DecisionTree"
     ]
 }

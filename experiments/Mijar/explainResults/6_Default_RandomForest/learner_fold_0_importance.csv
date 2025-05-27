@@ -46,5 +46,5 @@ hdop,0.0
 vdop,0.0
 jamming_indicator,0.0
 dist_bottom_valid,0.0
-c_variance_rad,0.9707120780292036
-lat_y,7.519040276537683
+c_variance_rad,0.9247061421207986
+lat_y,7.616396826500342

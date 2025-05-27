@@ -23,32 +23,32 @@ logloss
 ## Metric details
 |           |    score |   threshold |
 |:----------|---------:|------------:|
-| logloss   | 0.401261 |  nan        |
+| logloss   | 0.401192 |  nan        |
 | auc       | 0.5      |  nan        |
-| f1        | 0.242483 |    0.123601 |
-| accuracy  | 0.137969 |    0.123601 |
-| precision | 0.137969 |    0.123601 |
-| recall    | 1        |    0.123601 |
-| mcc       | 0        |    0.123601 |
+| f1        | 0.242424 |    0.123481 |
+| accuracy  | 0.137931 |    0.123481 |
+| precision | 0.137931 |    0.123481 |
+| recall    | 1        |    0.123481 |
+| mcc       | 0        |    0.123481 |
 
 
 ## Metric details with threshold from accuracy metric
 |           |    score |   threshold |
 |:----------|---------:|------------:|
-| logloss   | 0.401261 |  nan        |
+| logloss   | 0.401192 |  nan        |
 | auc       | 0.5      |  nan        |
-| f1        | 0.242483 |    0.123601 |
-| accuracy  | 0.137969 |    0.123601 |
-| precision | 0.137969 |    0.123601 |
-| recall    | 1        |    0.123601 |
-| mcc       | 0        |    0.123601 |
+| f1        | 0.242424 |    0.123481 |
+| accuracy  | 0.137931 |    0.123481 |
+| precision | 0.137931 |    0.123481 |
+| recall    | 1        |    0.123481 |
+| mcc       | 0        |    0.123481 |
 
 
-## Confusion matrix (at threshold=0.123601)
+## Confusion matrix (at threshold=0.123481)
 |              |   Predicted as 0 |   Predicted as 1 |
 |:-------------|-----------------:|-----------------:|
-| Labeled as 0 |                0 |              781 |
-| Labeled as 1 |                0 |              125 |
+| Labeled as 0 |                0 |              625 |
+| Labeled as 1 |                0 |              100 |
 
 ## Learning curves
 ![Learning curves](learning_curves.png)

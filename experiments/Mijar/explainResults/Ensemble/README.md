@@ -6,38 +6,37 @@
 ## Ensemble structure
 | Model          |   Weight |
 |:---------------|---------:|
-| 2_DecisionTree |        2 |
-| 3_Linear       |        3 |
+| 2_DecisionTree |        1 |
 
 ## Metric details
-|           |      score |     threshold |
-|:----------|-----------:|--------------:|
-| logloss   | 0.00484688 | nan           |
-| auc       | 1          | nan           |
-| f1        | 0.987854   |   0.923621    |
-| accuracy  | 0.996689   |   0.923621    |
-| precision | 1          |   0.923621    |
-| recall    | 1          |   3.64796e-06 |
-| mcc       | 0.986035   |   0.923621    |
+|           |       score |   threshold |
+|:----------|------------:|------------:|
+| logloss   | 1.19209e-07 |         nan |
+| auc       | 1           |         nan |
+| f1        | 1           |           0 |
+| accuracy  | 1           |           0 |
+| precision | 1           |           0 |
+| recall    | 1           |           0 |
+| mcc       | 1           |           0 |
 
 
 ## Metric details with threshold from accuracy metric
-|           |      score |   threshold |
-|:----------|-----------:|------------:|
-| logloss   | 0.00484688 |  nan        |
-| auc       | 1          |  nan        |
-| f1        | 0.987854   |    0.923621 |
-| accuracy  | 0.996689   |    0.923621 |
-| precision | 1          |    0.923621 |
-| recall    | 0.976      |    0.923621 |
-| mcc       | 0.986035   |    0.923621 |
+|           |       score |   threshold |
+|:----------|------------:|------------:|
+| logloss   | 1.19209e-07 |         nan |
+| auc       | 1           |         nan |
+| f1        | 1           |           0 |
+| accuracy  | 1           |           0 |
+| precision | 1           |           0 |
+| recall    | 1           |           0 |
+| mcc       | 1           |           0 |
 
 
-## Confusion matrix (at threshold=0.923621)
+## Confusion matrix (at threshold=0.0)
 |              |   Predicted as 0 |   Predicted as 1 |
 |:-------------|-----------------:|-----------------:|
-| Labeled as 0 |              781 |                0 |
-| Labeled as 1 |                3 |              122 |
+| Labeled as 0 |              625 |                0 |
+| Labeled as 1 |                0 |              100 |
 
 ## Learning curves
 ![Learning curves](learning_curves.png)
