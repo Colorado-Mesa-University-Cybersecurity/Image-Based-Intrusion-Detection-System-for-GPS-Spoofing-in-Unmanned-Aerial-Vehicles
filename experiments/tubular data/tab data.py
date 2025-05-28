@@ -13,7 +13,7 @@ df_features = df[feature_cols].select_dtypes(include=[np.number])
 # 3. Normalize features to [0, 1]
 norm_data = min_max_transform(df_features.values)
 
-# 4. Determine the scale for the image (try to make it as square as possible)
+# 4. Determine the scale for the image
 num_features = norm_data.shape[1]
 side = int(np.ceil(np.sqrt(num_features)))  # e.g., 84 features -> 10x10 image (100 pixels)
 scale = (side, side)
