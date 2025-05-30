@@ -1,6 +1,0 @@
-if (lat_y <= 362048272.0) and (vdop <= 1.336) then class: 0 (proba: 100.0%) | based on 2,249 samples
-
-if (lat_y > 362048272.0) then class: 1 (proba: 100.0%) | based on 347 samples
-
-if (lat_y <= 362048272.0) and (vdop > 1.336) then class: 1 (proba: 100.0%) | based on 11 samples
-
