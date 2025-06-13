@@ -1,0 +1,263 @@
+{
+    "tables": {
+        "spoofing_data": {
+            "primary_key": "timestamp",
+            "columns": {
+                "timestamp": {
+                    "sdtype": "id"
+                },
+                "q_0_": {
+                    "sdtype": "numerical"
+                },
+                "q_1_": {
+                    "sdtype": "numerical"
+                },
+                "q_2_": {
+                    "sdtype": "numerical"
+                },
+                "q_3_": {
+                    "sdtype": "numerical"
+                },
+                "delta_q_reset_0_": {
+                    "sdtype": "numerical"
+                },
+                "delta_q_reset_1_": {
+                    "sdtype": "numerical"
+                },
+                "delta_q_reset_2_": {
+                    "sdtype": "numerical"
+                },
+                "delta_q_reset_3_": {
+                    "sdtype": "numerical"
+                },
+                "quat_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "lat_x": {
+                    "sdtype": "numerical"
+                },
+                "lon_x": {
+                    "sdtype": "numerical"
+                },
+                "alt_x": {
+                    "sdtype": "numerical"
+                },
+                "alt_ellipsoid_x": {
+                    "sdtype": "numerical"
+                },
+                "delta_alt": {
+                    "sdtype": "categorical"
+                },
+                "eph_x": {
+                    "sdtype": "numerical"
+                },
+                "epv_x": {
+                    "sdtype": "numerical"
+                },
+                "terrain_alt": {
+                    "sdtype": "numerical"
+                },
+                "lat_lon_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "alt_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "terrain_alt_valid": {
+                    "sdtype": "numerical"
+                },
+                "dead_reckoning": {
+                    "sdtype": "categorical"
+                },
+                "time_utc_usec": {
+                    "sdtype": "categorical"
+                },
+                "lat_y": {
+                    "sdtype": "numerical"
+                },
+                "lon_y": {
+                    "sdtype": "numerical"
+                },
+                "alt_y": {
+                    "sdtype": "numerical"
+                },
+                "alt_ellipsoid_y": {
+                    "sdtype": "numerical"
+                },
+                "s_variance_m_s": {
+                    "sdtype": "numerical"
+                },
+                "c_variance_rad": {
+                    "sdtype": "numerical"
+                },
+                "eph_y": {
+                    "sdtype": "numerical"
+                },
+                "epv_y": {
+                    "sdtype": "numerical"
+                },
+                "hdop": {
+                    "sdtype": "numerical"
+                },
+                "vdop": {
+                    "sdtype": "numerical"
+                },
+                "noise_per_ms": {
+                    "sdtype": "numerical"
+                },
+                "jamming_indicator": {
+                    "sdtype": "numerical"
+                },
+                "vel_m_s": {
+                    "sdtype": "numerical"
+                },
+                "vel_n_m_s": {
+                    "sdtype": "numerical"
+                },
+                "vel_e_m_s": {
+                    "sdtype": "numerical"
+                },
+                "vel_d_m_s": {
+                    "sdtype": "numerical"
+                },
+                "cog_rad": {
+                    "sdtype": "numerical"
+                },
+                "timestamp_time_relative": {
+                    "sdtype": "categorical"
+                },
+                "heading_offset": {
+                    "sdtype": "categorical"
+                },
+                "fix_type": {
+                    "sdtype": "categorical"
+                },
+                "vel_ned_valid": {
+                    "sdtype": "categorical"
+                },
+                "satellites_used": {
+                    "sdtype": "numerical"
+                },
+                "ref_lat": {
+                    "sdtype": "numerical"
+                },
+                "ref_lon": {
+                    "sdtype": "numerical"
+                },
+                "x": {
+                    "sdtype": "numerical"
+                },
+                "y": {
+                    "sdtype": "numerical"
+                },
+                "z": {
+                    "sdtype": "numerical"
+                },
+                "delta_xy_0_": {
+                    "sdtype": "numerical"
+                },
+                "delta_xy_1_": {
+                    "sdtype": "numerical"
+                },
+                "delta_z": {
+                    "sdtype": "categorical"
+                },
+                "vx": {
+                    "sdtype": "numerical"
+                },
+                "vy": {
+                    "sdtype": "numerical"
+                },
+                "vz": {
+                    "sdtype": "numerical"
+                },
+                "z_deriv": {
+                    "sdtype": "numerical"
+                },
+                "delta_vxy_0_": {
+                    "sdtype": "numerical"
+                },
+                "delta_vxy_1_": {
+                    "sdtype": "numerical"
+                },
+                "delta_vz": {
+                    "sdtype": "numerical"
+                },
+                "ax": {
+                    "sdtype": "numerical"
+                },
+                "ay": {
+                    "sdtype": "numerical"
+                },
+                "az": {
+                    "sdtype": "numerical"
+                },
+                "heading_y": {
+                    "sdtype": "numerical"
+                },
+                "delta_heading": {
+                    "sdtype": "numerical"
+                },
+                "ref_alt": {
+                    "sdtype": "numerical"
+                },
+                "dist_bottom": {
+                    "sdtype": "numerical"
+                },
+                "eph": {
+                    "sdtype": "numerical"
+                },
+                "epv": {
+                    "sdtype": "numerical"
+                },
+                "evh": {
+                    "sdtype": "numerical"
+                },
+                "evv": {
+                    "sdtype": "numerical"
+                },
+                "xy_valid": {
+                    "sdtype": "numerical"
+                },
+                "z_valid": {
+                    "sdtype": "categorical"
+                },
+                "v_xy_valid": {
+                    "sdtype": "numerical"
+                },
+                "v_z_valid": {
+                    "sdtype": "categorical"
+                },
+                "xy_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "z_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "vxy_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "vz_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "heading_reset_counter": {
+                    "sdtype": "categorical"
+                },
+                "xy_global": {
+                    "sdtype": "categorical"
+                },
+                "z_global": {
+                    "sdtype": "categorical"
+                },
+                "dist_bottom_valid": {
+                    "sdtype": "numerical"
+                },
+                "label": {
+                    "sdtype": "categorical"
+                }
+            }
+        }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+}
