@@ -1,0 +1,1 @@
+Please add the 'spoofing-merged-gps-only.csv' file from the dataset available at https://ieee-dataport.org/open-access/uav-attack-dataset to this directory. This file is needed for the code to work properly.
