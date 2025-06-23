@@ -1,0 +1,52 @@
+{
+    "tables": {
+        "spoofing_data": {
+            "columns": {
+                "PRN": {
+                    "sdtype": "numerical"
+                },
+                "DO": {
+                    "sdtype": "numerical"
+                },
+                "PD": {
+                    "sdtype": "numerical"
+                },
+                "RX": {
+                    "sdtype": "numerical"
+                },
+                "TOW": {
+                    "sdtype": "numerical"
+                },
+                "CP": {
+                    "sdtype": "numerical"
+                },
+                "EC": {
+                    "sdtype": "numerical"
+                },
+                "LC": {
+                    "sdtype": "numerical"
+                },
+                "PC": {
+                    "sdtype": "numerical"
+                },
+                "PIP": {
+                    "sdtype": "numerical"
+                },
+                "PQP": {
+                    "sdtype": "numerical"
+                },
+                "TCD": {
+                    "sdtype": "numerical"
+                },
+                "CN0": {
+                    "sdtype": "numerical"
+                },
+                "Output": {
+                    "sdtype": "categorical"
+                }
+            }
+        }
+    },
+    "relationships": [],
+    "METADATA_SPEC_VERSION": "V1"
+}
