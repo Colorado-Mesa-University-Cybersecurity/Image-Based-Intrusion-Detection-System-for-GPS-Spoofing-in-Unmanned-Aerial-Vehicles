@@ -179,3 +179,8 @@ cython_debug/
 /Datasets/csv/UAVATTACK/spoofing_gc_1000000.csv
 /Datasets/csv/UAVATTACK/
 /Datasets/excel/2dSpoofingDataset/
+/binaryImageTransformation/2d tubular data/image-results-spoofing/
+/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/
+/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/
+/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/data/Test/
+/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/data/Train/
