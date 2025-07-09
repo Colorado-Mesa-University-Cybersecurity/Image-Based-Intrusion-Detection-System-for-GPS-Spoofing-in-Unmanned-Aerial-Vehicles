@@ -33,12 +33,12 @@ Logistic Regression,syntheticSpoofing_gan_data.csv,0.9907568386131324,0.99088901
 MLP Classifier,syntheticSpoofing_gan_data.csv,0.9844375020627054,0.9848150193263391
 XGBoost,syntheticSpoofing_gan_data.csv,0.849850465008381,0.8332413031474324
 XGBoost,spoofing-merged-gps-only.csv,0.7990588237700694,0.862663906142167
-MLPClassifier,spoofing-merged-gps-only.csv,0.9975755145566179,0.9975845410628019
-LogisticRegression,spoofing-merged-gps-only.csv,0.6402834186017443,0.5752242926155969
+MLP Classifier,spoofing-merged-gps-only.csv,0.9975755145566179,0.9975845410628019
+Logistic Regression,spoofing-merged-gps-only.csv,0.6402834186017443,0.5752242926155969
 LocalOutlierFactor,spoofing-merged-gps-only.csv,0.9958776087800033,0.9958586416344561
 OneClassSVM,spoofing-merged-gps-only.csv,0.9566046994325141,0.9541689674213142
 StackedEnsemble_RF,spoofing-merged-gps-only.csv,0.9926218453848862,0.992545554942021
-StackingClassifier(LogisticRegression RandomForest SVC),spoofing-merged-gps-only.csv,0.9982700809942057,0.9982746721877157
+Stacking Classifier(LogisticRegression RandomForest SVC),spoofing-merged-gps-only.csv,0.9982700809942057,0.9982746721877157
 CNN,spoofing-merged-gps-only.csv,0.9986197947448197,0.9986168741355463
 StackedEnsemble_RF,spoofing_ctgan_10000.csv,0.8852407933081292,0.8702374378796245
 StackedEnsemble_RF,spoofing_ctgan_100000.csv,0.9199907042930896,0.9157923799006074
