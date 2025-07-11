@@ -39,7 +39,6 @@ LocalOutlierFactor,spoofing-merged-gps-only.csv,0.9958776087800033,0.99585864163
 OneClassSVM,spoofing-merged-gps-only.csv,0.9566046994325141,0.9541689674213142
 StackedEnsemble_RF,spoofing-merged-gps-only.csv,0.9926218453848862,0.992545554942021
 Stacking Classifier(LogisticRegression RandomForest SVC),spoofing-merged-gps-only.csv,0.9982700809942057,0.9982746721877157
-CNN,spoofing-merged-gps-only.csv,0.9986197947448197,0.9986168741355463
 StackedEnsemble_RF,spoofing_ctgan_10000.csv,0.8852407933081292,0.8702374378796245
 StackedEnsemble_RF,spoofing_ctgan_100000.csv,0.9199907042930896,0.9157923799006074
 StackedEnsemble_RF,spoofing_ctgan_1000000.csv,0.9273501088709102,0.9268360022087244
