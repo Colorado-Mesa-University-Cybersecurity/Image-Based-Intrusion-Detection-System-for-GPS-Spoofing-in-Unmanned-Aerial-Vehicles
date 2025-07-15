@@ -1,2 +1,0 @@
-For each folder/file in this directory, add their respective image-results file and make sure to rename it 'image-results-spoofing.
-You can download them from 'https://drive.google.com/drive/folders/1l2LfGwJ8FRzE115wkMUHQRaGiru-SwGv?usp=sharing'.
