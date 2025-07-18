@@ -186,3 +186,7 @@ cython_debug/
 /binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/data/Train/
 !/binaryImageTransformation/2d tubular data/image-results-spoofing/
 !/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/
+!/binaryImageTransformation/UAVATTACK tubular data/best_cnn_model.pth
+!/binaryImageTransformation/UAVATTACK tubular data/best_cnn_model.pth
+!/binaryImageTransformation/UAVATTACK tubular data/best_cnn_lstm_model.pth
+!/binaryImageTransformation/UAVATTACK tubular data/best_resnet_model.pth
