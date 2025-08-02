@@ -15,8 +15,6 @@ def plot_images_4_classes(img_files, titles, out_file="2D_comparison.png"):
         ax.imshow(img, cmap='nipy_spectral', interpolation='none')
         ax.set_title(title)
         ax.axis('on')
-        ax.set_xticks(np.arange(0, img.shape[1], 16))
-        ax.set_yticks(np.arange(0, img.shape[0], 16))
 
     plt.tight_layout()
     plt.savefig(out_file)
