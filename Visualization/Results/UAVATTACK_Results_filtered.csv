@@ -45,7 +45,6 @@ MLP Classifier,syntheticSpoofing_gan_data.csv,0.9848150193263391,0.1805405616760
 XGBoost,syntheticSpoofing_gan_data.csv,0.8332413031474324,0.04285287857055664,N/A
 CNN,spoofing-merged-gps-only.csv,0.9986168741355463,606.3392333984375,100
 ResNet-CNN,spoofing-merged-gps-only.csv,0.9944674965421854,535.4437565803528,20
-StackingClassifier(LogisticRegression RandomForest SVC),spoofing-merged-gps-only.csv,0.9982746721877157,6.2294602394104,N/A
 StackedEnsemble_RF,spoofing-merged-gps-only.csv,0.992545554942021,0.1368570327758789,N/A
 Logistic Regression,spoofing-merged-gps-only.csv,0.9979296066252588,0.5475921630859375,N/A
 MLP Classifier,spoofing-merged-gps-only.csv,0.9975845410628019,0.13377046585083008,N/A
