@@ -58,3 +58,5 @@ Logistic Regression (SMOTE),spoofing-merged-gps-only.csv,0.8013256191804785,0.77
 MLP Classifier (SMOTE),spoofing-merged-gps-only.csv,0.7990588237700694,0.862663906142167,0.13512730598449707,N/A
 Random Forest (SMOTE),spoofing-merged-gps-only.csv,0.9986168039030097,0.9986197377501725,0.2668020725250244,N/A
 LSTM Classifier (SMOTE),spoofing-merged-gps-only.csv,0.11132199113683656,0.17184265010351968,12.273727655410767,100
+LSTM Classifier (Explainability Features),spoofing-merged-gps-only.csv,0.9972336078060194,0.9972394755003451,7.241610050201416,100
+LSTM Classifier (XGBoost Features),spoofing-merged-gps-only.csv,0.9979229851190652,0.9979296066252588,6.74240779876709,100
