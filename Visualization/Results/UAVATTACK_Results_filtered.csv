@@ -60,3 +60,4 @@ Random Forest (SMOTE),spoofing-merged-gps-only.csv,0.9986168039030097,0.99861973
 LSTM Classifier (SMOTE),spoofing-merged-gps-only.csv,0.11132199113683656,0.17184265010351968,12.273727655410767,100
 LSTM Classifier (Explainability Features),spoofing-merged-gps-only.csv,0.9972336078060194,0.9972394755003451,7.241610050201416,100
 LSTM Classifier (XGBoost Features),spoofing-merged-gps-only.csv,0.9979229851190652,0.9979296066252588,6.74240779876709,100
+StackedEnsemble_RF (SMOTE),spoofing-merged-gps-only.csv,0.9931737040677427,0.993103448275862,0.13481426239013672,N/A
