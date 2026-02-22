@@ -1,2 +1,22 @@
-# UAS-GPS-Spoof
-A placeholder readme for experimenting with GPS spoofing detection datasets on unmanned aerial systems (UAS). Purpose and scope to be determined.
+# Image-Based Intrusion Detection System for GPS Spoofing in Unmanned Aerial Vehicles
+
+This repository contains the research artifacts for the paper "Image-Based Intrusion Detection System for Global Positioning System Spoofing in Unmanned Aerial Vehicles." The project is notebook-first; most analysis and experiments live in Jupyter notebooks.
+
+This top-level README is a navigation hub. Open the files below for detailed instructions and dataset information.
+
+Quick links to other READMEs in this repo
+- Datasets and download instructions  
+  - Datasets/readme.md — dataset organization, original sources, and expected folder layout
+- Binary image transformation experiments and image results  
+  - binaryImageTransformation/readme.md — how to set up the image-results folders and run the transformation notebooks
+
+Where to look next
+- notebooks/ — run order, experiment notebooks, and analysis (open the overview or first notebook to start)
+- Datasets/ — place downloaded datasets here following Datasets/readme.md
+- binaryImageTransformation/ — image generation and model notebooks; see its readme for folder structure and notes
+
+Contact and citation
+- For author contact, citation text, licensing, or to request the original datasets, check the Datasets/readme.md or open an issue in this repository.
+
+Short note on reproducibility
+- For step-by-step reproduction, follow the dataset readme, then run the notebooks in the order shown in the overview notebook.
