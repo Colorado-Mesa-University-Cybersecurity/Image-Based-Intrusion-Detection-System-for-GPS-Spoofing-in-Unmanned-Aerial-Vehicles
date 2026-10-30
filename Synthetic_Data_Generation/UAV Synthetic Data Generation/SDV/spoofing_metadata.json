@@ -27,7 +27,7 @@
                     "sdtype": "numerical"
                 },
                 "quat_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "lat_x": {
                     "sdtype": "numerical"
@@ -42,7 +42,7 @@
                     "sdtype": "numerical"
                 },
                 "delta_alt": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "eph_x": {
                     "sdtype": "numerical"
@@ -54,25 +54,25 @@
                     "sdtype": "numerical"
                 },
                 "lat_lon_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "alt_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "terrain_alt_valid": {
                     "sdtype": "numerical"
                 },
                 "dead_reckoning": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "time_utc_usec": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "lat_y": {
                     "sdtype": "numerical"
                 },
                 "lon_y": {
-                    "sdtype": "categorical"
+                    "sdtype": "numerical"
                 },
                 "alt_y": {
                     "sdtype": "numerical"
@@ -120,16 +120,16 @@
                     "sdtype": "numerical"
                 },
                 "timestamp_time_relative": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "heading_offset": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "fix_type": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "vel_ned_valid": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "satellites_used": {
                     "sdtype": "numerical"
@@ -156,7 +156,7 @@
                     "sdtype": "numerical"
                 },
                 "delta_z": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "vx": {
                     "sdtype": "numerical"
@@ -216,34 +216,34 @@
                     "sdtype": "numerical"
                 },
                 "z_valid": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "v_xy_valid": {
                     "sdtype": "numerical"
                 },
                 "v_z_valid": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "xy_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "z_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "vxy_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "vz_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "heading_reset_counter": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "xy_global": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "z_global": {
-                    "sdtype": "numerical"
+                    "sdtype": "categorical"
                 },
                 "dist_bottom_valid": {
                     "sdtype": "numerical"
