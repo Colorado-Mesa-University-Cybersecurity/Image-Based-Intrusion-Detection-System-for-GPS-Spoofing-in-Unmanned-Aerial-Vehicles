@@ -141,8 +141,8 @@ for c in 0 1 2 3; do rmdir "data/Train/$c" 2>/dev/null; \
 rmdir train test 0 1 2 3
 ```
 
-This yields 102,107 train / 408,423 test across classes `0`–`3`. See
-`FINDINGS.md` for why both of these steps are needed.
+This yields 102,107 train / 408,423 test across classes `0`–`3`. Both of
+these steps are required.
 
 ## 3. Scope notes
 
@@ -195,8 +195,7 @@ still read in preference when present, but is no longer required -- both plot
 scripts fall back to the raw `*_Results.csv` at the repo root.
 
 The previously committed `*_Results_full.csv` files and the
-`Results fixes/Fix results.ipynb` step that produced them have been removed --
-see `FINDINGS.md`.
+`Results fixes/Fix results.ipynb` step that produced them have been removed.
 
 Reproduction spot-checks against the published numbers, before they were
 removed:
@@ -231,6 +230,3 @@ with the figures that need the imbalance-aware columns: accuracy-vs-MCC,
 per-class recall heatmaps, the five-metric disagreement bars, lift over the
 majority baseline, prior shift for the synthetic and SMOTE families, and
 batch-vs-online inference latency.
-
-Validation notes and known issues in the existing notebooks are collected in
-`FINDINGS.md`.
