@@ -35,7 +35,15 @@ def read_csv_dicts(path: str):
 
 
 if __name__ == "__main__":
-    for fp in ["UAVATTACK_Results_filtered.csv", "2D_Results_filtered.csv"]:
+    repo_root = Path(__file__).resolve().parent.parent.parent
+    results_dir = Path(__file__).resolve().parent.parent / "Results"
+    candidates = [
+        results_dir / "UAVATTACK_Results_filtered.csv",
+        results_dir / "2D_Results_filtered.csv",
+        repo_root / "UAVATTACK_Results.csv",
+        repo_root / "2D_Results.csv",
+    ]
+    for fp in [c for c in candidates if c.exists()]:
         header, rows = read_csv_dicts(fp)
         print(f"\n=== {fp} ===")
         print("Header:", header)
