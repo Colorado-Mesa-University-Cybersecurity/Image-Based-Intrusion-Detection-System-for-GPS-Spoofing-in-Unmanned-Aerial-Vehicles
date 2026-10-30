@@ -126,23 +126,17 @@ The 2D images are **not** distributed and must be generated:
 ```bash
 cd "binaryImageTransformation/2d tubular data"
 ../../.venv/Scripts/python -m jupyter nbconvert --to notebook --execute tabToImage.ipynb
-../../.venv/Scripts/python organize.py
 ../../.venv/Scripts/python split-Images.py
 ```
 
-All three steps are required, in that order — `organize.py` is not optional.
-Then move the output into the layout the notebooks actually read:
+`tabToImage.ipynb` writes every image into `image-results-spoofing/data/Train/<class>`,
+and `split-Images.py` moves 20% of each class into `.../data/Test/<class>` — the
+layout the four 2D notebooks read, and the same one the UAVATTACK archive ships.
+`organize.py` is only needed if a run left images loose in
+`image-results-spoofing/`; `split-Images.py` accepts that layout too, and refuses
+to write a manifest when it finds nothing to split.
 
-```bash
-cd image-results-spoofing
-mkdir -p data/Train data/Test
-for c in 0 1 2 3; do rmdir "data/Train/$c" 2>/dev/null; \
-  mv "train/$c" "data/Train/$c"; mv "test/$c" "data/Test/$c"; done
-rmdir train test 0 1 2 3
-```
-
-This yields 102,107 train / 408,423 test across classes `0`–`3`. Both of
-these steps are required.
+This yields 408,423 train / 102,107 test across classes `0`–`3`.
 
 ## 3. Scope notes
 

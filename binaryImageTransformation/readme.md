@@ -55,5 +55,5 @@ binary image whose rows are features and whose columns are bits.
 ### Notes
 
 - The `image-results-spoofing` folders contain the images used by the CNN models. If you want to generate your own images, you can run the `tabToImage.ipynb` notebook. Make sure you have downloaded the datasets and placed them in the `Datasets` directory before doing this.
-- After generating images, use `organize.py` (for 2d data) or just proceed to `split-Images.py` to sort the images into the correct folders.
+- After generating images, run `split-Images.py` (2d data) or `split images.py` (UAVATTACK) to carve the test split out of `data/Train`. `organize.py` is only needed if a run left images loose in `image-results-spoofing/`.
 - Be sure to keep all file and folder names exactly as shown above. This helps keep everything organized and avoids errors with file paths in the scripts.
