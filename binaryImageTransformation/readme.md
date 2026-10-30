@@ -19,27 +19,38 @@ Your directory should look like this:
 ```plaintext
 binaryImageTransformation/
 ├── 2d tubular data/
-│   └── image-results-spoofing/
-│       ├── CNN.ipynb
-│       ├── helper_functions.py
-│       ├── LSTM.ipynb
-│       ├── organize.py
-│       ├── ResNet.ipynb
-│       ├── split-Images.py
-│       └── tabToImage.ipynb
+│   ├── CNN.ipynb
+│   ├── CnnLstm.ipynb
+│   ├── ResnetCnn.ipynb
+│   ├── ResnetLstm.ipynb
+│   ├── tabToImage.ipynb
+│   ├── helper_functions.py
+│   ├── organize.py
+│   ├── split-Images.py
+│   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 ├── UAVATTACK tubular data/
-│   └── image-results-spoofing/
-│       ├── best_cnn_lstm_model.pth
-│       ├── best_cnn_model.pth
-│       ├── best_resnet_model.pth
-│       ├── CNN.ipynb
-│       ├── helper_functions.py
-│       ├── LSTM.ipynb
-│       ├── ResNet.ipynb
-│       ├── split images.py
-│       └── tabToImage.ipynb
+│   ├── CNN.ipynb
+│   ├── CnnLstm.ipynb
+│   ├── ResnetCnn.ipynb
+│   ├── ResnetLstm.ipynb
+│   ├── tabToImage.ipynb
+│   ├── helper_functions.py
+│   ├── split images.py
+│   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 └── readme.md
 ```
+
+Each notebook's filename matches the `MODEL_NAME` it records:
+
+| notebook | `MODEL_NAME` | backbone | head |
+|---|---|---|---|
+| `CNN.ipynb` | `CNN` | custom 4-block CNN | dense |
+| `CnnLstm.ipynb` | `CNN-LSTM` | custom 4-block CNN | LSTM |
+| `ResnetCnn.ipynb` | `ResNet-CNN` | ResNet-101 (pretrained) | dense |
+| `ResnetLstm.ipynb` | `ResNet-LSTM` | ResNet-101 (pretrained) | LSTM |
+
+`tabToImage.ipynb` is the encoder, not a model: it turns a tabular row into one
+binary image whose rows are features and whose columns are bits.
 
 ### Notes
 

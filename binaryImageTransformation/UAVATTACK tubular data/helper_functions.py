@@ -280,13 +280,15 @@ def organize_photos_in_folders(image_directory: str, Y: pd.DataFrame) -> None:
         if not os.path.exists(new_dir + 'Train/' + i):
             os.mkdir(new_dir + 'Train/' + i)
     total_images = 0
-    type_counts = {value: 0 for value in dirs}
+    type_counts = {str(value): 0 for value in dirs}
     for file in os.listdir(image_directory):
-        try:
-            dir = file.split("-")[0]
-            type_counts[dir] += 1
-        except:
+        parts = file.split("-")
+        if len(parts) < 2:
             continue
+        dir = parts[0]
+        if dir not in type_counts:
+            continue
+        type_counts[dir] += 1
         shutil.move(f"{image_directory}/{file}", f"{new_dir}Train/{dir}/{file}")
         total_images += 1
     print(total_images)
