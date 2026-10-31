@@ -201,12 +201,15 @@ def evaluate(
     prec, rec, _, sup = precision_recall_fscore_support(
         y_true, y_pred, labels=labels, average=None, zero_division=0
     )
+    present = [c for c in labels if (y_true == c).any()]
+    rec_present = rec[[labels.index(c) for c in present]]
+    k_present = len(present)
     test_prior = _prior(y_true, labels)
     pred_prior = _prior(y_pred, labels)
     train_prior = _prior(y_train, labels) if y_train is not None else None
     baseline = float(test_prior.max()) if k else np.nan
     acc = float(accuracy_score(y_true, y_pred))
-    worst = int(np.argmin(rec)) if k else 0
+    worst = labels.index(present[int(np.argmin(rec_present))]) if k_present else 0
 
     row = {c: NA for c in COLUMNS}
     row.update(
@@ -222,16 +225,16 @@ def evaluate(
             "n_test": int(len(y_true)),
             "n_features": n_features if n_features is not None else NA,
             "mcc": float(matthews_corrcoef(y_true, y_pred)),
-            "balanced_accuracy": float(np.mean(rec)) if k else np.nan,
+            "balanced_accuracy": float(np.mean(rec_present)) if k_present else np.nan,
             "f1_macro": float(
-                f1_score(y_true, y_pred, labels=labels, average="macro", zero_division=0)
+                f1_score(y_true, y_pred, labels=present, average="macro", zero_division=0)
             ),
-            "g_mean": _g_mean(rec),
+            "g_mean": _g_mean(rec_present),
             "precision_macro": float(
-                precision_score(y_true, y_pred, labels=labels, average="macro", zero_division=0)
+                precision_score(y_true, y_pred, labels=present, average="macro", zero_division=0)
             ),
             "recall_macro": float(
-                recall_score(y_true, y_pred, labels=labels, average="macro", zero_division=0)
+                recall_score(y_true, y_pred, labels=present, average="macro", zero_division=0)
             ),
             "accuracy": acc,
             "majority_baseline_accuracy": baseline,
@@ -239,10 +242,10 @@ def evaluate(
             "f1_weighted": float(
                 f1_score(y_true, y_pred, labels=labels, average="weighted", zero_division=0)
             ),
-            "is_degenerate": bool(len(np.unique(y_pred)) < k),
+            "is_degenerate": bool(len(np.unique(y_pred)) < k_present),
             "n_classes_predicted": int(len(np.unique(y_pred))),
-            "min_class_recall": float(rec.min()) if k else NA,
-            "worst_class": class_names[worst] if k else NA,
+            "min_class_recall": float(rec_present.min()) if k_present else NA,
+            "worst_class": class_names[worst] if k_present else NA,
             "test_prior": _fmt_prior(test_prior),
             "pred_prior": _fmt_prior(pred_prior),
             "pred_prior_tv": _tv(pred_prior, test_prior),
