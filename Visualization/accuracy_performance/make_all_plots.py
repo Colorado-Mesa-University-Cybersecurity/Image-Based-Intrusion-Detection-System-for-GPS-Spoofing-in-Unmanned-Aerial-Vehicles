@@ -80,18 +80,45 @@ def normalize_label(name: str) -> str:
         "Logistic Regression (Xgboost Features)": "LR+XGBF",
         "Random Forest": "RF",
         "Random Forest (SMOTE)": "RF+SM",
+        "Random Forest (Explainability Features)": "RF+EXPL",
+        "Random Forest (Xgboost Features)": "RF+XGBF",
         "XGBoost": "XGB",
+        "XGBoost (SMOTE)": "XGB+SM",
+        "XGBoost (Explainability Features)": "XGB+EXPL",
+        "XGBoost (Xgboost Features)": "XGB+XGBF",
         "MLP Classifier": "MLP",
+        "MLP Classifier (SMOTE)": "MLP+SM",
+        "MLP Classifier (Explainability Features)": "MLP+EXPL",
+        "MLP Classifier (Xgboost Features)": "MLP+XGBF",
         "LSTM Classifier": "LSTM",
         "LSTM Classifier (SMOTE)": "LSTM+SM",
+        "LSTM Classifier (Explainability Features)": "LSTM+EXPL",
+        "LSTM Classifier (XGBoost Features)": "LSTM+XGBF",
         "CNN": "CNN",
         "CNN-LSTM": "C-LSTM",
         "ResNet-CNN": "ResNet",
         "ResNet-LSTM": "ResNet-LSTM",
+        "OneClassSVM": "OCSVM",
+        "LocalOutlierFactor": "LOF",
         "StackedEnsemble_RF": "SE-RF",
-        "StackedEnsemble_RF+SM": "SE-RF+SM",
+        "StackedEnsemble_RF (SMOTE)": "SE-RF+SM",
+        "StackingClassifier(LogisticRegression RandomForest SVC)": "STACK",
     }
     return mapping.get(n, n)
+
+
+TEST_SET_TAGS = {
+    "real_heldout_20pct": "",
+    "real_full": " [full-real]",
+    "real_heldout_benign_plus_malicious": " [benign-ho]",
+}
+
+
+def protocol_tag(row) -> str:
+    ts = (row.get("test_set", "") or "").strip()
+    if ts in TEST_SET_TAGS:
+        return TEST_SET_TAGS[ts]
+    return " [%s]" % ts if ts and ts != "N/A" else ""
 
 
 def collapse_variants(short: str) -> str:
@@ -105,11 +132,12 @@ def family_for(short: str) -> str:
     s = short
     if s.startswith("ResNet-LSTM") or s.startswith("C-LSTM"):  return "CNN/ResNet-LSTM"
     if s.startswith("ResNet") or s == "CNN":                   return "CNN"
-    if s.startswith("SE-"):                                    return "Ensemble"
+    if s.startswith("SE-") or s.startswith("STACK"):           return "Ensemble"
     if s.startswith("RF"):                                     return "RF"
     if s.startswith("LR"):                                     return "LR"
     if s.startswith("XGB"):                                    return "XGB"
     if s.startswith("MLP"):                                    return "MLP"
+    if s.startswith("OCSVM") or s.startswith("LOF"):           return "OneClass"
     if s.startswith("LSTM"):                                   return "LSTM"
     return s
 
@@ -119,12 +147,17 @@ def dataset_short(name: str) -> str:
     map_ds = {
         "GPS_Data_Simplified_2D_Feature_Map.xlsx": "GPS-2D",
         "spoofing-merged-gps-only.csv": "SPOOF-GPS",
+        "spoofing_ctgan_10000.csv": "CTGAN-10k",
         "spoofing_ctgan_100000.csv": "CTGAN-100k",
         "spoofing_ctgan_1000000.csv": "CTGAN-1M",
+        "spoofing_gc_10000.csv": "GC-10k",
         "spoofing_gc_100000.csv": "GC-100k",
         "spoofing_gc_1000000.csv": "GC-1M",
+        "spoofing_tvae_10000.csv": "TVAE-10k",
         "spoofing_tvae_100000.csv": "TVAE-100k",
         "spoofing_tvae_1000000.csv": "TVAE-1M",
+        "syntheticSpoofing_gan_data.csv": "GAN",
+        "syntheticSpoofing_cgan_data.csv": "CGAN",
     }
     return map_ds.get(n, n)
 
@@ -164,6 +197,7 @@ def to_arrays(rows, use_overview_labels=True, metric="accuracy"):
             continue
         short = normalize_label(r.get("model", "Unknown"))
         short = collapse_variants(short) if use_overview_labels else short
+        short += protocol_tag(r)
         ds_short = dataset_short(r.get("dataset", "Unknown"))
         X.append(x)
         Y.append(y)
@@ -354,6 +388,7 @@ def best_by_dataset_chart(rows, out_path, use_overview_labels=False,
         model_short = normalize_label(r.get("model",""))
         if use_overview_labels:
             model_short = collapse_variants(model_short)
+        model_short += protocol_tag(r)
         base = _as_float(r.get(BASELINE_COL, ""))
         if ds not in grouped or acc > grouped[ds]["acc"]:
             grouped[ds] = {"acc": acc, "model": model_short, "base": base}

@@ -32,6 +32,7 @@ from make_all_plots import (
     dataset_short,
     load_rows,
     normalize_label,
+    protocol_tag,
     _resolve_inputs,
 )
 
@@ -54,7 +55,8 @@ def save(fig, out_path):
 
 def label_of(row, overview=True):
     s = normalize_label(row.get("model", "Unknown"))
-    return collapse_variants(s) if overview else s
+    s = collapse_variants(s) if overview else s
+    return s + protocol_tag(row)
 
 
 def is_degenerate(row):
