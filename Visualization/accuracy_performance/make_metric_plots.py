@@ -1,16 +1,4 @@
 #!/usr/bin/env python3
-"""
-Figures that depend on the imbalance-aware metric columns written by
-eval_metrics.py (MCC, balanced accuracy, macro F1, G-mean, per-class recall,
-class priors, inference latency).
-
-Companion to make_all_plots.py, which covers metric-vs-training-time scatters.
-
-Notes:
-  - Matplotlib 3.9.2
-  - NumPy 1.26.4
-"""
-
 import sys
 from pathlib import Path
 

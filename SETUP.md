@@ -194,8 +194,9 @@ The plots read only the raw `*_Results.csv` at the repo root, through
 `gps_ids/results.py`: one reader, plus the registry of canonical model names,
 dataset files, families, and protocol tags that every notebook row is validated
 against on write (`append_validated`). The lossy `*_Results_filtered.csv` step
-and its `filter.ipynb` are gone; adding a model or dataset is one registry
-entry in `gps_ids/results.py`.
+and its `filter.ipynb` are gone; adding a dataset is one registry entry in
+`gps_ids/results.py`, and adding a trainable model is that entry plus a spec
+in `gps_ids/training.py`.
 
 Rows carry the evaluation protocol in `test_set`, and both plot scripts append it
 to the model label (`[full-real]`, `[benign-ho]`) so runs measured on different

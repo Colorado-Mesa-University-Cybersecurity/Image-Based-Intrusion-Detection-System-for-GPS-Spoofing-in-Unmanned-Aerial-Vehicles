@@ -231,10 +231,20 @@ SPECS = {
             "ae_hidden_layer_sizes": (3,),
             "ae_activation": "relu",
             "ae_max_iter": 100,
+            "ae_learning_rate": "constant",
+            "ae_early_stopping": False,
             "threshold_pct": 97.2,
             "meta_features": "auto",
             "smote_meta": False,
             "timing_rows": 2000,
+        },
+        "synthetic_params": {
+            "meta_features": "scores",
+            "ae_hidden_layer_sizes": (100, 50),
+            "ae_activation": "tanh",
+            "ae_max_iter": 1000,
+            "ae_learning_rate": "adaptive",
+            "ae_early_stopping": True,
         },
     },
 }
@@ -265,8 +275,6 @@ def _family(model_name, base, suffix, kind, exp):
         if kind == "lstm":
             return "Synthetic-LSTM"
         return "Synthetic"
-    if suffix == " (SMOTE)" and kind == "stacked":
-        return "SMOTE"
     if suffix in VARIANT_FAMILIES:
         return VARIANT_FAMILIES[suffix]
     if kind == "stacked" or base == STACK_NAME:
@@ -748,6 +756,8 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
         activation=params["ae_activation"],
         max_iter=params["ae_max_iter"],
         random_state=seed,
+        learning_rate=params["ae_learning_rate"],
+        early_stopping=params["ae_early_stopping"],
     ).fit(fit_autoencoder, fit_autoencoder)
 
     mode = params["meta_features"]
@@ -803,6 +813,8 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
     spec = SPECS[base]
     kind = spec["kind"]
     params = dict(spec["params"])
+    if kind == "stacked" and _results.synthetic_info(exp.dataset_name) is not None:
+        params.update(spec.get("synthetic_params", {}))
     if overrides:
         unknown = sorted(set(overrides) - set(params))
         if unknown:
@@ -813,12 +825,18 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
         params.update(overrides)
     if append is None:
         append = not overrides
-    if overrides and append and results_csv is None:
-        raise ValueError(
-            "an overridden run cannot append to the canonical results CSV; "
-            "pass results_csv= to record it elsewhere, or change the spec in "
-            "gps_ids/training.py"
+    if overrides and append:
+        from pathlib import Path
+
+        canonical = results_csv is None or (
+            Path(results_csv).resolve() == Path(exp.results_csv).resolve()
         )
+        if canonical:
+            raise ValueError(
+                "an overridden run cannot append to the canonical results CSV; "
+                "pass a different results_csv= to record it elsewhere, or change "
+                "the spec in gps_ids/training.py"
+            )
 
     if kind == "image" and not hasattr(exp, "dataloaders"):
         raise ValueError(
