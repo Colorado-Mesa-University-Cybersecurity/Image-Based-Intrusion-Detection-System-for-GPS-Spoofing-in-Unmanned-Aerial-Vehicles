@@ -188,3 +188,13 @@ cython_debug/
 /Visualization/accuracy_performance/plots_out/
 /Visualization/Results/*_Results_filtered.csv
 /Visualization/Results/performance_chart_*.png
+
+.agents
+.claude\skills
+skills-lock.json
+.claude
+
+/tests/
+.pytest_cache/
+/GLOSSARY.md
+/docs/
