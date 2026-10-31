@@ -149,9 +149,10 @@ This yields 408,423 train / 102,107 test across classes `0`–`3`.
 With every dataset in place, all 69 notebooks have their inputs. Two caveats on
 run time rather than availability:
 
-- The four 2D image notebooks (`binaryImageTransformation/2d tubular data/`
-  `CNN`, `ResNet`, `ResnetLSTM`, `LSTM`) took 29-110 hours each in the published
-  results. Reduce `num_epochs` for a smoke test.
+- The four 2D image notebooks (`Models/2D/Images/`: `CNN`, `CnnLstm`,
+  `ResnetCnn`, `ResnetLstm`) took 29-110 hours each in the published results.
+  For a smoke test, lower the epoch budget in the `gps_ids/training.py` spec
+  table before running.
 - `Models/*_SYNTHETIC/**` and the SMOTE notebooks loop over all nine synthetic
   sizes including 1M rows; the stacking variants fit `SVC(probability=True)`,
   which is superlinear in sample count.

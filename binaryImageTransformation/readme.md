@@ -19,23 +19,20 @@ Your directory should look like this:
 ```plaintext
 binaryImageTransformation/
 ├── 2d tubular data/
-│   ├── CNN.ipynb
-│   ├── CnnLstm.ipynb
-│   ├── ResnetCnn.ipynb
-│   ├── ResnetLstm.ipynb
 │   ├── tabToImage.ipynb
 │   ├── split-Images.py
 │   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 ├── UAVATTACK tubular data/
-│   ├── CNN.ipynb
-│   ├── CnnLstm.ipynb
-│   ├── ResnetCnn.ipynb
-│   ├── ResnetLstm.ipynb
 │   ├── tabToImage.ipynb
 │   ├── split images.py
 │   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 └── readme.md
 ```
+
+The model notebooks that train on these images live with the other models, in
+`Models/2D/Images/` and `Models/UAV_ATTACK/Images/` (CNN, CnnLstm, ResnetCnn,
+ResnetLstm per dataset). Checkpoints still save next to each dataset's images
+here, via `gps_ids.images.checkpoint_path`.
 
 The pipeline itself lives in `gps_ids/images.py`: one module configured per
 dataset (`UAV_IMAGES`, `TWO_D_IMAGES`) that renders the images, organizes them
