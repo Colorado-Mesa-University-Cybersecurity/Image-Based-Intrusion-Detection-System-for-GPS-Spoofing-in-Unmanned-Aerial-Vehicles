@@ -24,8 +24,6 @@ binaryImageTransformation/
 │   ├── ResnetCnn.ipynb
 │   ├── ResnetLstm.ipynb
 │   ├── tabToImage.ipynb
-│   ├── helper_functions.py
-│   ├── organize.py
 │   ├── split-Images.py
 │   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 ├── UAVATTACK tubular data/
@@ -34,11 +32,16 @@ binaryImageTransformation/
 │   ├── ResnetCnn.ipynb
 │   ├── ResnetLstm.ipynb
 │   ├── tabToImage.ipynb
-│   ├── helper_functions.py
 │   ├── split images.py
 │   └── image-results-spoofing/      <- generated images and .pth files, gitignored
 └── readme.md
 ```
+
+The pipeline itself lives in `gps_ids/images.py`: one module configured per
+dataset (`UAV_IMAGES`, `TWO_D_IMAGES`) that renders the images, organizes them
+into `data/Train/<class>`, splits idempotently under one manifest format, and
+builds the train/val/test loaders with the image shape derived from the
+dataset schema. The notebooks and split scripts are thin callers.
 
 Each notebook's filename matches the `MODEL_NAME` it records:
 
@@ -55,5 +58,5 @@ binary image whose rows are features and whose columns are bits.
 ### Notes
 
 - The `image-results-spoofing` folders contain the images used by the CNN models. If you want to generate your own images, you can run the `tabToImage.ipynb` notebook. Make sure you have downloaded the datasets and placed them in the `Datasets` directory before doing this.
-- After generating images, run `split-Images.py` (2d data) or `split images.py` (UAVATTACK) to carve the test split out of `data/Train`. `organize.py` is only needed if a run left images loose in `image-results-spoofing/`.
+- After generating images, run `split-Images.py` (2d data) or `split images.py` (UAVATTACK) to carve the test split out of `data/Train`. Both call `gps_ids.images.split`, which is idempotent: it adopts a pre-split archive (the UAVATTACK download ships split), completes legacy manifests, and refuses to double-split. Loose images in `image-results-spoofing/` are picked up by `gps_ids.images.organize`.
 - Be sure to keep all file and folder names exactly as shown above. This helps keep everything organized and avoids errors with file paths in the scripts.
