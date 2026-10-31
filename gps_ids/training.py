@@ -180,6 +180,46 @@ SPECS = {
             "lr": 0.001,
         },
     },
+    "CNN": {
+        "kind": "image",
+        "arch": "cnn",
+        "params": {
+            "epochs": {"uav": 100, "2d": 100},
+            "lr": 0.001,
+            "momentum": 0.9,
+            "checkpoint": "cnn",
+        },
+    },
+    "CNN-LSTM": {
+        "kind": "image",
+        "arch": "cnn_lstm",
+        "params": {
+            "epochs": {"uav": 30, "2d": 100},
+            "lr": 0.001,
+            "momentum": 0.9,
+            "checkpoint": "cnn_lstm",
+        },
+    },
+    "ResNet-CNN": {
+        "kind": "image",
+        "arch": "resnet",
+        "params": {
+            "epochs": {"uav": 20, "2d": 20},
+            "lr": 0.001,
+            "momentum": 0.9,
+            "checkpoint": "resnet",
+        },
+    },
+    "ResNet-LSTM": {
+        "kind": "image",
+        "arch": "resnet_lstm",
+        "params": {
+            "epochs": {"uav": 20, "2d": 100},
+            "lr": 0.001,
+            "momentum": 0.9,
+            "checkpoint": "resnet_lstm",
+        },
+    },
     "StackedEnsemble_RF": {
         "kind": "stacked",
         "params": {
@@ -231,6 +271,8 @@ def _family(model_name, base, suffix, kind, exp):
         return VARIANT_FAMILIES[suffix]
     if kind == "stacked" or base == STACK_NAME:
         return "Stacking"
+    if kind == "image":
+        return "Image"
     if kind == "lstm":
         return "LSTM"
     if kind == "one_class":
@@ -387,6 +429,257 @@ def _run_lstm(exp, spec, params, seed):
     }
 
 
+def _image_model(arch, num_classes, image_shape):
+    import torch
+    import torch.nn as nn
+    import torch.nn.functional as F
+
+    def conv_module(in_features, out_features):
+        return nn.Sequential(
+            nn.Conv2d(in_channels=in_features, out_channels=out_features, kernel_size=3, padding=1),
+            nn.BatchNorm2d(out_features),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2),
+        )
+
+    if arch == "cnn":
+
+        class CNN(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.layer1 = conv_module(1, 64)
+                self.layer2 = conv_module(64, 128)
+                self.layer3 = conv_module(128, 256)
+                self.layer4 = conv_module(256, 512)
+                self.gap = nn.AdaptiveAvgPool2d((2, 2))
+                self.classifier = nn.Sequential(
+                    nn.Flatten(),
+                    nn.Linear(2 * 2 * 512, 1024),
+                    nn.ReLU(),
+                    nn.Linear(1024, 512),
+                    nn.ReLU(),
+                    nn.Linear(512, num_classes),
+                )
+
+            def forward(self, x):
+                x = self.layer1(x)
+                x = self.layer2(x)
+                x = self.layer3(x)
+                x = self.layer4(x)
+                x = self.gap(x)
+                return self.classifier(x)
+
+        return CNN()
+
+    if arch == "cnn_lstm":
+
+        class CNNLSTM(nn.Module):
+            def __init__(self, hidden_dim=128, lstm_layers=1):
+                super().__init__()
+                self.layer1 = conv_module(1, 64)
+                self.layer2 = conv_module(64, 128)
+                self.layer3 = conv_module(128, 256)
+                self.layer4 = conv_module(256, 512)
+                self.gap = nn.AdaptiveAvgPool2d((2, 2))
+                self.lstm = nn.LSTM(
+                    input_size=512 * 2,
+                    hidden_size=hidden_dim,
+                    num_layers=lstm_layers,
+                    batch_first=True,
+                )
+                self.classifier = nn.Sequential(
+                    nn.Linear(hidden_dim, 512),
+                    nn.ReLU(),
+                    nn.Linear(512, num_classes),
+                )
+
+            def forward(self, x):
+                batch = x.size(0)
+                x = self.layer1(x)
+                x = self.layer2(x)
+                x = self.layer3(x)
+                x = self.layer4(x)
+                x = self.gap(x)
+                x = x.permute(0, 2, 1, 3)
+                x = x.contiguous().view(batch, 2, -1)
+                lstm_out, _ = self.lstm(x)
+                return self.classifier(lstm_out[:, -1, :])
+
+        return CNNLSTM()
+
+    from torchvision.models import resnet101
+
+    if arch == "resnet":
+
+        class ResNetCNN(nn.Module):
+            def __init__(self, feature_dim=300):
+                super().__init__()
+                self.resnet = resnet101(pretrained=True)
+                self.resnet.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+                self.resnet.fc = nn.Linear(self.resnet.fc.in_features, feature_dim)
+                self.fc1 = nn.Linear(feature_dim, 128)
+                self.fc2 = nn.Linear(128, num_classes)
+
+            def forward(self, x):
+                features = self.resnet(x)
+                x = F.relu(self.fc1(features))
+                return self.fc2(x)
+
+        return ResNetCNN()
+
+    if arch == "resnet_lstm":
+
+        class ResNetLSTM(nn.Module):
+            def __init__(self, lstm_hidden=128, lstm_layers=1):
+                super().__init__()
+                resnet = resnet101(pretrained=True)
+                resnet.conv1 = nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
+                self.features = nn.Sequential(
+                    resnet.conv1,
+                    resnet.bn1,
+                    resnet.relu,
+                    resnet.maxpool,
+                    resnet.layer1,
+                    resnet.layer2,
+                    resnet.layer3,
+                    resnet.layer4,
+                )
+                with torch.no_grad():
+                    dummy = torch.zeros(1, 1, *image_shape)
+                    dummy_feats = self.features(dummy)
+                _, C, _, W = dummy_feats.shape
+                self.lstm = nn.LSTM(
+                    input_size=W * C,
+                    hidden_size=lstm_hidden,
+                    num_layers=lstm_layers,
+                    batch_first=True,
+                )
+                self.classifier = nn.Sequential(
+                    nn.Linear(lstm_hidden, 128),
+                    nn.ReLU(),
+                    nn.Linear(128, num_classes),
+                )
+
+            def forward(self, x):
+                feats = self.features(x)
+                feats = feats.permute(0, 2, 1, 3)
+                feats = feats.contiguous().view(x.size(0), feats.size(1), -1)
+                _, (h_n, _) = self.lstm(feats)
+                return self.classifier(h_n[-1])
+
+        return ResNetLSTM()
+
+    raise ValueError("unknown image architecture %r" % arch)
+
+
+def _run_image(exp, spec, params, seed):
+    import copy
+
+    import torch
+    import torch.nn as nn
+    import torch.optim as optim
+    from sklearn.metrics import accuracy_score
+
+    from . import images as _images
+
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    epochs = params["epochs"]
+    if isinstance(epochs, dict):
+        epochs = epochs[exp.schema.key]
+    dataloaders = exp.dataloaders
+
+    model = _image_model(
+        spec["arch"], len(exp.class_names), _images.image_shape(exp.config)
+    ).to(device)
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(model.parameters(), lr=params["lr"], momentum=params["momentum"])
+
+    best_wts = copy.deepcopy(model.state_dict())
+    best_acc = 0.0
+    best_epoch = 0
+    start = time.time()
+    for epoch in range(epochs):
+        model.train()
+        running_loss = 0.0
+        train_preds, train_labels = [], []
+        for inputs, labels in dataloaders["train"]:
+            inputs, labels = inputs.to(device), labels.to(device)
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item() * inputs.size(0)
+            _, preds = torch.max(outputs, 1)
+            train_preds.append(preds.cpu().numpy())
+            train_labels.append(labels.cpu().numpy())
+        train_acc = accuracy_score(
+            np.concatenate(train_labels), np.concatenate(train_preds)
+        )
+
+        model.eval()
+        val_preds, val_labels = [], []
+        with torch.no_grad():
+            for inputs, labels in dataloaders["val"]:
+                outputs = model(inputs.to(device))
+                _, preds = torch.max(outputs, 1)
+                val_preds.append(preds.cpu().numpy())
+                val_labels.append(labels.numpy())
+        val_acc = accuracy_score(np.concatenate(val_labels), np.concatenate(val_preds))
+        print(
+            "Epoch %d/%d - Train Loss: %.4f - Train Acc: %.4f - Val Acc: %.4f"
+            % (
+                epoch + 1,
+                epochs,
+                running_loss / len(dataloaders["train"].dataset),
+                train_acc,
+                val_acc,
+            )
+        )
+        if val_acc > best_acc:
+            best_acc = val_acc
+            best_epoch = epoch + 1
+            best_wts = copy.deepcopy(model.state_dict())
+    train_time = time.time() - start
+    model.load_state_dict(best_wts)
+
+    model.eval()
+    all_preds, all_probs, all_labels = [], [], []
+    with torch.no_grad():
+        for inputs, labels in dataloaders["test"]:
+            outputs = model(inputs.to(device))
+            _, preds = torch.max(outputs, 1)
+            all_probs.extend(torch.softmax(outputs, dim=1).cpu().numpy())
+            all_preds.append(preds.cpu().numpy())
+            all_labels.append(labels.numpy())
+
+    checkpoint_path = _images.checkpoint_path(exp.config, params["checkpoint"])
+    torch.save(
+        {
+            "epoch": best_epoch,
+            "model_state_dict": model.state_dict(),
+            "optimizer_state_dict": optimizer.state_dict(),
+        },
+        str(checkpoint_path),
+    )
+    print("Model saved to %s" % checkpoint_path)
+
+    timing = eval_metrics.time_inference_torch(
+        model, next(iter(dataloaders["val"]))[0].to(device)
+    )
+    return {
+        "model": model,
+        "y_pred": np.concatenate(all_preds),
+        "y_proba": np.asarray(all_probs),
+        "y_true": np.concatenate(all_labels),
+        "train_time": train_time,
+        "timing": timing,
+        "num_epochs": epochs,
+        "parameters": list(dict(model.named_parameters()).keys()),
+        "eval_overrides": {},
+    }
+
+
 class StackedDetector:
     def __init__(self, scaler, pca_detectors, pca_autoencoder, ocsvm, lof, ae, threshold, mode, meta):
         self._scaler = scaler
@@ -527,6 +820,11 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
             "gps_ids/training.py"
         )
 
+    if kind == "image" and not hasattr(exp, "dataloaders"):
+        raise ValueError(
+            "the image models need an ImageExperiment; build it with "
+            "gps_ids.images.loaders(config, batch_size=...)"
+        )
     if kind == "stacked":
         if exp.X_fit is None or exp.X_test_raw is None:
             raise ValueError(
@@ -561,7 +859,7 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
         }
     )
 
-    _seed(exp.seed, use_torch=(kind == "lstm"))
+    _seed(exp.seed, use_torch=(kind in ("lstm", "image")))
 
     if kind == "sklearn":
         out = _run_sklearn(exp, spec, params, exp.seed)
@@ -571,6 +869,8 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
         out = _run_lstm(exp, spec, params, exp.seed)
     elif kind == "stacked":
         out = _run_stacked(exp, spec, params, exp.seed, smote_meta)
+    elif kind == "image":
+        out = _run_image(exp, spec, params, exp.seed)
     else:
         raise ValueError("unknown spec kind %r" % kind)
 
@@ -578,10 +878,13 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
     if overrides:
         parameters = "%s | overrides=%r" % (parameters, dict(overrides))
 
+    y_true = out.get("y_true")
+    if y_true is None:
+        y_true = exp.y_test
     kwargs = exp.eval_kwargs()
     kwargs.update(out["eval_overrides"])
     row = eval_metrics.evaluate(
-        exp.y_test,
+        y_true,
         out["y_pred"],
         model_name=model_name,
         family=family,
