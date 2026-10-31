@@ -163,6 +163,16 @@ def synthetic_info(name):
     return info
 
 
+def synthetic_files(dataset_key, generators=None):
+    return [
+        name
+        for name, info in DATASETS.items()
+        if info.kind == "synthetic"
+        and dataset_key in info.datasets
+        and (generators is None or info.generator in generators)
+    ]
+
+
 def protocol_tag(row):
     ts = (row.get("test_set", "") or "").strip()
     if ts in TEST_SET_TAGS:
