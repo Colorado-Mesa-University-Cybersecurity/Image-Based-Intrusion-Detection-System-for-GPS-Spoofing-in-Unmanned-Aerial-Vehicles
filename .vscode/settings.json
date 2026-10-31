@@ -1,12 +1,12 @@
 {
   "files.watcherExclude": {
-    "**/binaryImageTransformation/*/image-results-spoofing/**": true,
+    "**/DataGeneration/BinaryImages/*/image-results-spoofing/**": true,
     "**/.venv/**": true,
     "**/Datasets/**": true,
     "**/__pycache__/**": true
   },
   "search.exclude": {
-    "**/binaryImageTransformation/*/image-results-spoofing/**": true,
+    "**/DataGeneration/BinaryImages/*/image-results-spoofing/**": true,
     "**/.venv/**": true,
     "**/Datasets/**": true,
     "**/__pycache__/**": true

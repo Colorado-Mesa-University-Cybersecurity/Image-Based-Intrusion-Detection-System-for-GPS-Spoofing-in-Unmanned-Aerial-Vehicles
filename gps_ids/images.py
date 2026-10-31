@@ -32,7 +32,7 @@ class ImageDataset:
 UAV_IMAGES = ImageDataset(
     key="uav",
     schema_key="uav",
-    folder="binaryImageTransformation/UAVATTACK tubular data",
+    folder="DataGeneration/BinaryImages/UAVATTACK",
     class_folders=("benign", "malicious"),
     split_style="train_sample",
 )
@@ -40,7 +40,7 @@ UAV_IMAGES = ImageDataset(
 TWO_D_IMAGES = ImageDataset(
     key="2d",
     schema_key="2d",
-    folder="binaryImageTransformation/2d tubular data",
+    folder="DataGeneration/BinaryImages/2D",
     class_folders=("0", "1", "2", "3"),
     split_style="pool_shuffle",
 )

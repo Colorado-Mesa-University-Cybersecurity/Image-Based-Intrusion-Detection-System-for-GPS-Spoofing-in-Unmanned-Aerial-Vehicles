@@ -38,7 +38,7 @@ Verify:
 ### SDV must stay on 1.x
 
 `sdv>=2` **breaks this repo**: SDV 2.0 removed the `Synthesizer.load()`
-classmethod that `scripts/gen_synth.py` and `SDV_Synthetic.ipynb` both call, and the
+classmethod that `DataGeneration/SyntheticData/gen_synth.py` and `SDV_Synthetic.ipynb` both call, and the
 committed `spoofing-*-synthesizer.pkl` files were fitted with 1.x. The pin in
 `requirements.txt` (`sdv>=1.17,<2`) is deliberate — don't relax it.
 
@@ -49,8 +49,8 @@ committed `spoofing-*-synthesizer.pkl` files were fitted with 1.x. The pin in
 | 2D Spoofing (`GPS_Data_Simplified_2D_Feature_Map.xlsx`, 72 MB) | `Datasets/excel/2dSpoofingDataset/` | Public — direct download |
 | UAV-ATTACK (`spoofing-merged-gps-only.csv`, 3,622 x 84) | `Datasets/csv/UAVATTACK/` | **Needs an IEEE account** |
 | SDV synthetic CSVs (18 files) | `Datasets/{csv/UAVATTACK,excel/2dSpoofingDataset}/` | Generated locally |
-| UAVATTACK binary images (3,622 PNG) | `binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/` | From authors' Drive |
-| 2D binary images (510,530 PNG) | `binaryImageTransformation/2d tubular data/image-results-spoofing/` | Generated locally |
+| UAVATTACK binary images (3,622 PNG) | `DataGeneration/BinaryImages/UAVATTACK/image-results-spoofing/` | From authors' Drive |
+| 2D binary images (510,530 PNG) | `DataGeneration/BinaryImages/2D/image-results-spoofing/` | Generated locally |
 
 ### 2D Spoofing dataset
 
@@ -116,7 +116,7 @@ canonical dataset schema (`gps_ids/schema.py`), for `gc` / `ctgan` / `tvae`
 at 10k / 100k / 1M rows:
 
 ```bash
-.venv/Scripts/python -I scripts/gen_synth.py . 10000 100000 1000000
+.venv/Scripts/python -I DataGeneration/SyntheticData/gen_synth.py 10000 100000 1000000
 ```
 
 Roughly 5.5 GB total; skips files that already exist, so it is resumable.
@@ -124,27 +124,55 @@ Roughly 5.5 GB total; skips files that already exist, so it is resumable.
 ### Binary images
 
 The UAVATTACK images come from the authors' Drive folder linked in
-`binaryImageTransformation/readme.md` (`UAVATTACK_image-results-spoofing.rar`) —
+`Datasets/readme.md` (`UAVATTACK_image-results-spoofing.rar`) —
 2,899 train / 723 test across `benign` and `malicious`.
 
 The 2D images are **not** distributed and must be generated:
 
 ```bash
-cd "binaryImageTransformation/2d tubular data"
-../../.venv/Scripts/python -m jupyter nbconvert --to notebook --execute tabToImage.ipynb
-../../.venv/Scripts/python split-Images.py
+cd DataGeneration/BinaryImages/2D
+../../../.venv/Scripts/python -m jupyter nbconvert --to notebook --execute tabToImage.ipynb
+../../../.venv/Scripts/python split_images.py
 ```
 
 `tabToImage.ipynb` writes every image into `image-results-spoofing/data/Train/<class>`,
-and `split-Images.py` moves 20% of each class into `.../data/Test/<class>` — the
-layout the four 2D notebooks read, and the same one the UAVATTACK archive ships.
+and `split_images.py` moves 20% of each class into `.../data/Test/<class>` — the
+layout the four 2D image models read, and the same one the UAVATTACK archive ships.
 `gps_ids.images.organize` picks up images a run left loose in
-`image-results-spoofing/`; `split-Images.py` accepts that layout too, and refuses
+`image-results-spoofing/`; `split_images.py` accepts that layout too, and refuses
 to write a manifest when it finds nothing to split.
 
 This yields 408,423 train / 102,107 test across classes `0`–`3`.
 
-## 3. Scope notes
+## 3. Model layout
+
+Each dataset has the same families, under the same folder and file names, so a
+notebook has a counterpart on the other side:
+
+| Folder | Notebooks | 2D | UAV-ATTACK |
+|---|---|---|---|
+| `Regular/` | `LogisticRegression`, `RandomForest`, `XGBoost`, `MLP` | yes | yes |
+| `SMOTE/` | the four above plus `LSTM`, `StackedEnsemble` | yes | yes |
+| `LSTM/` | `LSTM` | yes | yes |
+| `Stacking/` | `StackedEnsemble`, `StackingClassifier` | yes | yes |
+| `FeatureEngineering/` | `Features`, `LSTM-Features` | yes | yes |
+| `Images/` | `CNN`, `CnnLstm`, `ResnetCnn`, `ResnetLstm` | yes | yes |
+| `OneClass/` | `OneClassSVM`, `LocalOutlierFactor` | no | yes |
+
+`Models/<dataset>_SYNTHETIC/` mirrors the same way: `Regular/{Basic,
+RandomForest}`, `LSTM/LSTM`, `Stacking/{StackedEnsemble, StackingClassifier}`.
+
+One-class detection is UAV-ATTACK only: it models "benign" as a single class and
+flags departures from it, which the 2D dataset's four attack sophistication
+levels are not framed for.
+
+Hyperparameters are not repeated per notebook. Each canonical model name has one
+entry in the `gps_ids/training.py` spec table, so a family's 2D and UAV runs use
+the same settings by construction, and the regular and SMOTE variants of a model
+cannot drift apart. The few values that legitimately differ per dataset (the
+image epoch budgets, the XGBoost objective) are recorded in that one table.
+
+## 4. Scope notes
 
 With every dataset in place, all 65 notebooks have their inputs. Two caveats on
 run time rather than availability:
@@ -157,7 +185,7 @@ run time rather than availability:
   sizes including 1M rows; the stacking variants fit `SVC(probability=True)`,
   which is superlinear in sample count.
 
-## 4. Results files
+## 5. Results files
 
 Model notebooks append to `2D_Results.csv` / `UAVATTACK_Results.csv` at the repo
 root, creating them with a header if absent. Both are gitignored scratch
@@ -213,9 +241,9 @@ removed:
 
 | Notebook | | f1 | accuracy |
 |---|---|---|---|
-| `Models/2D/Regular/2DLogRegres.ipynb` | published | 0.6825183052421334 | 0.7789307190566666 |
+| `Models/2D/Regular/LogisticRegression.ipynb` | published | 0.6825183052421334 | 0.7789307190566666 |
 | | fresh run | 0.6825183052421334 | 0.7789307190566666 |
-| `Models/UAV_ATTACK/Regular/logRegressSpoofGPS.ipynb` | published | 0.9979229851190652 | 0.9979296066252588 |
+| `Models/UAV_ATTACK/Regular/LogisticRegression.ipynb` | published | 0.9979229851190652 | 0.9979296066252588 |
 | | fresh run | 0.9979 | 0.9979 |
 
 No results ship with the repo -- `*_Results_full.csv` and both

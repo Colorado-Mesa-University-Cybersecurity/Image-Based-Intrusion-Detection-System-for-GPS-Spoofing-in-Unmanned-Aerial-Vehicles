@@ -176,14 +176,13 @@ cython_debug/
 /Datasets/csv/UAVATTACK/spoofing_gc_1000000.csv
 /Datasets/csv/UAVATTACK/
 /Datasets/excel/2dSpoofingDataset/
-/binaryImageTransformation/2d tubular data/image-results-spoofing/
-/binaryImageTransformation/2d tubular data/*.pth
-/binaryImageTransformation/UAVATTACK tubular data/*.pth
-/binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/
+/DataGeneration/BinaryImages/2D/image-results-spoofing/
+/DataGeneration/BinaryImages/2D/*.pth
+/DataGeneration/BinaryImages/UAVATTACK/image-results-spoofing/
+/DataGeneration/BinaryImages/UAVATTACK/*.pth
 
 /2D_Results.csv
 /UAVATTACK_Results.csv
-/Synthetic_Data_Generation/2D_Results.csv
 
 /Visualization/accuracy_performance/plots_out/
 /Visualization/Results/*_Results_filtered.csv

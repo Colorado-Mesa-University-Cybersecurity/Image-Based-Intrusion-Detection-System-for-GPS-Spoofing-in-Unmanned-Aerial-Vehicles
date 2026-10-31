@@ -1,10 +1,3 @@
-import sys
-from pathlib import Path
-
-ROOT = Path(__file__).resolve().parents[2]
-if str(ROOT) not in sys.path:
-    sys.path.insert(0, str(ROOT))
-
 from gps_ids.images import TWO_D_IMAGES, manifest_path, split
 
 manifest = split(TWO_D_IMAGES)

@@ -1,58 +1,73 @@
 ## Dataset Organization and Download Links
 
-To set up this project with the original datasets, please download the files from the sources below and place them in their corresponding folders as shown in the directory structure.
+Two files are downloaded; everything else in this tree is generated locally by
+`DataGeneration/`. Only the two originals are required to reproduce the study
+from scratch.
 
-### Original Data Sources
+### Original data sources (download these)
 
-- **UAV-ATTACK Dataset**  
-  Download from: [IEEE DataPort](https://ieee-dataport.org/open-access/uav-attack-dataset)  
-  Place `spoofing-merged-gps-only.csv` in:  
+- **UAV-ATTACK Dataset** — binary, benign vs malicious  
+  Download from: [IEEE DataPort](https://ieee-dataport.org/open-access/uav-attack-dataset) (needs an IEEE account)  
+  Place `spoofing-merged-gps-only.csv` in:
   ```
   Datasets/csv/UAVATTACK/
   ```
+  3,622 rows x 84 columns. The authors recommend the **live** spoofing/jamming
+  captures over the simulated ones.
 
-- **2D Spoofing Dataset**  
+- **2D Spoofing Dataset** — four classes, benign / simple / intermediate / sophisticated  
   Download from: [Mendeley Data](https://data.mendeley.com/datasets/z7dj3yyzt8/3)  
-  Place `GPS_Data_Simplified_2D_Feature_Map.xlsx` in:  
+  Place `GPS_Data_Simplified_2D_Feature_Map.xlsx` in:
   ```
   Datasets/excel/2dSpoofingDataset/
   ```
+  510,530 rows x 14 columns.
 
-### Synthetic Results
+### Generated beside the originals
 
-Our generated synthetic datasets can be found here:  
-[Google Drive - Synthetic Results](https://drive.google.com/drive/folders/1l2LfGwJ8FRzE115wkMUHQRaGiru-SwGv)
+| File pattern | Produced by | Datasets |
+|---|---|---|
+| `spoofing_{gc,ctgan,tvae}_{10000,100000,1000000}.csv` | `DataGeneration/SyntheticData/gen_synth.py`, sampling the committed SDV synthesizers | both |
+| `spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv` | `DataGeneration/SyntheticData/<dataset>/SDV/SDV_Synthetic.ipynb` (10k preview written while fitting) | both |
+| `syntheticSpoofing_gan_data.csv` | `DataGeneration/SyntheticData/UAVATTACK/GAN/GAN.ipynb` | UAV only |
+| `syntheticSpoofing_cgan_data.csv` | `DataGeneration/SyntheticData/UAVATTACK/CGAN/CGAN.ipynb` | UAV only |
 
----
+Every generated table is written through the canonical dataset schema
+(`gps_ids/schema.py`), so it carries the same feature columns, in the same
+order, with integer labels — whichever generator produced it.
 
-### Final Folder Structure
+The GAN and CGAN tables exist for UAV-ATTACK only, so the UAV synthetic model
+runs cover eleven files and the 2D runs cover nine.
 
-Your directory should look like this after all files are downloaded and placed correctly:
+Pre-generated copies of our synthetic tables and of the binary images:
+[Google Drive](https://drive.google.com/drive/folders/1l2LfGwJ8FRzE115wkMUHQRaGiru-SwGv)
+
+The binary images are **not** stored here. They live next to the code that
+renders them, under `DataGeneration/BinaryImages/<dataset>/image-results-spoofing/`.
+
+Both dataset folders are gitignored, so nothing in this tree is committed apart
+from the two UAV GAN/CGAN tables and this readme.
+
+### Final folder structure
 
 ```plaintext
 Datasets/
 ├── csv/
 │   └── UAVATTACK/
-│       ├── spoofing-merged-gps-only.csv
-│       ├── spoofing_ctgan_100000.csv
-│       ├── spoofing_ctgan_1000000.csv
-│       ├── spoofing_ctgan_10000.csv
-│       ├── spoofing_gc_100000.csv
-│       ├── spoofing_gc_1000000.csv
-│       ├── spoofing_gc_10000.csv
-│       ├── spoofing_tvae_100000.csv
-│       ├── spoofing_tvae_1000000.csv
-│       ├── spoofing_tvae_10000.csv
-├── excel/
-│   └── 2dSpoofingDataset/
-│       ├── GPS_Data_Simplified_2D_Feature_Map.xlsx
-│       ├── spoofing_ctgan_100000.csv
-│       ├── spoofing_ctgan_1000000.csv
-│       ├── spoofing_ctgan_10000.csv
-│       ├── spoofing_gc_100000.csv
-│       ├── spoofing_gc_1000000.csv
-│       ├── spoofing_gc_10000.csv
-│       ├── spoofing_tvae_100000.csv
-│       ├── spoofing_tvae_1000000.csv
-│       └── spoofing_tvae_10000.csv
+│       ├── spoofing-merged-gps-only.csv          <- downloaded
+│       ├── spoofing_{gc,ctgan,tvae}_10000.csv    <- generated
+│       ├── spoofing_{gc,ctgan,tvae}_100000.csv   <- generated
+│       ├── spoofing_{gc,ctgan,tvae}_1000000.csv  <- generated
+│       ├── spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv
+│       ├── syntheticSpoofing_gan_data.csv
+│       └── syntheticSpoofing_cgan_data.csv
+└── excel/
+    └── 2dSpoofingDataset/
+        ├── GPS_Data_Simplified_2D_Feature_Map.xlsx   <- downloaded
+        ├── spoofing_{gc,ctgan,tvae}_10000.csv        <- generated
+        ├── spoofing_{gc,ctgan,tvae}_100000.csv       <- generated
+        ├── spoofing_{gc,ctgan,tvae}_1000000.csv      <- generated
+        └── spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv
 ```
+
+Roughly 5.5 GB of generated CSVs at the full three sample sizes.
