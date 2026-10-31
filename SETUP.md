@@ -33,7 +33,7 @@ Verify:
 ### SDV must stay on 1.x
 
 `sdv>=2` **breaks this repo**: SDV 2.0 removed the `Synthesizer.load()`
-classmethod that `createData.ipynb` and `SDV_Synthetic.ipynb` both call, and the
+classmethod that `scripts/gen_synth.py` and `SDV_Synthetic.ipynb` both call, and the
 committed `spoofing-*-synthesizer.pkl` files were fitted with 1.x. The pin in
 `requirements.txt` (`sdv>=1.17,<2`) is deliberate — don't relax it.
 
@@ -106,8 +106,9 @@ The authors note the *simulated* runs are less accurate and recommend the
 
 ### Synthetic CSVs
 
-Reproduces what the two `createData.ipynb` notebooks emit, into both dataset
-folders, for `gc` / `ctgan` / `tvae` at 10k / 100k / 1M rows:
+Samples the committed synthesizers into both dataset folders, through the
+canonical dataset schema (`gps_ids/schema.py`), for `gc` / `ctgan` / `tvae`
+at 10k / 100k / 1M rows:
 
 ```bash
 .venv/Scripts/python -I scripts/gen_synth.py . 10000 100000 1000000

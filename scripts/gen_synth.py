@@ -17,16 +17,20 @@ if len(sys.argv) < 3:
 ROOT = sys.argv[1]
 SIZES = [int(s) for s in sys.argv[2:]]
 
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+from gps_ids import schema as gps_schema
+
 JOBS = [
     (
         os.path.join(ROOT, "Synthetic_Data_Generation", "UAV Synthetic Data Generation", "SDV"),
         os.path.join(ROOT, "Datasets", "csv", "UAVATTACK"),
-        "UAV",
+        "uav",
     ),
     (
         os.path.join(ROOT, "Synthetic_Data_Generation", "2D Synthetic Data Generation", "SDV"),
         os.path.join(ROOT, "Datasets", "excel", "2dSpoofingDataset"),
-        "2D",
+        "2d",
     ),
 ]
 
@@ -54,6 +58,10 @@ for synth_dir, out_dir, tag in JOBS:
             t = time.time()
             synth.reset_sampling()
             df = synth.sample(n)
+            label_col = gps_schema.get(tag).label_column
+            df = gps_schema.to_canonical_frame(
+                df.drop(columns=[label_col]), df[label_col], tag
+            )
             tmp = out + ".partial"
             df.to_csv(tmp, index=False)
             os.replace(tmp, out)
