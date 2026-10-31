@@ -395,17 +395,3 @@ def loaders(config, batch_size, test_batch_size=1, num_workers=0):
         ),
     }
     return ImageExperiment(config, dataloaders, train_full.classes, targets, train_idx)
-
-
-def seed_everything(seed=RANDOM_STATE):
-    import torch
-
-    np.random.seed(seed)
-    random.seed(seed)
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
-    return torch.device("cuda" if torch.cuda.is_available() else "cpu")

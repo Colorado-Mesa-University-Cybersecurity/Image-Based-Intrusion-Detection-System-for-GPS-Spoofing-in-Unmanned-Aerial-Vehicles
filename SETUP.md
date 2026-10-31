@@ -138,7 +138,7 @@ cd "binaryImageTransformation/2d tubular data"
 `tabToImage.ipynb` writes every image into `image-results-spoofing/data/Train/<class>`,
 and `split-Images.py` moves 20% of each class into `.../data/Test/<class>` — the
 layout the four 2D notebooks read, and the same one the UAVATTACK archive ships.
-`organize.py` is only needed if a run left images loose in
+`gps_ids.images.organize` picks up images a run left loose in
 `image-results-spoofing/`; `split-Images.py` accepts that layout too, and refuses
 to write a manifest when it finds nothing to split.
 
@@ -146,7 +146,7 @@ This yields 408,423 train / 102,107 test across classes `0`–`3`.
 
 ## 3. Scope notes
 
-With every dataset in place, all 69 notebooks have their inputs. Two caveats on
+With every dataset in place, all 65 notebooks have their inputs. Two caveats on
 run time rather than availability:
 
 - The four 2D image notebooks (`Models/2D/Images/`: `CNN`, `CnnLstm`,
@@ -165,21 +165,22 @@ accumulators and are written by `pandas.to_csv()`, so they are valid quoted CSV
 -- read them with `csv.DictReader` or `pd.read_csv`, never by splitting on
 commas.
 
-Every model notebook records its results through `eval_metrics.py` at the repo
-root, so all families and both datasets produce the identical 50-column schema:
+Every model notebook records its results through the training harness, which
+drives `eval_metrics.py` at the repo root, so all families and both datasets
+produce the identical 50-column schema:
 
 ```python
-from eval_metrics import append_row, evaluate, summary, time_inference
+from gps_ids import protocol, training
 
-row = evaluate(y_test, y_pred, model_name=MODEL_NAME, dataset_name=DATASET_NAME,
-               family="Regular", labels=[0, 1, 2, 3], class_names=[...],
-               y_proba=proba, y_train=y_train, train_time_sec=train_time,
-               parameters=model.get_params(), seed=RANDOM_STATE)
-append_row(row, RESULTS_CSV)
+EXP = protocol.real_heldout("uav")
+r = training.run("Logistic Regression", EXP)
 ```
 
-The notebooks import `gps_ids` and `eval_metrics` through the editable install
-from section 1, so they work from their existing folders. `append_row` reindexes every
+The harness builds the model from its spec in `gps_ids/training.py`, seeds from
+the Experiment, fits with timing, evaluates, validates the row against the
+results vocabulary, and appends it. The notebooks import `gps_ids` and
+`eval_metrics` through the editable install from section 1, so they work from
+their existing folders. `append_row` reindexes every
 row to `eval_metrics.COLUMNS`, which is what keeps the schema identical across
 families; columns that do not apply to a given run are written as `N/A` rather
 than omitted. Per-class columns use fixed slots `recall_c0..c3`, so the 2-class

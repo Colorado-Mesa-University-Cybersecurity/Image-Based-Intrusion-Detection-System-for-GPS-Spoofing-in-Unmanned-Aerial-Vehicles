@@ -11,7 +11,6 @@ Quick links to other READMEs in this repo
   - binaryImageTransformation/readme.md — how to set up the image-results folders and run the transformation notebooks
 
 Where to look next
-- notebooks/ — run order, experiment notebooks, and analysis (open the overview or first notebook to start)
 - Datasets/ — place downloaded datasets here following Datasets/readme.md
 - binaryImageTransformation/ — image generation (tabToImage, split scripts, image folders); the image model notebooks live in Models/&lt;dataset&gt;/Images; see its readme for folder structure and notes
 

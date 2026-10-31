@@ -13,7 +13,7 @@ To set up this project with the original datasets, please download the files fro
 
 - **2D Spoofing Dataset**  
   Download from: [Mendeley Data](https://data.mendeley.com/datasets/z7dj3yyzt8/3)  
-  Place `Simplified_2D_Feature_Map.xlsx` in:  
+  Place `GPS_Data_Simplified_2D_Feature_Map.xlsx` in:  
   ```
   Datasets/excel/2dSpoofingDataset/
   ```
