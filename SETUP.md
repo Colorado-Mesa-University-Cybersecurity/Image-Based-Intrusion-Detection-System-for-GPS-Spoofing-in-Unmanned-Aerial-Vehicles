@@ -185,10 +185,12 @@ The pipeline is:
 notebooks -> *_Results.csv -> make_all_plots.py / make_metric_plots.py
 ```
 
-`filter.ipynb` reducing to `*_Results_filtered.csv` is still available but is no
-longer required. `_resolve_inputs()` prefers the raw `*_Results.csv` at the repo
-root and falls back to `Visualization/Results/*_Results_filtered.csv` only when
-the raw file is absent.
+The plots read only the raw `*_Results.csv` at the repo root, through
+`gps_ids/results.py`: one reader, plus the registry of canonical model names,
+dataset files, families, and protocol tags that every notebook row is validated
+against on write (`append_validated`). The lossy `*_Results_filtered.csv` step
+and its `filter.ipynb` are gone; adding a model or dataset is one registry
+entry in `gps_ids/results.py`.
 
 Rows carry the evaluation protocol in `test_set`, and both plot scripts append it
 to the model label (`[full-real]`, `[benign-ho]`) so runs measured on different

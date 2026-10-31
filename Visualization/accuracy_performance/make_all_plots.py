@@ -14,6 +14,7 @@ __license__ = "MIT"
 __version__ = "0.5.0"
 
 import math
+import sys
 from pathlib import Path
 import colorsys
 import numpy as np
@@ -26,26 +27,25 @@ from matplotlib import colormaps
 
 # ---- CONFIG ----
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
-RESULTS_DIR = Path(__file__).resolve().parent.parent / "Results"
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from gps_ids.results import (
+    collapse_variants,
+    dataset_short,
+    family_for,
+    load_rows,
+    normalize_label,
+    protocol_tag,
+    results_files,
+)
 
 
 def _resolve_inputs():
-    pairs = [
-        (REPO_ROOT / "UAVATTACK_Results.csv", RESULTS_DIR / "UAVATTACK_Results_filtered.csv"),
-        (REPO_ROOT / "2D_Results.csv", RESULTS_DIR / "2D_Results_filtered.csv"),
-    ]
-    found = []
-    for raw, filtered in pairs:
-        if raw.exists():
-            found.append(raw)
-        elif filtered.exists():
-            found.append(filtered)
-    return found
+    return results_files()
 
 
-FILES = _resolve_inputs()
 OUTDIR = Path(__file__).resolve().parent / "plots_out"
-OUTDIR.mkdir(parents=True, exist_ok=True)
 
 METRICS = [
     ("mcc", "Matthews Correlation Coefficient", (-1.05, 1.05)),
@@ -70,116 +70,6 @@ FONTS = {"axes.labelsize": 10, "axes.titlesize": 10,
 plt.rcParams.update(FONTS)
 
 
-# ---- Abbreviations / families / dataset shortnames ----
-def normalize_label(name: str) -> str:
-    n = (name or "").strip()
-    mapping = {
-        "Logistic Regression": "LR",
-        "Logistic Regression (SMOTE)": "LR+SM",
-        "Logistic Regression (Explainability Features)": "LR+EXPL",
-        "Logistic Regression (Xgboost Features)": "LR+XGBF",
-        "Random Forest": "RF",
-        "Random Forest (SMOTE)": "RF+SM",
-        "Random Forest (Explainability Features)": "RF+EXPL",
-        "Random Forest (Xgboost Features)": "RF+XGBF",
-        "XGBoost": "XGB",
-        "XGBoost (SMOTE)": "XGB+SM",
-        "XGBoost (Explainability Features)": "XGB+EXPL",
-        "XGBoost (Xgboost Features)": "XGB+XGBF",
-        "MLP Classifier": "MLP",
-        "MLP Classifier (SMOTE)": "MLP+SM",
-        "MLP Classifier (Explainability Features)": "MLP+EXPL",
-        "MLP Classifier (Xgboost Features)": "MLP+XGBF",
-        "LSTM Classifier": "LSTM",
-        "LSTM Classifier (SMOTE)": "LSTM+SM",
-        "LSTM Classifier (Explainability Features)": "LSTM+EXPL",
-        "LSTM Classifier (XGBoost Features)": "LSTM+XGBF",
-        "CNN": "CNN",
-        "CNN-LSTM": "C-LSTM",
-        "ResNet-CNN": "ResNet",
-        "ResNet-LSTM": "ResNet-LSTM",
-        "OneClassSVM": "OCSVM",
-        "LocalOutlierFactor": "LOF",
-        "StackedEnsemble_RF": "SE-RF",
-        "StackedEnsemble_RF (SMOTE)": "SE-RF+SM",
-        "StackingClassifier(LogisticRegression RandomForest SVC)": "STACK",
-    }
-    return mapping.get(n, n)
-
-
-TEST_SET_TAGS = {
-    "real_heldout_20pct": "",
-    "real_full": " [full-real]",
-    "real_heldout_benign_plus_malicious": " [benign-ho]",
-}
-
-
-def protocol_tag(row) -> str:
-    ts = (row.get("test_set", "") or "").strip()
-    if ts in TEST_SET_TAGS:
-        return TEST_SET_TAGS[ts]
-    return " [%s]" % ts if ts and ts != "N/A" else ""
-
-
-def collapse_variants(short: str) -> str:
-    for suf in ["+SM", "+EXPL", "+XGBF"]:
-        if short.endswith(suf):
-            return short.replace(suf, "")
-    return short
-
-
-def family_for(short: str) -> str:
-    s = short
-    if s.startswith("ResNet-LSTM") or s.startswith("C-LSTM"):  return "CNN/ResNet-LSTM"
-    if s.startswith("ResNet") or s == "CNN":                   return "CNN"
-    if s.startswith("SE-") or s.startswith("STACK"):           return "Ensemble"
-    if s.startswith("RF"):                                     return "RF"
-    if s.startswith("LR"):                                     return "LR"
-    if s.startswith("XGB"):                                    return "XGB"
-    if s.startswith("MLP"):                                    return "MLP"
-    if s.startswith("OCSVM") or s.startswith("LOF"):           return "OneClass"
-    if s.startswith("LSTM"):                                   return "LSTM"
-    return s
-
-
-def dataset_short(name: str) -> str:
-    n = (name or "").strip()
-    map_ds = {
-        "GPS_Data_Simplified_2D_Feature_Map.xlsx": "GPS-2D",
-        "spoofing-merged-gps-only.csv": "SPOOF-GPS",
-        "spoofing_ctgan_10000.csv": "CTGAN-10k",
-        "spoofing_ctgan_100000.csv": "CTGAN-100k",
-        "spoofing_ctgan_1000000.csv": "CTGAN-1M",
-        "spoofing_gc_10000.csv": "GC-10k",
-        "spoofing_gc_100000.csv": "GC-100k",
-        "spoofing_gc_1000000.csv": "GC-1M",
-        "spoofing_tvae_10000.csv": "TVAE-10k",
-        "spoofing_tvae_100000.csv": "TVAE-100k",
-        "spoofing_tvae_1000000.csv": "TVAE-1M",
-        "syntheticSpoofing_gan_data.csv": "GAN",
-        "syntheticSpoofing_cgan_data.csv": "CGAN",
-    }
-    return map_ds.get(n, n)
-
-
-# ---- Read via helper ----
-import sys
-if str(Path(__file__).resolve().parent) not in sys.path:
-    sys.path.insert(0, str(Path(__file__).resolve().parent))
-from print_csv import read_csv_dicts
-
-
-def load_rows(files):
-    rows = []
-    for f in files:
-        header, rs = read_csv_dicts(f)
-        for r in rs:
-            r = { (k or "").strip(): (v or "").strip() for k,v in r.items() }
-            r["_source"] = Path(f).name
-            rows.append(r)
-    return rows
-
-
 def _as_float(value):
     try:
         f = float(str(value).strip())
@@ -198,7 +88,7 @@ def to_arrays(rows, use_overview_labels=True, metric="accuracy"):
         short = normalize_label(r.get("model", "Unknown"))
         short = collapse_variants(short) if use_overview_labels else short
         short += protocol_tag(r)
-        ds_short = dataset_short(r.get("dataset", "Unknown"))
+        ds_short = dataset_short(r.get("dataset", "Unknown"), r.get("_dataset_key"))
         X.append(x)
         Y.append(y)
         M_raw.append(short)
@@ -384,7 +274,7 @@ def best_by_dataset_chart(rows, out_path, use_overview_labels=False,
         acc = _as_float(r.get(metric, ""))
         if acc is None:
             continue
-        ds = dataset_short(r.get("dataset",""))
+        ds = dataset_short(r.get("dataset",""), r.get("_dataset_key"))
         model_short = normalize_label(r.get("model",""))
         if use_overview_labels:
             model_short = collapse_variants(model_short)
@@ -443,15 +333,17 @@ FULL_FAMILY_METRICS = {"mcc", "accuracy"}
 
 
 def main():
-    if not FILES:
+    files = _resolve_inputs()
+    if not files:
         print("No results CSV found. Run the model notebooks first to produce")
         print(f"  {REPO_ROOT/'2D_Results.csv'}")
         print(f"  {REPO_ROOT/'UAVATTACK_Results.csv'}")
         return
+    OUTDIR.mkdir(parents=True, exist_ok=True)
     print("Reading:")
-    for f in FILES:
+    for f in files:
         print(f"  {f}")
-    rows_all = load_rows(FILES)
+    rows_all = load_rows(files)
 
     # Build consistent colors/markers for both label modes:
     # - overview (collapsed labels)
@@ -478,9 +370,8 @@ def main():
         ("Ensemble",  "fig_zoom_Ensemble_RF"),
     ]
 
-    rows_uav = [r for r in rows_all if "UAVATTACK" in r.get("_source","")]
-    rows_2d = [r for r in rows_all
-               if "2D_" in r.get("_source","") or r.get("_source","").startswith("2D")]
+    rows_uav = [r for r in rows_all if r.get("_dataset_key") == "uav"]
+    rows_2d = [r for r in rows_all if r.get("_dataset_key") == "2d"]
 
     for metric, metric_label, ylim in METRICS:
         outdir = OUTDIR / metric

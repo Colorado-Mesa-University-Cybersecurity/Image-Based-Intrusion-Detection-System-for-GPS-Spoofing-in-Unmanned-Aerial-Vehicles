@@ -28,21 +28,19 @@ from make_all_plots import (
     PNG_DPI,
     REPO_ROOT,
     _as_float,
+)
+from gps_ids.results import (
+    CLASS_LABELS,
+    SYNTH_FAMILIES,
     collapse_variants,
     dataset_short,
     load_rows,
     normalize_label,
     protocol_tag,
-    _resolve_inputs,
+    results_files as _resolve_inputs,
 )
 
 OUTDIR = Path(__file__).resolve().parent / "plots_out" / "metrics"
-
-CLASS_LABELS = {
-    "GPS-2D": ["benign", "simple", "intermediate", "sophisticated"],
-    "SPOOF-GPS": ["benign", "malicious"],
-}
-SYNTH_FAMILIES = {"Synthetic", "Synthetic-Stacking", "Synthetic-LSTM", "SMOTE"}
 
 
 def save(fig, out_path):
@@ -67,7 +65,7 @@ MARKERS = ["o", "s", "D", "^", "v", "<", ">", "P", "X", "*", "h", "H"]
 
 
 def marker_map_for(rows):
-    ds = sorted({dataset_short(r.get("dataset", "")) for r in rows})
+    ds = sorted({dataset_short(r.get("dataset", ""), r.get("_dataset_key")) for r in rows})
     return {d: MARKERS[i % len(MARKERS)] for i, d in enumerate(ds)}
 
 
@@ -77,7 +75,7 @@ def baselines_by_dataset(rows):
         b = _as_float(r.get("majority_baseline_accuracy"))
         if b is None:
             continue
-        acc.setdefault(dataset_short(r.get("dataset", "")), []).append(b)
+        acc.setdefault(dataset_short(r.get("dataset", ""), r.get("_dataset_key")), []).append(b)
     return {d: float(np.median(v)) for d, v in acc.items()}
 
 
@@ -90,7 +88,7 @@ def fig_accuracy_vs_mcc(rows):
         mcc = _as_float(r.get("mcc"))
         if acc is None or mcc is None:
             continue
-        ds = dataset_short(r.get("dataset", ""))
+        ds = dataset_short(r.get("dataset", ""), r.get("_dataset_key"))
         deg = is_degenerate(r)
         ax.plot(acc, mcc, linestyle="None", marker=markers.get(ds, "^"),
                 markersize=6.5, markerfacecolor="crimson" if deg else "#2a6fb0",
@@ -134,7 +132,7 @@ def fig_metric_disagreement(rows, dataset_key, top_n=18):
             ("f1_macro", "Macro F1"), ("mcc", "MCC"), ("g_mean", "G-Mean")]
     sel = []
     for r in rows:
-        if dataset_short(r.get("dataset", "")) != dataset_key:
+        if dataset_short(r.get("dataset", ""), r.get("_dataset_key")) != dataset_key:
             continue
         vals = [_as_float(r.get(c)) for c, _ in cols]
         if any(v is None for v in vals):
@@ -178,7 +176,7 @@ def fig_per_class_recall(rows, dataset_key, top_n=20):
     k = len(names)
     sel = []
     for r in rows:
-        if dataset_short(r.get("dataset", "")) != dataset_key:
+        if dataset_short(r.get("dataset", ""), r.get("_dataset_key")) != dataset_key:
             continue
         rec = [_as_float(r.get("recall_c%d" % i)) for i in range(k)]
         if any(v is None for v in rec):
@@ -216,7 +214,7 @@ def fig_lift_over_baseline(rows, top_n=26):
         lift = _as_float(r.get("accuracy_lift_over_majority"))
         if lift is None:
             continue
-        ds = dataset_short(r.get("dataset", ""))
+        ds = dataset_short(r.get("dataset", ""), r.get("_dataset_key"))
         sel.append(("%s [%s]" % (label_of(r, overview=False), ds), lift, is_degenerate(r)))
     if not sel:
         print("[WARN] no rows for lift chart")
@@ -271,7 +269,7 @@ def fig_prior_shift(rows):
         acc = _as_float(r.get("accuracy"))
         if ba is None or gm is None or acc is None:
             continue
-        pts.append((tv, ba, gm, acc, dataset_short(r.get("dataset", "")), fam))
+        pts.append((tv, ba, gm, acc, dataset_short(r.get("dataset", ""), r.get("_dataset_key")), fam))
     if not pts:
         print("[WARN] no synthetic/SMOTE rows for prior-shift chart")
         return
@@ -311,7 +309,7 @@ def fig_inference_latency(rows, top_n=20):
         if b is None or p50 is None:
             continue
         sel.append(("%s [%s]" % (label_of(r, overview=False),
-                                 dataset_short(r.get("dataset", ""))), b, p50, p95))
+                                 dataset_short(r.get("dataset", ""), r.get("_dataset_key"))), b, p50, p95))
     if not sel:
         print("[WARN] no inference-timing rows (needs a fresh results CSV)")
         return
@@ -366,7 +364,7 @@ def main():
     fig_lift_over_baseline(rows)
     fig_prior_shift(rows)
     fig_inference_latency(rows)
-    for ds in sorted({dataset_short(r.get("dataset", "")) for r in rows}):
+    for ds in sorted({dataset_short(r.get("dataset", ""), r.get("_dataset_key")) for r in rows}):
         if ds in CLASS_LABELS:
             fig_metric_disagreement(rows, ds)
             fig_per_class_recall(rows, ds)
