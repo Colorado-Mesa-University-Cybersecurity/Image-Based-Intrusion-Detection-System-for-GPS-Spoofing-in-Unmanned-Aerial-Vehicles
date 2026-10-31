@@ -184,7 +184,8 @@ SPECS = {
         "kind": "image",
         "arch": "cnn",
         "params": {
-            "epochs": {"uav": 100, "2d": 100},
+            "epochs": 100,
+            "batch_size": 100,
             "lr": 0.001,
             "momentum": 0.9,
             "checkpoint": "cnn",
@@ -194,7 +195,8 @@ SPECS = {
         "kind": "image",
         "arch": "cnn_lstm",
         "params": {
-            "epochs": {"uav": 30, "2d": 100},
+            "epochs": 100,
+            "batch_size": 32,
             "lr": 0.001,
             "momentum": 0.9,
             "checkpoint": "cnn_lstm",
@@ -204,7 +206,8 @@ SPECS = {
         "kind": "image",
         "arch": "resnet",
         "params": {
-            "epochs": {"uav": 20, "2d": 20},
+            "epochs": 20,
+            "batch_size": 32,
             "lr": 0.001,
             "momentum": 0.9,
             "checkpoint": "resnet",
@@ -214,7 +217,8 @@ SPECS = {
         "kind": "image",
         "arch": "resnet_lstm",
         "params": {
-            "epochs": {"uav": 20, "2d": 100},
+            "epochs": 100,
+            "batch_size": 32,
             "lr": 0.001,
             "momentum": 0.9,
             "checkpoint": "resnet_lstm",
@@ -248,6 +252,14 @@ SPECS = {
         },
     },
 }
+
+
+def image_batch_size(model_name):
+    base, _ = _resolve(model_name)
+    spec = SPECS[base]
+    if spec["kind"] != "image":
+        raise ValueError("%r is not an image model" % model_name)
+    return spec["params"]["batch_size"]
 
 
 def _resolve(model_name):
@@ -290,9 +302,9 @@ def _family(model_name, base, suffix, kind, exp):
 
 def _run_sklearn(exp, spec, params, seed):
     model = spec["build"](exp, seed, params)
-    start = time.time()
+    start = time.perf_counter()
     model.fit(exp.X_train, exp.y_train)
-    train_time = time.time() - start
+    train_time = time.perf_counter() - start
     y_pred = np.asarray(model.predict(exp.X_test))
     y_proba = (
         model.predict_proba(exp.X_test) if hasattr(model, "predict_proba") else None
@@ -317,9 +329,9 @@ def _run_sklearn(exp, spec, params, seed):
 
 def _run_one_class(exp, spec, params, seed):
     model = spec["build"](exp, seed, params)
-    start = time.time()
+    start = time.perf_counter()
     model.fit(exp.X_train)
-    train_time = time.time() - start
+    train_time = time.perf_counter() - start
     y_pred = (np.asarray(model.predict(exp.X_test)) == -1).astype(int)
     return {
         "model": model,
@@ -384,7 +396,7 @@ def _run_lstm(exp, spec, params, seed):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=params["lr"])
 
-    start = time.time()
+    start = time.perf_counter()
     for epoch in range(params["epochs"]):
         model.train()
         running_loss = 0.0
@@ -411,7 +423,7 @@ def _run_lstm(exp, spec, params, seed):
                     correct / total,
                 )
             )
-    train_time = time.time() - start
+    train_time = time.perf_counter() - start
 
     model.eval()
     all_preds, all_probs = [], []
@@ -592,8 +604,6 @@ def _run_image(exp, spec, params, seed):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     epochs = params["epochs"]
-    if isinstance(epochs, dict):
-        epochs = epochs[exp.schema.key]
     dataloaders = exp.dataloaders
 
     model = _image_model(
@@ -605,7 +615,7 @@ def _run_image(exp, spec, params, seed):
     best_wts = copy.deepcopy(model.state_dict())
     best_acc = 0.0
     best_epoch = 0
-    start = time.time()
+    start = time.perf_counter()
     for epoch in range(epochs):
         model.train()
         running_loss = 0.0
@@ -648,7 +658,7 @@ def _run_image(exp, spec, params, seed):
             best_acc = val_acc
             best_epoch = epoch + 1
             best_wts = copy.deepcopy(model.state_dict())
-    train_time = time.time() - start
+    train_time = time.perf_counter() - start
     model.load_state_dict(best_wts)
 
     model.eval()
@@ -743,7 +753,7 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
     X_train = np.asarray(exp.X_train)
     X_test = np.asarray(exp.X_test)
 
-    start = time.time()
+    start = time.perf_counter()
     pca_detectors = PCA(n_components=params["pca_detectors"], random_state=seed).fit(X_fit)
     pca_autoencoder = PCA(n_components=params["pca_autoencoder"], random_state=seed).fit(X_fit)
     fit_detectors = pca_detectors.transform(X_fit)
@@ -772,12 +782,12 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
         exp.scaler, pca_detectors, pca_autoencoder, ocsvm, lof, ae, threshold, mode, None
     )
     meta_train = detector.transform_scaled(X_train)
-    base_time = time.time() - start
+    base_time = time.perf_counter() - start
 
     meta_test = detector.transform_scaled(X_test)
     y_meta = np.asarray(exp.y_train)
 
-    start_meta = time.time()
+    start_meta = time.perf_counter()
     if smote_meta:
         from imblearn.over_sampling import SMOTE
 
@@ -788,7 +798,7 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
         meta_train, y_meta = smote.fit_resample(meta_train, y_meta)
         y_meta = np.asarray(y_meta)
     meta = RandomForestClassifier(random_state=seed).fit(meta_train, y_meta)
-    train_time = base_time + (time.time() - start_meta)
+    train_time = base_time + (time.perf_counter() - start_meta)
 
     detector._meta = meta
     y_pred = meta.predict(meta_test)

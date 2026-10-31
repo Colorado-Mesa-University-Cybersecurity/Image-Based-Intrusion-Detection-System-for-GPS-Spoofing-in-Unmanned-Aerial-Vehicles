@@ -17,9 +17,12 @@ DataGeneration/
 │       └── image-results-spoofing/
 └── SyntheticData/
     ├── gen_synth.py                  samples the committed synthesizers
-    ├── 2D/SDV/                       synthesizer fit notebook + 3 .pkl + metadata
+    ├── 2D/
+    │   ├── SDV/                      synthesizer fit notebook + 3 .pkl + metadata
+    │   ├── GAN/GAN.ipynb
+    │   └── CGAN/CGAN.ipynb
     └── UAVATTACK/
-        ├── SDV/                      synthesizer fit notebook + 3 .pkl + metadata
+        ├── SDV/
         ├── GAN/GAN.ipynb
         └── CGAN/CGAN.ipynb
 ```
@@ -38,9 +41,15 @@ synthesizers at 10k / 100k / 1M rows:
 It writes into each dataset's folder under `Datasets/`, skips files that already
 exist, and is resumable. SDV must stay on 1.x — see `SETUP.md`.
 
-GAN and CGAN are UAV-ATTACK only. Both write their samples through the canonical
-dataset schema, so a generated table is indistinguishable from the real data in
-column names, column order, and label encoding.
+GAN and CGAN are conditional generators: the class label is one-hot concatenated
+to the noise vector, sized from the dataset's class count, so the same notebook
+serves the binary UAV-ATTACK data and the four-class 2D data. GAN draws a fixed
+10,000 samples with labels sampled uniformly; CGAN generates per class, matching
+the training set's class counts.
+
+Every generator writes through the canonical dataset schema, so a generated
+table is indistinguishable from the real data in column names, column order, and
+label encoding.
 
 ### Binary images
 

@@ -159,6 +159,10 @@ notebook has a counterpart on the other side:
 | `Images/` | `CNN`, `CnnLstm`, `ResnetCnn`, `ResnetLstm` | yes | yes |
 | `OneClass/` | `OneClassSVM`, `LocalOutlierFactor` | no | yes |
 
+One-class detection is UAV-ATTACK only: it models "benign" as a single class and
+flags departures from it, which the 2D dataset's four attack sophistication
+levels are not framed for.
+
 `Models/<dataset>_SYNTHETIC/` mirrors the same way: `Regular/{Basic,
 RandomForest}`, `LSTM/LSTM`, `Stacking/{StackedEnsemble, StackingClassifier}`.
 
@@ -167,10 +171,12 @@ flags departures from it, which the 2D dataset's four attack sophistication
 levels are not framed for.
 
 Hyperparameters are not repeated per notebook. Each canonical model name has one
-entry in the `gps_ids/training.py` spec table, so a family's 2D and UAV runs use
-the same settings by construction, and the regular and SMOTE variants of a model
-cannot drift apart. The few values that legitimately differ per dataset (the
-image epoch budgets, the XGBoost objective) are recorded in that one table.
+entry in the `gps_ids/training.py` spec table — including the image models'
+epoch budget and batch size — so a family's 2D and UAV runs use the same
+settings by construction, and the regular and SMOTE variants of a model cannot
+drift apart. No spec entry varies by dataset; a unit test enforces that. The
+only per-dataset behaviour is derived from the data itself: the XGBoost
+objective and the stacked detector's meta-feature mode follow the class count.
 
 ## 4. Scope notes
 

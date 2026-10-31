@@ -29,15 +29,17 @@ from scratch.
 |---|---|---|
 | `spoofing_{gc,ctgan,tvae}_{10000,100000,1000000}.csv` | `DataGeneration/SyntheticData/gen_synth.py`, sampling the committed SDV synthesizers | both |
 | `spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv` | `DataGeneration/SyntheticData/<dataset>/SDV/SDV_Synthetic.ipynb` (10k preview written while fitting) | both |
-| `syntheticSpoofing_gan_data.csv` | `DataGeneration/SyntheticData/UAVATTACK/GAN/GAN.ipynb` | UAV only |
-| `syntheticSpoofing_cgan_data.csv` | `DataGeneration/SyntheticData/UAVATTACK/CGAN/CGAN.ipynb` | UAV only |
+| `syntheticSpoofing_gan_data.csv` | `DataGeneration/SyntheticData/<dataset>/GAN/GAN.ipynb` | both |
+| `syntheticSpoofing_cgan_data.csv` | `DataGeneration/SyntheticData/<dataset>/CGAN/CGAN.ipynb` | both |
 
 Every generated table is written through the canonical dataset schema
 (`gps_ids/schema.py`), so it carries the same feature columns, in the same
 order, with integer labels — whichever generator produced it.
 
-The GAN and CGAN tables exist for UAV-ATTACK only, so the UAV synthetic model
-runs cover eleven files and the 2D runs cover nine.
+Both datasets have all five generators, so each one's synthetic model runs cover
+eleven files: three SDV synthesizers at three sample sizes, plus GAN and CGAN.
+The GAN and CGAN tables for 2D must be generated locally — only the UAV ones
+ship in the repository.
 
 Pre-generated copies of our synthetic tables and of the binary images:
 [Google Drive](https://drive.google.com/drive/folders/1l2LfGwJ8FRzE115wkMUHQRaGiru-SwGv)
@@ -67,7 +69,9 @@ Datasets/
         ├── spoofing_{gc,ctgan,tvae}_10000.csv        <- generated
         ├── spoofing_{gc,ctgan,tvae}_100000.csv       <- generated
         ├── spoofing_{gc,ctgan,tvae}_1000000.csv      <- generated
-        └── spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv
+        ├── spoofing-{GaussianCopula,CTGAN,TVAE}-synthetic.csv
+        ├── syntheticSpoofing_gan_data.csv                 <- generated
+        └── syntheticSpoofing_cgan_data.csv                <- generated
 ```
 
 Roughly 5.5 GB of generated CSVs at the full three sample sizes.

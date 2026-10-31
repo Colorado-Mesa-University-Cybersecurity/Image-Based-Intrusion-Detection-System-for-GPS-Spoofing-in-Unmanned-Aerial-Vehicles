@@ -94,10 +94,10 @@ DATASETS = {
         short="GPS-2D", kind="real", datasets=("2d",)
     ),
     "syntheticSpoofing_gan_data.csv": DatasetInfo(
-        short="GAN", kind="synthetic", datasets=("uav",), generator="gan", size=10_000
+        short="GAN", kind="synthetic", datasets=("uav", "2d"), generator="gan", size=10_000
     ),
     "syntheticSpoofing_cgan_data.csv": DatasetInfo(
-        short="CGAN", kind="synthetic", datasets=("uav",), generator="cgan", size=10_000
+        short="CGAN", kind="synthetic", datasets=("uav", "2d"), generator="cgan", size=10_000
     ),
     **_sdv_entries(),
 }
