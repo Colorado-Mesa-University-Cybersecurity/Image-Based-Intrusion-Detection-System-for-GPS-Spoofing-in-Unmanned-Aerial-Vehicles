@@ -184,9 +184,15 @@ The pipeline is:
 notebooks -> *_Results.csv -> make_all_plots.py / make_metric_plots.py
 ```
 
-`filter.ipynb` reducing to `*_Results_filtered.csv` is still available and is
-still read in preference when present, but is no longer required -- both plot
-scripts fall back to the raw `*_Results.csv` at the repo root.
+`filter.ipynb` reducing to `*_Results_filtered.csv` is still available but is no
+longer required. `_resolve_inputs()` prefers the raw `*_Results.csv` at the repo
+root and falls back to `Visualization/Results/*_Results_filtered.csv` only when
+the raw file is absent.
+
+Rows carry the evaluation protocol in `test_set`, and both plot scripts append it
+to the model label (`[full-real]`, `[benign-ho]`) so runs measured on different
+test sets are never pooled into one bar or one ranking. An untagged label means
+the standard held-out 20% of the real data.
 
 The previously committed `*_Results_full.csv` files and the
 `Results fixes/Fix results.ipynb` step that produced them have been removed.
