@@ -146,9 +146,15 @@ def normalize(df, schema):
     return X, y
 
 
-def load_real(schema):
-    schema = get(schema)
+@lru_cache(maxsize=None)
+def _load_real_cached(key):
+    schema = get(key)
     return normalize(_read(real_path(schema), schema.reader), schema)
+
+
+def load_real(schema):
+    X, y = _load_real_cached(get(schema).key)
+    return X.copy(), y.copy()
 
 
 def load_synthetic(schema, filename):

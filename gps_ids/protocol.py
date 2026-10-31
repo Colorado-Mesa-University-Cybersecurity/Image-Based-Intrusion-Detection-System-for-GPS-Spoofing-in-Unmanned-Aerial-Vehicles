@@ -27,6 +27,7 @@ class Experiment:
     y_test: np.ndarray
     scaler: StandardScaler
     X_fit: Optional[pd.DataFrame] = None
+    X_test_raw: Optional[pd.DataFrame] = None
     seed: int = SEED
 
     @property
@@ -157,6 +158,7 @@ def ensemble_heldout(dataset):
         y_test=np.asarray(y_test),
         scaler=scaler,
         X_fit=_scaled(scaler, X_fit_raw),
+        X_test_raw=X_test,
     )
 
 
@@ -177,6 +179,27 @@ def synthetic_vs_full_real(dataset, synth_file):
         y_train=np.asarray(y_train),
         y_test=np.asarray(y_r),
         scaler=scaler,
+    )
+
+
+def synthetic_ensemble_vs_full_real(dataset, synth_file):
+    schema = _schema.get(dataset)
+    X_s, y_s = _schema.load_synthetic(schema, synth_file)
+    X_r, y_r = _schema.load_real(schema)
+    y_s = np.asarray(y_s)
+    X_fit_raw = X_s[y_s == 0]
+    scaler = StandardScaler().fit(X_fit_raw)
+    return Experiment(
+        schema=schema,
+        dataset_name=synth_file,
+        test_set=TAG_REAL_FULL,
+        X_train=_scaled(scaler, X_s),
+        X_test=_scaled(scaler, X_r),
+        y_train=y_s,
+        y_test=np.asarray(y_r),
+        scaler=scaler,
+        X_fit=_scaled(scaler, X_fit_raw),
+        X_test_raw=X_r,
     )
 
 
