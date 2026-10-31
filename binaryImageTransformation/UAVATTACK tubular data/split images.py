@@ -20,6 +20,27 @@ if os.path.isfile(MANIFEST):
         "Delete the manifest and move Test back into Train to redo it." % MANIFEST
     )
 
+
+def count_images(directory):
+    if not os.path.isdir(directory):
+        return 0
+    return sum(
+        1 for f in os.listdir(directory)
+        if f.lower().endswith((".png", ".jpg", ".jpeg"))
+    )
+
+
+already_split = {cls: count_images(os.path.join(test_dir, cls)) for cls in classes}
+if any(already_split.values()):
+    raise SystemExit(
+        "%s already holds images (%s), so this archive ships pre-split.\n"
+        "The authors' UAVATTACK archive is already 2,899 train / 723 test and carries\n"
+        "no manifest; splitting it again would move another 20%% out of Train and\n"
+        "leave roughly 2,320/1,302. Nothing was written.\n"
+        "Move Test back into Train first if you really want to re-split."
+        % (test_dir, ", ".join("%s=%d" % (c, n) for c, n in already_split.items()))
+    )
+
 random.seed(RANDOM_STATE)
 
 os.makedirs(test_dir, exist_ok=True)
