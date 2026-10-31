@@ -10,7 +10,12 @@ wheels for `torch` or `sdv`. Build an isolated 3.11 env with `uv`:
 ```bash
 uv venv --python 3.11 .venv
 uv pip install --python .venv -r requirements.txt
+uv pip install --python .venv -e .
 ```
+
+The editable install (last line) puts `gps_ids` and `eval_metrics` on the
+venv's path, which every notebook imports. Without it the notebooks fail at
+their first import.
 
 ### CUDA
 
@@ -172,8 +177,8 @@ row = evaluate(y_test, y_pred, model_name=MODEL_NAME, dataset_name=DATASET_NAME,
 append_row(row, RESULTS_CSV)
 ```
 
-Each notebook locates the module by walking up from its own directory, so the
-notebooks keep working from their existing folders. `append_row` reindexes every
+The notebooks import `gps_ids` and `eval_metrics` through the editable install
+from section 1, so they work from their existing folders. `append_row` reindexes every
 row to `eval_metrics.COLUMNS`, which is what keeps the schema identical across
 families; columns that do not apply to a given run are written as `N/A` rather
 than omitted. Per-class columns use fixed slots `recall_c0..c3`, so the 2-class

@@ -12,6 +12,12 @@ from . import results as _results
 
 STACK_NAME = "StackingClassifier(LogisticRegression RandomForest SVC)"
 
+MIN_BENIGN_FIT_ROWS = 10
+
+
+class ExperimentUnusable(ValueError):
+    pass
+
 VARIANT_FAMILIES = {
     " (SMOTE)": "SMOTE",
     " (Explainability Features)": "FeatureEngineering",
@@ -521,11 +527,17 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
             "gps_ids/training.py"
         )
 
-    if kind == "stacked" and (exp.X_fit is None or exp.X_test_raw is None):
-        raise ValueError(
-            "the stacked detector needs an ensemble protocol "
-            "(protocol.ensemble_heldout or protocol.synthetic_ensemble_vs_full_real)"
-        )
+    if kind == "stacked":
+        if exp.X_fit is None or exp.X_test_raw is None:
+            raise ValueError(
+                "the stacked detector needs an ensemble protocol "
+                "(protocol.ensemble_heldout or protocol.synthetic_ensemble_vs_full_real)"
+            )
+        if len(exp.X_fit) < MIN_BENIGN_FIT_ROWS:
+            raise ExperimentUnusable(
+                "only %d benign rows to fit the stacked detector on (minimum %d)"
+                % (len(exp.X_fit), MIN_BENIGN_FIT_ROWS)
+            )
     smote_meta = params.pop("smote_meta") if kind == "stacked" else False
     if suffix == " (SMOTE)":
         if kind == "stacked":
@@ -616,7 +628,11 @@ def run_synthetic(
             continue
         print("Training on synthetic: %s" % synth_file)
         for model_name in models:
-            result = run(model_name, exp, results_csv=results_csv, quiet=quiet)
+            try:
+                result = run(model_name, exp, results_csv=results_csv, quiet=quiet)
+            except ExperimentUnusable as error:
+                print("Skipping %s: %s" % (synth_file, error))
+                break
             rows.append(result.row)
         del exp
         gc.collect()
