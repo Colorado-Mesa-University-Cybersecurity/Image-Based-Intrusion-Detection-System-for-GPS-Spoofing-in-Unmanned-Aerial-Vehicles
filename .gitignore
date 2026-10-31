@@ -172,14 +172,13 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-!/Datasets/csv/UAVATTACK/spoofing-merged-gps-only.csv
-!/Datasets/csv/UAVATTACK/spoofing_gc_10000.csv
 /Datasets/excel/2dSpoofingDataset/spoofing_gc_100000.csv
 /Datasets/csv/UAVATTACK/spoofing_gc_1000000.csv
 /Datasets/csv/UAVATTACK/
 /Datasets/excel/2dSpoofingDataset/
 /binaryImageTransformation/2d tubular data/image-results-spoofing/
 /binaryImageTransformation/2d tubular data/*.pth
+/binaryImageTransformation/UAVATTACK tubular data/*.pth
 /binaryImageTransformation/UAVATTACK tubular data/image-results-spoofing/
 
 /2D_Results.csv
