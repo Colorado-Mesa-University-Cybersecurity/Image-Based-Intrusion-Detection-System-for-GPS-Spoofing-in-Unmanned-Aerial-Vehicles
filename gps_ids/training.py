@@ -346,6 +346,8 @@ def _run_one_class(exp, spec, params, seed):
 
 
 def _run_lstm(exp, spec, params, seed):
+    import copy
+
     import torch
     import torch.nn as nn
     import torch.optim as optim
@@ -365,6 +367,7 @@ def _run_lstm(exp, spec, params, seed):
         def forward(self, x):
             out, _ = self.lstm(x)
             out = out[:, -1, :]
+            out = torch.tanh(out)
             out = self.fc(out)
             return out
 
@@ -377,10 +380,22 @@ def _run_lstm(exp, spec, params, seed):
     y_train = np.asarray(exp.y_train, dtype="int64")
     y_test = np.asarray(exp.y_test, dtype="int64")
 
+    from sklearn.model_selection import train_test_split
+
+    fit_idx, val_idx = train_test_split(
+        np.arange(len(X_train)),
+        train_size=_protocol.TRAIN_SIZE,
+        random_state=seed,
+        stratify=y_train,
+    )
     train_loader = DataLoader(
-        TensorDataset(torch.tensor(X_train), torch.tensor(y_train)),
+        TensorDataset(torch.tensor(X_train[fit_idx]), torch.tensor(y_train[fit_idx])),
         batch_size=params["batch_size"],
         shuffle=True,
+    )
+    val_loader = DataLoader(
+        TensorDataset(torch.tensor(X_train[val_idx]), torch.tensor(y_train[val_idx])),
+        batch_size=params["batch_size"],
     )
     test_loader = DataLoader(
         TensorDataset(torch.tensor(X_test), torch.tensor(y_test)),
@@ -395,6 +410,10 @@ def _run_lstm(exp, spec, params, seed):
     ).to(device)
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=params["lr"])
+
+    best_wts = copy.deepcopy(model.state_dict())
+    best_acc = -1.0
+    best_epoch = 0
 
     start = time.perf_counter()
     for epoch in range(params["epochs"]):
@@ -413,16 +432,34 @@ def _run_lstm(exp, spec, params, seed):
             _, predicted = torch.max(outputs, 1)
             correct += (predicted == y_batch).sum().item()
             total += y_batch.size(0)
+        model.eval()
+        val_correct = 0
+        val_total = 0
+        with torch.no_grad():
+            for X_batch, y_batch in val_loader:
+                outputs = model(X_batch.to(device))
+                _, preds = torch.max(outputs, 1)
+                val_correct += (preds.cpu() == y_batch).sum().item()
+                val_total += y_batch.size(0)
+        val_acc = val_correct / val_total
+        if val_acc > best_acc:
+            best_acc = val_acc
+            best_epoch = epoch + 1
+            best_wts = copy.deepcopy(model.state_dict())
+
         if (epoch + 1) % 10 == 0 or epoch == 0 or epoch == params["epochs"] - 1:
             print(
-                "Epoch %d/%d, Loss: %.4f, Accuracy: %.4f"
+                "Epoch %d/%d, Loss: %.4f, Accuracy: %.4f, Val Acc: %.4f"
                 % (
                     epoch + 1,
                     params["epochs"],
                     running_loss / len(train_loader.dataset),
                     correct / total,
+                    val_acc,
                 )
             )
+
+    model.load_state_dict(best_wts)
     train_time = time.perf_counter() - start
 
     model.eval()
@@ -443,7 +480,7 @@ def _run_lstm(exp, spec, params, seed):
         "y_proba": np.asarray(all_probs),
         "train_time": train_time,
         "timing": timing,
-        "num_epochs": params["epochs"],
+        "num_epochs": best_epoch,
         "parameters": list(dict(model.named_parameters()).keys()),
         "eval_overrides": {},
     }
