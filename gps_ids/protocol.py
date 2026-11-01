@@ -99,31 +99,42 @@ def real_heldout(dataset, features=None, *, seed=None):
         y_train=np.asarray(y_train),
         y_test=np.asarray(y_test),
         scaler=scaler,
+        seed=seed,
     )
 
 
-def smote_heldout(dataset, features=None):
+def real_train_rows(dataset, features=None, *, seed=None):
+    schema = _schema.get(dataset)
+    X, _ = _schema.load_real(schema)
+    X = _select_features(X, features)
+    exp = real_heldout(dataset, features=features, seed=seed)
+    return X.loc[exp.X_train.index], exp.y_train
+
+
+def smote_heldout(dataset, features=None, *, seed=None):
     from imblearn.over_sampling import SMOTE
 
-    base = real_heldout(dataset, features=features)
+    seed = SEED if seed is None else seed
+    base = real_heldout(dataset, features=features, seed=seed)
     unique, counts = np.unique(base.y_train, return_counts=True)
     majority = unique[np.argmax(counts)]
     target = counts.max()
     strategy = {cls: target for cls in unique if cls != majority}
-    smote = SMOTE(random_state=SEED, sampling_strategy=strategy)
+    smote = SMOTE(random_state=seed, sampling_strategy=strategy)
     X_res, y_res = smote.fit_resample(base.X_train, base.y_train)
     base.X_train = X_res
     base.y_train = np.asarray(y_res)
     return base
 
 
-def one_class(dataset):
+def one_class(dataset, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X, y = _schema.load_real(schema)
     benign = y == 0
     X_benign, y_benign = X[benign], y[benign]
     X_train_raw, X_val_raw, y_train, y_val = train_test_split(
-        X_benign, y_benign, train_size=TRAIN_SIZE, random_state=SEED
+        X_benign, y_benign, train_size=TRAIN_SIZE, random_state=seed
     )
     scaler = StandardScaler().fit(X_train_raw)
     X_test = pd.concat([X_val_raw, X[~benign]])
