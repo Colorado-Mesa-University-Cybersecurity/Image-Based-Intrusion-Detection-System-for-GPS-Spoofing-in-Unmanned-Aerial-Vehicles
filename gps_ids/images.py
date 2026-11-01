@@ -34,7 +34,7 @@ UAV_IMAGES = ImageDataset(
     schema_key="uav",
     folder="DataGeneration/BinaryImages/UAVATTACK",
     class_folders=("benign", "malicious"),
-    split_style="train_sample",
+    split_style="tabular_index",
 )
 
 TWO_D_IMAGES = ImageDataset(
@@ -42,7 +42,7 @@ TWO_D_IMAGES = ImageDataset(
     schema_key="2d",
     folder="DataGeneration/BinaryImages/2D",
     class_folders=("0", "1", "2", "3"),
-    split_style="pool_shuffle",
+    split_style="tabular_index",
 )
 
 CONFIGS = {c.key: c for c in (UAV_IMAGES, TWO_D_IMAGES)}
@@ -222,8 +222,57 @@ def _adopted_manifest(config):
     return manifest
 
 
-def split(config):
+def row_image_names(config):
     config = get(config)
+    _, y = _schema.load_real(config.schema_key)
+    counters = {}
+    names = []
+    for label in np.asarray(y):
+        folder = config.class_folders[int(label)]
+        counters[folder] = counters.get(folder, 0) + 1
+        names.append("%s-%d" % (folder, counters[folder]))
+    return names
+
+
+def _restore_to_train(config):
+    config = get(config)
+    moved = 0
+    for cls in config.class_folders:
+        src = test_dir(config) / cls
+        dst = train_dir(config) / cls
+        if not src.is_dir():
+            continue
+        dst.mkdir(parents=True, exist_ok=True)
+        for img in _list_images(src):
+            shutil.move(str(src / img), str(dst / img))
+            moved += 1
+    return moved
+
+
+def tabular_split_names(config, seed=None):
+    from . import protocol as _protocol
+
+    config = get(config)
+    X, _ = _schema.load_real(config.schema_key)
+    names = row_image_names(config)
+    exp = _protocol.real_heldout(config.schema_key, seed=seed)
+    position = {label: i for i, label in enumerate(X.index)}
+    train = {cls: [] for cls in config.class_folders}
+    test = {cls: [] for cls in config.class_folders}
+    for frame, bucket in ((exp.X_train, train), (exp.X_test, test)):
+        for label in frame.index:
+            name = names[position[label]]
+            bucket[name.split("-")[0]].append(name + ".png")
+    return train, test
+
+
+def split(config, *, seed=None, force=False):
+    config = get(config)
+    seed = RANDOM_STATE if seed is None else seed
+    if force:
+        _restore_to_train(config)
+        if manifest_path(config).is_file():
+            manifest_path(config).unlink()
     if manifest_path(config).is_file():
         return _read_manifest(config)
 
@@ -235,13 +284,51 @@ def split(config):
         _write_manifest(config, manifest)
         return manifest
 
-    rng = random.Random(RANDOM_STATE)
+    rng = random.Random(seed)
     manifest = {
-        "random_state": RANDOM_STATE,
+        "random_state": seed,
         "train_fraction": TRAIN_FRACTION,
+        "split_style": config.split_style,
         "classes": {},
     }
     total = 0
+
+    if config.split_style == "tabular_index":
+        train_names, test_names = tabular_split_names(config, seed=seed)
+        for cls in config.class_folders:
+            staged = train_dir(config) / cls
+            pooled = image_root(config) / cls
+            src = staged if _list_images(staged) else pooled
+            available = set(_list_images(src))
+            if not available:
+                continue
+            wanted = set(train_names[cls]) | set(test_names[cls])
+            missing = sorted(wanted - available)
+            if missing:
+                raise FileNotFoundError(
+                    "%d image(s) named by the tabular split are absent from %s "
+                    "(first missing: %s); re-render before splitting"
+                    % (len(missing), src, missing[0])
+                )
+            staged.mkdir(parents=True, exist_ok=True)
+            dst = test_dir(config) / cls
+            dst.mkdir(parents=True, exist_ok=True)
+            if src.resolve() != staged.resolve():
+                for f in train_names[cls]:
+                    shutil.move(str(src / f), str(staged / f))
+            for f in test_names[cls]:
+                shutil.move(str(src / f), str(dst / f))
+            manifest["classes"][cls] = {
+                "train": sorted(train_names[cls]),
+                "test": sorted(test_names[cls]),
+            }
+            total += len(wanted)
+        if total == 0:
+            raise FileNotFoundError(
+                "no images under %s; run render() first" % image_root(config)
+            )
+        _write_manifest(config, manifest)
+        return manifest
 
     if config.split_style == "train_sample":
         for cls in config.class_folders:
@@ -296,7 +383,15 @@ def split(config):
 
 
 class ImageExperiment:
-    def __init__(self, config, dataloaders, folder_classes, train_targets, train_idx):
+    def __init__(
+        self,
+        config,
+        dataloaders,
+        folder_classes,
+        train_targets,
+        train_idx,
+        seed=RANDOM_STATE,
+    ):
         self.config = get(config)
         self.schema = _schema.get(self.config.schema_key)
         self.dataloaders = dataloaders
@@ -304,7 +399,7 @@ class ImageExperiment:
         self.class_names = canonical_class_names(self.config, folder_classes)
         self.train_targets = train_targets
         self.train_idx = train_idx
-        self.seed = RANDOM_STATE
+        self.seed = seed
 
     @property
     def labels(self):
@@ -347,13 +442,14 @@ class ImageExperiment:
         }
 
 
-def loaders(config, batch_size, test_batch_size=1, num_workers=0):
+def loaders(config, batch_size, test_batch_size=1, num_workers=0, seed=None):
     import torch
     from sklearn.model_selection import train_test_split
     from torch.utils.data import DataLoader, Subset
     from torchvision import datasets, transforms
 
     config = get(config)
+    seed = RANDOM_STATE if seed is None else seed
     shape = image_shape(config)
     transform = transforms.Compose(
         [
@@ -371,7 +467,7 @@ def loaders(config, batch_size, test_batch_size=1, num_workers=0):
     train_idx, val_idx = train_test_split(
         np.arange(len(train_full)),
         train_size=TRAIN_FRACTION,
-        random_state=RANDOM_STATE,
+        random_state=seed,
         stratify=targets,
     )
     dataloaders = {
@@ -394,4 +490,6 @@ def loaders(config, batch_size, test_batch_size=1, num_workers=0):
             num_workers=num_workers,
         ),
     }
-    return ImageExperiment(config, dataloaders, train_full.classes, targets, train_idx)
+    return ImageExperiment(
+        config, dataloaders, train_full.classes, targets, train_idx, seed=seed
+    )
