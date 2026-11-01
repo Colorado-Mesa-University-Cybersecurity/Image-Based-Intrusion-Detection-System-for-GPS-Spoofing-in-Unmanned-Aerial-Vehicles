@@ -12,11 +12,30 @@ from . import results as _results
 
 STACK_NAME = "StackingClassifier(LogisticRegression RandomForest SVC)"
 
+SEEDS = (1082, 7, 42, 2024, 31337)
+
 MIN_BENIGN_FIT_ROWS = 10
 
 
 class ExperimentUnusable(ValueError):
     pass
+
+
+def _balanced_sample_weight(exp):
+    from sklearn.utils.class_weight import compute_sample_weight
+
+    return compute_sample_weight("balanced", np.asarray(exp.y_train))
+
+
+def _ce_class_weight(exp, device):
+    import torch
+    from sklearn.utils.class_weight import compute_class_weight
+
+    y = np.asarray(exp.y_train)
+    present = np.unique(y)
+    weights = np.ones(len(exp.class_names), dtype=np.float32)
+    weights[present] = compute_class_weight("balanced", classes=present, y=y)
+    return torch.tensor(weights, dtype=torch.float32, device=device)
 
 VARIANT_FAMILIES = {
     " (SMOTE)": "SMOTE",
@@ -53,7 +72,10 @@ def _build_lr(exp, seed, p):
     from sklearn.linear_model import LogisticRegression
 
     return LogisticRegression(
-        random_state=seed, max_iter=p["max_iter"], solver=p["solver"]
+        random_state=seed,
+        max_iter=p["max_iter"],
+        solver=p["solver"],
+        class_weight=p["class_weight"],
     )
 
 
@@ -63,6 +85,7 @@ def _build_rf(exp, seed, p):
     return RandomForestClassifier(
         n_estimators=p["n_estimators"],
         max_features=p["max_features"],
+        class_weight=p["class_weight"],
         n_jobs=-1,
         random_state=seed,
     )
@@ -124,11 +147,24 @@ def _build_stack(exp, seed, p):
     from sklearn.svm import SVC
 
     base_learners = [
-        ("lr", LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver=_lr_solver())),
+        (
+            "lr",
+            LogisticRegression(
+                random_state=seed,
+                max_iter=p["base_max_iter"],
+                solver=_lr_solver(),
+                class_weight=p["class_weight"],
+            ),
+        ),
         ("rf", RandomForestClassifier(random_state=seed, **_rf_params())),
-        ("svc", SVC(probability=False, random_state=seed)),
+        ("svc", SVC(probability=False, random_state=seed, class_weight=p["class_weight"])),
     ]
-    meta = LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver=_lr_solver())
+    meta = LogisticRegression(
+        random_state=seed,
+        max_iter=p["base_max_iter"],
+        solver=_lr_solver(),
+        class_weight=p["class_weight"],
+    )
     return StackingClassifier(
         estimators=base_learners, final_estimator=meta, passthrough=False, n_jobs=-1
     )
@@ -155,7 +191,7 @@ SPECS = {
     "Logistic Regression": {
         "kind": "sklearn",
         "build": _build_lr,
-        "params": {"max_iter": 2000, "solver": "lbfgs"},
+        "params": {"max_iter": 2000, "solver": "lbfgs", "class_weight": "balanced"},
     },
     "Logistic Regression (Quadratic Features)": {
         "kind": "sklearn",
@@ -165,12 +201,17 @@ SPECS = {
     "Random Forest": {
         "kind": "sklearn",
         "build": _build_rf,
-        "params": {"n_estimators": 200, "max_features": None},
+        "params": {
+            "n_estimators": 200,
+            "max_features": None,
+            "class_weight": "balanced",
+        },
     },
     "XGBoost": {
         "kind": "sklearn",
         "build": _build_xgb,
         "params": {},
+        "balanced_sample_weight": True,
     },
     "MLP Classifier": {
         "kind": "sklearn",
@@ -186,7 +227,7 @@ SPECS = {
     STACK_NAME: {
         "kind": "sklearn",
         "build": _build_stack,
-        "params": {"base_max_iter": 1200},
+        "params": {"base_max_iter": 1200, "class_weight": "balanced"},
     },
     "OneClassSVM": {
         "kind": "one_class",
@@ -334,8 +375,11 @@ def _family(model_name, base, suffix, kind, exp):
 
 def _run_sklearn(exp, spec, params, seed):
     model = spec["build"](exp, seed, params)
+    fit_kwargs = {}
+    if spec.get("balanced_sample_weight"):
+        fit_kwargs["sample_weight"] = _balanced_sample_weight(exp)
     start = time.perf_counter()
-    model.fit(exp.X_train, exp.y_train)
+    model.fit(exp.X_train, exp.y_train, **fit_kwargs)
     train_time = time.perf_counter() - start
     y_pred = np.asarray(model.predict(exp.X_test))
     y_proba = (
@@ -347,6 +391,9 @@ def _run_sklearn(exp, spec, params, seed):
         if spec.get("report_epochs") and hasattr(model, "n_iter_")
         else "N/A"
     )
+    recorded = dict(model.get_params())
+    if fit_kwargs:
+        recorded["sample_weight"] = "balanced"
     return {
         "model": model,
         "y_pred": y_pred,
@@ -354,7 +401,7 @@ def _run_sklearn(exp, spec, params, seed):
         "train_time": train_time,
         "timing": timing,
         "num_epochs": num_epochs,
-        "parameters": model.get_params(),
+        "parameters": recorded,
         "eval_overrides": {},
     }
 
@@ -440,7 +487,7 @@ def _run_lstm(exp, spec, params, seed):
         len(exp.class_names),
         params["num_layers"],
     ).to(device)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(weight=_ce_class_weight(exp, device))
     optimizer = optim.Adam(model.parameters(), lr=params["lr"])
 
     best_wts = copy.deepcopy(model.state_dict())
@@ -678,7 +725,7 @@ def _run_image(exp, spec, params, seed):
     model = _image_model(
         spec["arch"], len(exp.class_names), _images.image_shape(exp.config)
     ).to(device)
-    criterion = nn.CrossEntropyLoss()
+    criterion = nn.CrossEntropyLoss(weight=_ce_class_weight(exp, device))
     optimizer = optim.SGD(model.parameters(), lr=params["lr"], momentum=params["momentum"])
 
     best_wts = copy.deepcopy(model.state_dict())
