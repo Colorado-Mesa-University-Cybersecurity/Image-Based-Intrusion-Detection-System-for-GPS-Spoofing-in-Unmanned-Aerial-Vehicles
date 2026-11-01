@@ -729,7 +729,7 @@ def _run_image(exp, spec, params, seed):
         "y_true": np.concatenate(all_labels),
         "train_time": train_time,
         "timing": timing,
-        "num_epochs": epochs,
+        "num_epochs": best_epoch,
         "parameters": list(dict(model.named_parameters()).keys()),
         "eval_overrides": {},
     }
