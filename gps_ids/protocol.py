@@ -9,6 +9,7 @@ from sklearn.preprocessing import StandardScaler
 from . import schema as _schema
 
 SEED = 1082
+N_JOBS = -1
 TRAIN_SIZE = 0.8
 
 TAG_REAL_HELDOUT = "real_heldout_20pct"
@@ -111,16 +112,25 @@ def real_train_rows(dataset, features=None, *, seed=None):
     return X.loc[exp.X_train.index], exp.y_train
 
 
-def smote_heldout(dataset, features=None, *, seed=None):
+def build_smote(seed, strategy, k_neighbors=5):
     from imblearn.over_sampling import SMOTE
+    from sklearn.neighbors import NearestNeighbors
 
+    return SMOTE(
+        random_state=seed,
+        sampling_strategy=strategy,
+        k_neighbors=NearestNeighbors(n_neighbors=k_neighbors + 1, n_jobs=N_JOBS),
+    )
+
+
+def smote_heldout(dataset, features=None, *, seed=None):
     seed = SEED if seed is None else seed
     base = real_heldout(dataset, features=features, seed=seed)
     unique, counts = np.unique(base.y_train, return_counts=True)
     majority = unique[np.argmax(counts)]
     target = counts.max()
     strategy = {cls: target for cls in unique if cls != majority}
-    smote = SMOTE(random_state=seed, sampling_strategy=strategy)
+    smote = build_smote(seed, strategy)
     X_res, y_res = smote.fit_resample(base.X_train, base.y_train)
     base.X_train = X_res
     base.y_train = np.asarray(y_res)

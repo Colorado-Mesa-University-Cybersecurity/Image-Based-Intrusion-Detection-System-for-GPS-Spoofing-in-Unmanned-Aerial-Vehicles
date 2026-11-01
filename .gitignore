@@ -197,3 +197,6 @@ skills-lock.json
 /tests/
 /GLOSSARY.md
 /docs/
+
+*.cache.pkl
+*.cache.stamp

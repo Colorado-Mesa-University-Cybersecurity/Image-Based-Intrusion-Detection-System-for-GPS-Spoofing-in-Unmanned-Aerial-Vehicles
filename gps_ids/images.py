@@ -410,6 +410,9 @@ class ImageExperiment:
         self.train_idx = train_idx
         self.seed = seed
 
+    def prepare_batch(self, images):
+        return normalise_batch(images)
+
     @property
     def labels(self):
         return list(range(len(self.folder_classes)))
@@ -507,7 +510,7 @@ def _array_dataset(X, y):
     import torch
     from torch.utils.data import Dataset
 
-    class NormalisedArrayDataset(Dataset):
+    class ByteArrayDataset(Dataset):
         def __init__(self, images, labels):
             self.images = torch.from_numpy(np.ascontiguousarray(images))
             self.labels = torch.from_numpy(np.ascontiguousarray(labels))
@@ -516,11 +519,17 @@ def _array_dataset(X, y):
             return len(self.labels)
 
         def __getitem__(self, index):
-            image = self.images[index].unsqueeze(0).float()
-            image = image.div_(255.0).sub_(0.5).div_(0.5)
-            return image, self.labels[index]
+            return self.images[index].unsqueeze(0), self.labels[index]
 
-    return NormalisedArrayDataset(X, y)
+    return ByteArrayDataset(X, y)
+
+
+def normalise_batch(images):
+    import torch
+
+    if images.dtype != torch.uint8:
+        return images
+    return images.float().div_(255.0).sub_(0.5).div_(0.5)
 
 
 def loaders(

@@ -191,6 +191,7 @@ def _build_lof(exp, seed, p):
         algorithm="auto",
         novelty=True,
         contamination="auto",
+        n_jobs=_protocol.N_JOBS,
     )
 
 
@@ -750,7 +751,8 @@ def _run_image(exp, spec, params, seed):
         running_loss = 0.0
         train_preds, train_labels = [], []
         for inputs, labels in dataloaders["train"]:
-            inputs, labels = inputs.to(device), labels.to(device)
+            inputs = exp.prepare_batch(inputs.to(device))
+            labels = labels.to(device)
             optimizer.zero_grad()
             outputs = model(inputs)
             loss = criterion(outputs, labels)
@@ -768,7 +770,7 @@ def _run_image(exp, spec, params, seed):
         val_preds, val_labels = [], []
         with torch.no_grad():
             for inputs, labels in dataloaders["val"]:
-                outputs = model(inputs.to(device))
+                outputs = model(exp.prepare_batch(inputs.to(device)))
                 _, preds = torch.max(outputs, 1)
                 val_preds.append(preds.cpu().numpy())
                 val_labels.append(labels.numpy())
@@ -794,7 +796,7 @@ def _run_image(exp, spec, params, seed):
     all_preds, all_probs, all_labels = [], [], []
     with torch.no_grad():
         for inputs, labels in dataloaders["test"]:
-            outputs = model(inputs.to(device))
+            outputs = model(exp.prepare_batch(inputs.to(device)))
             _, preds = torch.max(outputs, 1)
             all_probs.extend(torch.softmax(outputs, dim=1).cpu().numpy())
             all_preds.append(preds.cpu().numpy())
@@ -812,7 +814,7 @@ def _run_image(exp, spec, params, seed):
     print("Model saved to %s" % checkpoint_path)
 
     timing = eval_metrics.time_inference_torch(
-        model, next(iter(dataloaders["val"]))[0].to(device)
+        model, exp.prepare_batch(next(iter(dataloaders["val"]))[0].to(device))
     )
     return {
         "model": model,
@@ -888,8 +890,12 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
     fit_detectors = pca_detectors.transform(X_fit)
     fit_autoencoder = pca_autoencoder.transform(X_fit)
 
-    ocsvm = OneClassSVM(nu=params["ocsvm_nu"], gamma=params["ocsvm_gamma"]).fit(fit_detectors)
-    lof = LocalOutlierFactor(n_neighbors=params["lof_neighbors"], novelty=True).fit(fit_detectors)
+    ocsvm = OneClassSVM(nu=params["ocsvm_nu"], gamma=params["ocsvm_gamma"]).fit(
+        fit_detectors
+    )
+    lof = LocalOutlierFactor(
+        n_neighbors=params["lof_neighbors"], novelty=True, n_jobs=_protocol.N_JOBS
+    ).fit(fit_detectors)
     ae = MLPRegressor(
         hidden_layer_sizes=params["ae_hidden_layer_sizes"],
         activation=params["ae_activation"],
@@ -918,12 +924,10 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
 
     start_meta = time.perf_counter()
     if smote_meta:
-        from imblearn.over_sampling import SMOTE
-
         unique, counts = np.unique(y_meta, return_counts=True)
         majority = unique[np.argmax(counts)]
         strategy = {cls: int(counts.max()) for cls in unique if cls != majority}
-        smote = SMOTE(random_state=seed, sampling_strategy=strategy)
+        smote = _protocol.build_smote(seed, strategy)
         meta_train, y_meta = smote.fit_resample(meta_train, y_meta)
         y_meta = np.asarray(y_meta)
     meta = RandomForestClassifier(random_state=seed, **_rf_params()).fit(meta_train, y_meta)

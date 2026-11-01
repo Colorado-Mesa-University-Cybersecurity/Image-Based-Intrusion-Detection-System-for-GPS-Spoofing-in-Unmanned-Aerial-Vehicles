@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import warnings
 from functools import lru_cache
 from pathlib import Path
 
@@ -146,10 +147,35 @@ def normalize(df, schema):
     return X, y
 
 
+def cache_sidecar(schema) -> Path:
+    source = real_path(schema)
+    return source.with_suffix(source.suffix + ".cache.pkl")
+
+
+def _read_cached_frame(schema):
+    source = real_path(schema)
+    sidecar = cache_sidecar(schema)
+    stamp = source.with_suffix(source.suffix + ".cache.stamp")
+    fingerprint = "%d:%d" % (source.stat().st_size, source.stat().st_mtime_ns)
+    if sidecar.is_file() and stamp.is_file():
+        try:
+            if stamp.read_text(encoding="utf-8") == fingerprint:
+                return pd.read_pickle(sidecar)
+        except Exception as error:
+            warnings.warn("ignoring unreadable cache %s: %r" % (sidecar, error))
+    frame = _read(source, schema.reader)
+    try:
+        frame.to_pickle(sidecar)
+        stamp.write_text(fingerprint, encoding="utf-8")
+    except Exception as error:
+        warnings.warn("could not write cache %s: %r" % (sidecar, error))
+    return frame
+
+
 @lru_cache(maxsize=None)
 def _load_real_cached(key):
     schema = get(key)
-    return normalize(_read(real_path(schema), schema.reader), schema)
+    return normalize(_read_cached_frame(schema), schema)
 
 
 def load_real(schema):
