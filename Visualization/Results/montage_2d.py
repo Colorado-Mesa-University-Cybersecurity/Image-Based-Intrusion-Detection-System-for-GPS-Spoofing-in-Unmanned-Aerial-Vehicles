@@ -17,7 +17,7 @@ def plot_images_4_classes(img_files, titles, out_file="2D_comparison.png"):
         ax.axis('on')
 
     plt.tight_layout()
-    plt.savefig(out_file)
+    plt.savefig(out_file, dpi=1000, bbox_inches="tight")
     plt.show()
 
 if __name__ == "__main__":

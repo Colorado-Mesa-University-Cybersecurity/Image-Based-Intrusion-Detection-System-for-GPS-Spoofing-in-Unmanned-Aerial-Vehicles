@@ -62,7 +62,7 @@ COLOR_BY = "model"   # <-- switch to "family" if prefer one color per family
 
 # Figure/legend
 FIGSIZE = (10.5, 6.5)
-PNG_DPI = 300
+PNG_DPI = 1000
 MARKER_SIZE = 5.2
 AX_MARGIN_XY = 0.08
 FONTS = {"axes.labelsize": 10, "axes.titlesize": 10,
