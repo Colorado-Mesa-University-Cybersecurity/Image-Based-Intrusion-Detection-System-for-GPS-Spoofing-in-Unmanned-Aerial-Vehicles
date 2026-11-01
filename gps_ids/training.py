@@ -60,8 +60,19 @@ def _build_rf(exp, seed, p):
     from sklearn.ensemble import RandomForestClassifier
 
     return RandomForestClassifier(
-        n_estimators=p["n_estimators"], n_jobs=-1, random_state=seed
+        n_estimators=p["n_estimators"],
+        max_features=p["max_features"],
+        n_jobs=-1,
+        random_state=seed,
     )
+
+
+def _rf_params():
+    return SPECS["Random Forest"]["params"]
+
+
+def _lr_solver():
+    return SPECS["Logistic Regression"]["params"]["solver"]
 
 
 def _build_xgb(exp, seed, p):
@@ -69,13 +80,10 @@ def _build_xgb(exp, seed, p):
 
     k = len(exp.class_names)
     if k == 2:
-        return XGBClassifier(
-            objective="binary:logistic", random_state=seed, eval_metric=p["eval_metric"]
-        )
+        return XGBClassifier(objective="binary:logistic", random_state=seed)
     return XGBClassifier(
         objective="multi:softprob",
         num_class=k,
-        eval_metric=p["eval_metric"],
         random_state=seed,
     )
 
@@ -88,7 +96,6 @@ def _build_mlp(exp, seed, p):
         activation=p["activation"],
         solver=p["solver"],
         random_state=seed,
-        learning_rate=p["learning_rate"],
         early_stopping=p["early_stopping"],
     )
 
@@ -99,11 +106,11 @@ def _build_stack(exp, seed, p):
     from sklearn.svm import SVC
 
     base_learners = [
-        ("lr", LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver="saga")),
-        ("rf", RandomForestClassifier(random_state=seed)),
-        ("svc", SVC(probability=True, random_state=seed)),
+        ("lr", LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver=_lr_solver())),
+        ("rf", RandomForestClassifier(random_state=seed, **_rf_params())),
+        ("svc", SVC(probability=False, random_state=seed)),
     ]
-    meta = LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver="saga")
+    meta = LogisticRegression(random_state=seed, max_iter=p["base_max_iter"], solver=_lr_solver())
     return StackingClassifier(
         estimators=base_learners, final_estimator=meta, passthrough=False, n_jobs=-1
     )
@@ -130,26 +137,25 @@ SPECS = {
     "Logistic Regression": {
         "kind": "sklearn",
         "build": _build_lr,
-        "params": {"max_iter": 2000, "solver": "saga"},
+        "params": {"max_iter": 2000, "solver": "lbfgs"},
     },
     "Random Forest": {
         "kind": "sklearn",
         "build": _build_rf,
-        "params": {"n_estimators": 200},
+        "params": {"n_estimators": 200, "max_features": None},
     },
     "XGBoost": {
         "kind": "sklearn",
         "build": _build_xgb,
-        "params": {"eval_metric": "mae"},
+        "params": {},
     },
     "MLP Classifier": {
         "kind": "sklearn",
         "build": _build_mlp,
         "params": {
             "hidden_layer_sizes": (100, 50, 25),
-            "activation": "tanh",
+            "activation": "relu",
             "solver": "adam",
-            "learning_rate": "adaptive",
             "early_stopping": True,
         },
         "report_epochs": True,
@@ -834,7 +840,7 @@ def _run_stacked(exp, spec, params, seed, smote_meta):
         smote = SMOTE(random_state=seed, sampling_strategy=strategy)
         meta_train, y_meta = smote.fit_resample(meta_train, y_meta)
         y_meta = np.asarray(y_meta)
-    meta = RandomForestClassifier(random_state=seed).fit(meta_train, y_meta)
+    meta = RandomForestClassifier(random_state=seed, **_rf_params()).fit(meta_train, y_meta)
     train_time = base_time + (time.perf_counter() - start_meta)
 
     detector._meta = meta
