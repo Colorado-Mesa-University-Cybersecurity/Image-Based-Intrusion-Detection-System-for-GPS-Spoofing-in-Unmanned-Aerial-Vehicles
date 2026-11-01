@@ -7,6 +7,7 @@ from typing import Any, Optional
 import numpy as np
 
 import eval_metrics
+from . import accel as _accel
 from . import protocol as _protocol
 from . import results as _results
 
@@ -147,7 +148,11 @@ def _build_mlp(exp, seed, p):
 def _build_stack(exp, seed, p):
     from sklearn.ensemble import RandomForestClassifier, StackingClassifier
     from sklearn.linear_model import LogisticRegression
-    from sklearn.svm import SVC
+
+    backend, svc = _accel.build_svc(
+        seed, class_weight=p["class_weight"], backend=p["svc_backend"]
+    )
+    p["svc_backend_resolved"] = backend
 
     base_learners = [
         (
@@ -160,7 +165,7 @@ def _build_stack(exp, seed, p):
             ),
         ),
         ("rf", RandomForestClassifier(random_state=seed, **_rf_params())),
-        ("svc", SVC(probability=False, random_state=seed, class_weight=p["class_weight"])),
+        ("svc", svc),
     ]
     meta = LogisticRegression(
         random_state=seed,
@@ -230,7 +235,11 @@ SPECS = {
     STACK_NAME: {
         "kind": "sklearn",
         "build": _build_stack,
-        "params": {"base_max_iter": 1200, "class_weight": "balanced"},
+        "params": {
+            "base_max_iter": 1200,
+            "class_weight": "balanced",
+            "svc_backend": "auto",
+        },
     },
     "OneClassSVM": {
         "kind": "one_class",
@@ -397,6 +406,8 @@ def _run_sklearn(exp, spec, params, seed):
     recorded = dict(model.get_params())
     if fit_kwargs:
         recorded["sample_weight"] = "balanced"
+    if "svc_backend_resolved" in params:
+        recorded["svc_backend"] = params["svc_backend_resolved"]
     return {
         "model": model,
         "y_pred": y_pred,
