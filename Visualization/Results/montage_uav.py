@@ -12,7 +12,7 @@ def plot_images_side_by_side(
     title_left="Normal",
     title_right="GPS Spoofing",
     out_file="UAV_comparison.png",
-    dpi=800,
+    dpi=1000,
 ):
     fig, axes = plt.subplots(1, 2, figsize=(6, 3))  # inches
 
