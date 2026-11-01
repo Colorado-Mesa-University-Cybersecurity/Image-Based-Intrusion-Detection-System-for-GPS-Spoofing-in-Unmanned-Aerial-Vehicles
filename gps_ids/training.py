@@ -122,13 +122,14 @@ def _build_xgb(exp, seed, p):
     from xgboost import XGBClassifier
 
     k = len(exp.class_names)
+    shared = {
+        "random_state": seed,
+        "tree_method": p["tree_method"],
+        "device": p["device"],
+    }
     if k == 2:
-        return XGBClassifier(objective="binary:logistic", random_state=seed)
-    return XGBClassifier(
-        objective="multi:softprob",
-        num_class=k,
-        random_state=seed,
-    )
+        return XGBClassifier(objective="binary:logistic", **shared)
+    return XGBClassifier(objective="multi:softprob", num_class=k, **shared)
 
 
 def _build_mlp(exp, seed, p):
@@ -212,7 +213,7 @@ SPECS = {
     "XGBoost": {
         "kind": "sklearn",
         "build": _build_xgb,
-        "params": {},
+        "params": {"tree_method": "hist", "device": "cpu"},
         "balanced_sample_weight": True,
     },
     "MLP Classifier": {
