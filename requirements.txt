@@ -23,6 +23,8 @@ matplotlib>=3.8
 seaborn>=0.13
 
 
+cuml-cu12>=25.2; sys_platform == "linux"
+
 jupyter>=1.0
 ipykernel>=6.29
 nbconvert>=7.0
