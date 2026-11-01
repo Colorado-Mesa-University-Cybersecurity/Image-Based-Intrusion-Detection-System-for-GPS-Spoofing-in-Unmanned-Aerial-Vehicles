@@ -28,7 +28,6 @@ MODELS = {
     "LSTM Classifier (SMOTE)": "LSTM+SM",
     "LSTM Classifier (Explainability Features)": "LSTM+EXPL",
     "LSTM Classifier (Xgboost Features)": "LSTM+XGBF",
-    "LSTM Classifier (XGBoost Features)": "LSTM+XGBF",
     "CNN": "CNN",
     "CNN-LSTM": "C-LSTM",
     "ResNet-CNN": "ResNet",

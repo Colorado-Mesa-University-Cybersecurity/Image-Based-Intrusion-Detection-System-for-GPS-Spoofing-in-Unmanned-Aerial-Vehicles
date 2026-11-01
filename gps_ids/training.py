@@ -44,7 +44,6 @@ VARIANT_FAMILIES = {
     " (SMOTE)": "SMOTE",
     " (Explainability Features)": "FeatureEngineering",
     " (Xgboost Features)": "FeatureEngineering",
-    " (XGBoost Features)": "FeatureEngineering",
     " (Quadratic Features)": "FeatureEngineering",
 }
 
