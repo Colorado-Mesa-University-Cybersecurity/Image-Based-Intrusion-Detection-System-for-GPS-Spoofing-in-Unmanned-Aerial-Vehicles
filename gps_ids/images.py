@@ -15,6 +15,7 @@ RANDOM_STATE = 1082
 TRAIN_FRACTION = 0.8
 TEST_RATIO = 0.2
 IMAGE_EXTENSIONS = (".png", ".jpg", ".jpeg")
+CACHE_DIRNAME = "tensor_cache"
 
 
 @dataclass(frozen=True)
@@ -75,6 +76,14 @@ def test_dir(config) -> Path:
 
 def manifest_path(config) -> Path:
     return data_dir(config) / "split_manifest.json"
+
+
+def cache_dir(config) -> Path:
+    return image_root(config) / CACHE_DIRNAME
+
+
+def cache_path(config, split) -> Path:
+    return cache_dir(config) / ("%s.npz" % split)
 
 
 def checkpoint_path(config, model_key) -> Path:
@@ -442,7 +451,87 @@ class ImageExperiment:
         }
 
 
-def loaders(config, batch_size, test_batch_size=1, num_workers=0, seed=None):
+def _read_grey(path):
+    from PIL import Image
+
+    with Image.open(path) as image:
+        return np.asarray(image.convert("L"), dtype=np.uint8)
+
+
+def _decode_split(config, directory, n_jobs=-1):
+    from joblib import Parallel, delayed
+
+    directory = Path(directory)
+    classes = sorted(d.name for d in directory.iterdir() if d.is_dir())
+    paths, labels = [], []
+    for index, cls in enumerate(classes):
+        for name in _list_images(directory / cls):
+            paths.append(str(directory / cls / name))
+            labels.append(index)
+    if not paths:
+        raise FileNotFoundError("no images under %s; run render() first" % directory)
+    arrays = Parallel(n_jobs=n_jobs, batch_size=256)(
+        delayed(_read_grey)(path) for path in paths
+    )
+    return np.stack(arrays), np.asarray(labels, dtype=np.int64), classes
+
+
+def cached_arrays(config, split, *, rebuild=False, n_jobs=-1):
+    config = get(config)
+    if split not in ("train", "test"):
+        raise ValueError("split must be 'train' or 'test', got %r" % split)
+    path = cache_path(config, split)
+    if path.is_file() and not rebuild:
+        with np.load(path, allow_pickle=False) as data:
+            return data["X"], data["y"], [str(c) for c in data["classes"]]
+    directory = train_dir(config) if split == "train" else test_dir(config)
+    X, y, classes = _decode_split(config, directory, n_jobs=n_jobs)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    np.savez(path, X=X, y=y, classes=np.asarray(classes))
+    return X, y, classes
+
+
+def clear_cache(config):
+    config = get(config)
+    removed = 0
+    directory = cache_dir(config)
+    if directory.is_dir():
+        for entry in directory.iterdir():
+            entry.unlink()
+            removed += 1
+        directory.rmdir()
+    return removed
+
+
+def _array_dataset(X, y):
+    import torch
+    from torch.utils.data import Dataset
+
+    class NormalisedArrayDataset(Dataset):
+        def __init__(self, images, labels):
+            self.images = torch.from_numpy(np.ascontiguousarray(images))
+            self.labels = torch.from_numpy(np.ascontiguousarray(labels))
+
+        def __len__(self):
+            return len(self.labels)
+
+        def __getitem__(self, index):
+            image = self.images[index].unsqueeze(0).float()
+            image = image.div_(255.0).sub_(0.5).div_(0.5)
+            return image, self.labels[index]
+
+    return NormalisedArrayDataset(X, y)
+
+
+def loaders(
+    config,
+    batch_size,
+    test_batch_size=1,
+    num_workers=0,
+    seed=None,
+    cache=True,
+    rebuild_cache=False,
+):
     import torch
     from sklearn.model_selection import train_test_split
     from torch.utils.data import DataLoader, Subset
@@ -451,34 +540,47 @@ def loaders(config, batch_size, test_batch_size=1, num_workers=0, seed=None):
     config = get(config)
     seed = RANDOM_STATE if seed is None else seed
     shape = image_shape(config)
-    transform = transforms.Compose(
-        [
-            transforms.Grayscale(num_output_channels=1),
-            transforms.Resize(shape),
-            transforms.ToTensor(),
-            transforms.Normalize((0.5,), (0.5,)),
-        ]
-    )
-    train_full = datasets.ImageFolder(root=str(train_dir(config)), transform=transform)
-    val_full = datasets.ImageFolder(root=str(train_dir(config)), transform=transform)
-    test_dataset = datasets.ImageFolder(root=str(test_dir(config)), transform=transform)
 
-    targets = np.array(train_full.targets)
+    if cache:
+        X_train, targets, classes = cached_arrays(config, "train", rebuild=rebuild_cache)
+        X_test, y_test, _ = cached_arrays(config, "test", rebuild=rebuild_cache)
+        train_pool = _array_dataset(X_train, targets)
+        val_pool = train_pool
+        test_dataset = _array_dataset(X_test, y_test)
+    else:
+        transform = transforms.Compose(
+            [
+                transforms.Grayscale(num_output_channels=1),
+                transforms.Resize(shape),
+                transforms.ToTensor(),
+                transforms.Normalize((0.5,), (0.5,)),
+            ]
+        )
+        train_pool = datasets.ImageFolder(
+            root=str(train_dir(config)), transform=transform
+        )
+        val_pool = datasets.ImageFolder(root=str(train_dir(config)), transform=transform)
+        test_dataset = datasets.ImageFolder(
+            root=str(test_dir(config)), transform=transform
+        )
+        targets = np.array(train_pool.targets)
+        classes = train_pool.classes
+
     train_idx, val_idx = train_test_split(
-        np.arange(len(train_full)),
+        np.arange(len(targets)),
         train_size=TRAIN_FRACTION,
         random_state=seed,
         stratify=targets,
     )
     dataloaders = {
         "train": DataLoader(
-            Subset(train_full, train_idx),
+            Subset(train_pool, train_idx),
             batch_size=batch_size,
             shuffle=True,
             num_workers=num_workers,
         ),
         "val": DataLoader(
-            Subset(val_full, val_idx),
+            Subset(val_pool, val_idx),
             batch_size=batch_size,
             shuffle=False,
             num_workers=num_workers,
@@ -491,5 +593,5 @@ def loaders(config, batch_size, test_batch_size=1, num_workers=0, seed=None):
         ),
     }
     return ImageExperiment(
-        config, dataloaders, train_full.classes, targets, train_idx, seed=seed
+        config, dataloaders, classes, targets, train_idx, seed=seed
     )

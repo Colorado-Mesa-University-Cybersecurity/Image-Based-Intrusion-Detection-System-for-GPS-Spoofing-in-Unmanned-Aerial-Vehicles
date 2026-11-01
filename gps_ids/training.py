@@ -14,6 +14,8 @@ STACK_NAME = "StackingClassifier(LogisticRegression RandomForest SVC)"
 
 SEEDS = (1082, 7, 42, 2024, 31337)
 
+SYNTHETIC_SEEDS = SEEDS[:3]
+
 MIN_BENIGN_FIT_ROWS = 10
 
 
