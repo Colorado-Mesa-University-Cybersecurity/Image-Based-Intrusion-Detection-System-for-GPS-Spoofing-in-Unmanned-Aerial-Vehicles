@@ -45,3 +45,16 @@ def build_svc(seed, *, class_weight, backend="auto", kernel="rbf"):
         probability=False,
         random_state=seed,
     )
+
+
+def limit_threads(n_threads):
+    """Return a context manager capping BLAS and OpenMP threads, or a no-op
+    context manager when threadpoolctl is unavailable."""
+    import contextlib
+
+    try:
+        from threadpoolctl import threadpool_limits
+    except Exception:
+        return contextlib.nullcontext()
+    return threadpool_limits(limits=int(n_threads))
+
