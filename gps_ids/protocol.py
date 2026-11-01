@@ -81,12 +81,13 @@ def _select_features(X, features):
     return X[cleaned]
 
 
-def real_heldout(dataset, features=None):
+def real_heldout(dataset, features=None, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X, y = _schema.load_real(schema)
     X = _select_features(X, features)
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=TRAIN_SIZE, random_state=SEED, stratify=y
+        X, y, train_size=TRAIN_SIZE, random_state=seed, stratify=y
     )
     scaler = StandardScaler().fit(X_train)
     return Experiment(
@@ -136,14 +137,16 @@ def one_class(dataset):
         y_train=np.asarray(y_train),
         y_test=y_test,
         scaler=scaler,
+        seed=seed,
     )
 
 
-def ensemble_heldout(dataset):
+def ensemble_heldout(dataset, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X, y = _schema.load_real(schema)
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, train_size=TRAIN_SIZE, random_state=SEED, stratify=y
+        X, y, train_size=TRAIN_SIZE, random_state=seed, stratify=y
     )
     y_train = np.asarray(y_train)
     X_fit_raw = X_train[y_train == 0]
@@ -159,15 +162,17 @@ def ensemble_heldout(dataset):
         scaler=scaler,
         X_fit=_scaled(scaler, X_fit_raw),
         X_test_raw=X_test,
+        seed=seed,
     )
 
 
-def synthetic_vs_full_real(dataset, synth_file):
+def synthetic_vs_full_real(dataset, synth_file, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X_s, y_s = _schema.load_synthetic(schema, synth_file)
     X_r, y_r = _schema.load_real(schema)
     X_train, _, y_train, _ = train_test_split(
-        X_s, y_s, train_size=TRAIN_SIZE, random_state=SEED, stratify=y_s
+        X_s, y_s, train_size=TRAIN_SIZE, random_state=seed, stratify=y_s
     )
     scaler = StandardScaler().fit(X_train)
     return Experiment(
@@ -179,10 +184,12 @@ def synthetic_vs_full_real(dataset, synth_file):
         y_train=np.asarray(y_train),
         y_test=np.asarray(y_r),
         scaler=scaler,
+        seed=seed,
     )
 
 
-def synthetic_ensemble_vs_full_real(dataset, synth_file):
+def synthetic_ensemble_vs_full_real(dataset, synth_file, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X_s, y_s = _schema.load_synthetic(schema, synth_file)
     X_r, y_r = _schema.load_real(schema)
@@ -200,15 +207,17 @@ def synthetic_ensemble_vs_full_real(dataset, synth_file):
         scaler=scaler,
         X_fit=_scaled(scaler, X_fit_raw),
         X_test_raw=X_r,
+        seed=seed,
     )
 
 
-def synthetic_vs_real_heldout(dataset, synth_file):
+def synthetic_vs_real_heldout(dataset, synth_file, *, seed=None):
+    seed = SEED if seed is None else seed
     schema = _schema.get(dataset)
     X_s, y_s = _schema.load_synthetic(schema, synth_file)
     X_r, y_r = _schema.load_real(schema)
     _, X_test, _, y_test = train_test_split(
-        X_r, y_r, train_size=TRAIN_SIZE, random_state=SEED, stratify=y_r
+        X_r, y_r, train_size=TRAIN_SIZE, random_state=seed, stratify=y_r
     )
     scaler = StandardScaler().fit(X_s)
     return Experiment(
@@ -220,4 +229,5 @@ def synthetic_vs_real_heldout(dataset, synth_file):
         y_train=np.asarray(y_s),
         y_test=np.asarray(y_test),
         scaler=scaler,
+        seed=seed,
     )

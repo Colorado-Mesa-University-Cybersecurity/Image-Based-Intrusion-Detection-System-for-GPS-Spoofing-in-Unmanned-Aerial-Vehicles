@@ -214,6 +214,85 @@ def load_rows(files=None):
     return rows
 
 
+SEED_METRICS = (
+    "mcc",
+    "balanced_accuracy",
+    "f1_macro",
+    "accuracy",
+    "min_class_recall",
+    "train_time_sec",
+)
+
+
+def summarize_seeds(files=None, metrics=None, rows=None):
+    import math
+
+    metrics = SEED_METRICS if metrics is None else tuple(metrics)
+    rows = load_rows(files) if rows is None else rows
+    groups = {}
+    for row in rows:
+        key = (row.get("model"), row.get("dataset"), row.get("test_set"))
+        groups.setdefault(key, []).append(row)
+    out = []
+    for (model, dataset, test_set), group in sorted(
+        groups.items(), key=lambda item: tuple("" if p is None else str(p) for p in item[0])
+    ):
+        seeds = sorted({str(r.get("seed")) for r in group})
+        entry = {
+            "model": model,
+            "dataset": dataset,
+            "test_set": test_set,
+            "n_runs": len(group),
+            "n_seeds": len(seeds),
+            "seeds": ";".join(seeds),
+        }
+        for metric in metrics:
+            values = []
+            for row in group:
+                raw = row.get(metric)
+                if raw in (None, "", "N/A"):
+                    continue
+                try:
+                    values.append(float(raw))
+                except (TypeError, ValueError):
+                    continue
+            if not values:
+                entry[metric + "_mean"] = None
+                entry[metric + "_std"] = None
+                continue
+            mean = sum(values) / len(values)
+            if len(values) > 1:
+                variance = sum((v - mean) ** 2 for v in values) / (len(values) - 1)
+                std = math.sqrt(variance)
+            else:
+                std = 0.0
+            entry[metric + "_mean"] = mean
+            entry[metric + "_std"] = std
+        out.append(entry)
+    return out
+
+
+def format_seed_summary(summary, metric="mcc"):
+    lines = []
+    for entry in summary:
+        mean = entry.get(metric + "_mean")
+        std = entry.get(metric + "_std")
+        if mean is None:
+            continue
+        lines.append(
+            "%-55s %-22s %s %.4f +/- %.4f  (n=%d)"
+            % (
+                entry["model"],
+                dataset_short(entry["dataset"]) or entry["dataset"],
+                metric,
+                mean,
+                std,
+                entry["n_seeds"],
+            )
+        )
+    return "\n".join(lines)
+
+
 def validate_row(row):
     problems = []
     model = row.get("model")

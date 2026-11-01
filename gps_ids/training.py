@@ -1050,6 +1050,47 @@ def run(model_name, exp, *, overrides=None, append=None, results_csv=None, quiet
     return Run(row=row, model=out["model"], y_pred=out["y_pred"], y_proba=out["y_proba"])
 
 
+def run_seeds(
+    models,
+    build_exp,
+    seeds=None,
+    *,
+    overrides=None,
+    results_csv=None,
+    quiet=False,
+    append=None,
+):
+    if isinstance(models, str):
+        models = [models]
+    seeds = SEEDS if seeds is None else tuple(seeds)
+    rows = []
+    for seed in seeds:
+        exp = build_exp(seed)
+        if int(getattr(exp, "seed", seed)) != int(seed):
+            raise ValueError(
+                "build_exp(%r) returned an experiment with seed %r; the callable "
+                "must pass the seed through to the protocol builder"
+                % (seed, getattr(exp, "seed", None))
+            )
+        for model_name in models:
+            try:
+                result = run(
+                    model_name,
+                    exp,
+                    overrides=overrides,
+                    append=append,
+                    results_csv=results_csv,
+                    quiet=quiet,
+                )
+            except ExperimentUnusable as error:
+                print("Skipping %s at seed %s: %s" % (model_name, seed, error))
+                continue
+            rows.append(result.row)
+        del exp
+        gc.collect()
+    return rows
+
+
 def run_synthetic(
     models,
     dataset,
@@ -1059,6 +1100,7 @@ def run_synthetic(
     generators=None,
     results_csv=None,
     quiet=False,
+    seeds=None,
 ):
     if isinstance(models, str):
         models = [models]
@@ -1066,21 +1108,34 @@ def run_synthetic(
         protocol_fn = _protocol.synthetic_vs_full_real
     if files is None:
         files = _results.synthetic_files(dataset, generators=generators)
+    seeds = (None,) if seeds is None else tuple(seeds)
     rows = []
     for synth_file in files:
-        try:
-            exp = protocol_fn(dataset, synth_file)
-        except FileNotFoundError:
-            print("Skipping %s: file not found" % synth_file)
-            continue
-        print("Training on synthetic: %s" % synth_file)
-        for model_name in models:
+        for seed in seeds:
             try:
-                result = run(model_name, exp, results_csv=results_csv, quiet=quiet)
-            except ExperimentUnusable as error:
-                print("Skipping %s: %s" % (synth_file, error))
+                exp = (
+                    protocol_fn(dataset, synth_file)
+                    if seed is None
+                    else protocol_fn(dataset, synth_file, seed=seed)
+                )
+            except FileNotFoundError:
+                print("Skipping %s: file not found" % synth_file)
                 break
-            rows.append(result.row)
-        del exp
-        gc.collect()
+            print(
+                "Training on synthetic: %s%s"
+                % (synth_file, "" if seed is None else " (seed %s)" % seed)
+            )
+            unusable = False
+            for model_name in models:
+                try:
+                    result = run(model_name, exp, results_csv=results_csv, quiet=quiet)
+                except ExperimentUnusable as error:
+                    print("Skipping %s: %s" % (synth_file, error))
+                    unusable = True
+                    break
+                rows.append(result.row)
+            del exp
+            gc.collect()
+            if unusable:
+                break
     return rows
