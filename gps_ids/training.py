@@ -23,6 +23,7 @@ VARIANT_FAMILIES = {
     " (Explainability Features)": "FeatureEngineering",
     " (Xgboost Features)": "FeatureEngineering",
     " (XGBoost Features)": "FeatureEngineering",
+    " (Quadratic Features)": "FeatureEngineering",
 }
 
 
@@ -73,6 +74,23 @@ def _rf_params():
 
 def _lr_solver():
     return SPECS["Logistic Regression"]["params"]["solver"]
+
+
+def _build_lr_quad(exp, seed, p):
+    from sklearn.linear_model import LogisticRegression
+    from sklearn.pipeline import make_pipeline
+    from sklearn.preprocessing import PolynomialFeatures
+
+    lr = SPECS["Logistic Regression"]["params"]
+    return make_pipeline(
+        PolynomialFeatures(degree=p["degree"], include_bias=False),
+        LogisticRegression(
+            random_state=seed,
+            max_iter=lr["max_iter"],
+            solver=lr["solver"],
+            class_weight=p["class_weight"],
+        ),
+    )
 
 
 def _build_xgb(exp, seed, p):
@@ -138,6 +156,11 @@ SPECS = {
         "kind": "sklearn",
         "build": _build_lr,
         "params": {"max_iter": 2000, "solver": "lbfgs"},
+    },
+    "Logistic Regression (Quadratic Features)": {
+        "kind": "sklearn",
+        "build": _build_lr_quad,
+        "params": {"degree": 2, "class_weight": "balanced"},
     },
     "Random Forest": {
         "kind": "sklearn",
@@ -295,6 +318,9 @@ def _family(model_name, base, suffix, kind, exp):
         return "Synthetic"
     if suffix in VARIANT_FAMILIES:
         return VARIANT_FAMILIES[suffix]
+    for known_suffix, family in VARIANT_FAMILIES.items():
+        if model_name.endswith(known_suffix):
+            return family
     if kind == "stacked" or base == STACK_NAME:
         return "Stacking"
     if kind == "image":

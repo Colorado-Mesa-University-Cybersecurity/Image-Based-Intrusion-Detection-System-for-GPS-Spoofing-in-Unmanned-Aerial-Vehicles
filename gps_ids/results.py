@@ -11,6 +11,7 @@ MODELS = {
     "Logistic Regression (SMOTE)": "LR+SM",
     "Logistic Regression (Explainability Features)": "LR+EXPL",
     "Logistic Regression (Xgboost Features)": "LR+XGBF",
+    "Logistic Regression (Quadratic Features)": "LR+QUAD",
     "Random Forest": "RF",
     "Random Forest (SMOTE)": "RF+SM",
     "Random Forest (Explainability Features)": "RF+EXPL",
@@ -60,7 +61,7 @@ TEST_SET_TAGS = {
     "real_heldout_benign_plus_malicious": " [benign-ho]",
 }
 
-VARIANT_SUFFIXES = ("+SM", "+EXPL", "+XGBF")
+VARIANT_SUFFIXES = ("+SM", "+EXPL", "+XGBF", "+QUAD")
 
 
 @dataclass(frozen=True)
