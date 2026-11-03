@@ -1,0 +1,15 @@
+{
+  "files.watcherExclude": {
+    "**/DataGeneration/BinaryImages/*/image-results-spoofing/**": true,
+    "**/.venv/**": true,
+    "**/Datasets/**": true,
+    "**/__pycache__/**": true
+  },
+  "search.exclude": {
+    "**/DataGeneration/BinaryImages/*/image-results-spoofing/**": true,
+    "**/.venv/**": true,
+    "**/Datasets/**": true,
+    "**/__pycache__/**": true
+  },
+  "python.defaultInterpreterPath": ".venv/Scripts/python.exe"
+}
